@@ -1,0 +1,40 @@
+*.py[cod]
+
+# Packages
+*.egg*
+.testrepository
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+# lib
+lib64
+__pycache__
+
+# Installation logs
+pip-log.txt
+
+# unittest/coverage reports
+.coverage
+.tox
+.cache
+.pytest_cache
+nosetests.xml
+unittest_results.log
+
+# Translations
+*.mo
+
+# Sphinx documentation
+*.sw?
+docs_build/
+docs_output/
+docs/_build
+pre_config/
+docs/index.rst
+docs/requirements.txt
