@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da5c1566_0c95f532",
+        "filename": "docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 585
+      },
+      "writtenOn": "2018-07-09T09:47:52Z",
+      "side": 1,
+      "message": "This container is not the actual Test API Docker container, which is confusing. Better rephrase to something like \"API for OVP web portal backend - based on OPNFV Test API\" (just a proposal)",
+      "range": {
+        "startLine": 28,
+        "startChar": 32,
+        "endLine": 28,
+        "endChar": 62
+      },
+      "revId": "ed0512dc08f5a4f399086af8f2eba92f5f8e1fde",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_6c9ab164",
+        "filename": "docker/Dockerfile.web",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 585
+      },
+      "writtenOn": "2018-07-09T09:47:52Z",
+      "side": 1,
+      "message": "OVP",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "ed0512dc08f5a4f399086af8f2eba92f5f8e1fde",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_aca3299d",
+        "filename": "docker/docker-compose.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 585
+      },
+      "writtenOn": "2018-07-09T09:47:52Z",
+      "side": 1,
+      "message": "cvp -\u003e ovp (and all following items)",
+      "range": {
+        "startLine": 6,
+        "startChar": 24,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "ed0512dc08f5a4f399086af8f2eba92f5f8e1fde",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_8ca0e591",
+        "filename": "docker/docker-compose.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 585
+      },
+      "writtenOn": "2018-07-09T09:47:52Z",
+      "side": 1,
+      "message": "shouldn\u0027t we push the two different container to two different repos on Docker hub?",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "ed0512dc08f5a4f399086af8f2eba92f5f8e1fde",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_4c9fed52",
+        "filename": "docker/docker-compose.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 585
+      },
+      "writtenOn": "2018-07-09T09:47:52Z",
+      "side": 1,
+      "message": "ovpapi",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "ed0512dc08f5a4f399086af8f2eba92f5f8e1fde",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
