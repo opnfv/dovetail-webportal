@@ -25,7 +25,7 @@
 
 FROM ubuntu:14.04
 MAINTAINER SerenaFeng <feng.xiaowei@zte.com.cn>
-LABEL version="v1" description="OPNFV TestAPI Docker container"
+LABEL version="v2" description="OPNFV TestAPI Docker container"
 
 ARG BRANCH=master
 
@@ -54,16 +54,16 @@ WORKDIR /home
 
 RUN git config --global http.sslVerify false
 
-RUN git clone https://gerrit.opnfv.org/gerrit/dovetail.git
+RUN git clone https://gerrit.opnfv.org/gerrit/dovetail-webportal
 
-WORKDIR /home/dovetail
+WORKDIR /home/dovetail-webportal
 RUN git checkout -f $BRANCH
 
 RUN mkdir -p /home/testapi
 RUN mkdir -p /home/testapi/logs/api
-RUN cp -rf /home/dovetail/cvp/* /home/testapi
+RUN cp -rf /home/dovetail-webportal/* /home/testapi
 
-WORKDIR /home/dovetail/cvp
+WORKDIR /home/dovetail-webportal
 RUN pip install -r requirements.txt
 RUN bash install.sh
 
