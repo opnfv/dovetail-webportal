@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "da5c1566_9241203c",
+        "filename": "docker/docker-compose.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-07-10T12:37:31Z",
+      "side": 1,
+      "message": "I am not sure if this rename could affect the existing Web.",
+      "parentUuid": "da5c1566_aca3299d",
+      "range": {
+        "startLine": 6,
+        "startChar": 24,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "ed0512dc08f5a4f399086af8f2eba92f5f8e1fde",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5c1566_8ca0e591",
         "filename": "docker/docker-compose.yml",
         "patchSetId": 1
