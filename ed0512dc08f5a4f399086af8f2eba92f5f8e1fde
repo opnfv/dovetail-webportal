@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "da5c1566_72ce0c5c",
+        "filename": "docker/docker-compose.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 585
+      },
+      "writtenOn": "2018-07-10T20:26:04Z",
+      "side": 1,
+      "message": "this is just the name of the container, so it shouldn\u0027t affect the portal. However, renaming the links below does, I believe. Anyway, we can fix this later.",
+      "parentUuid": "da5c1566_9241203c",
+      "range": {
+        "startLine": 6,
+        "startChar": 24,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "ed0512dc08f5a4f399086af8f2eba92f5f8e1fde",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5c1566_8ca0e591",
         "filename": "docker/docker-compose.yml",
         "patchSetId": 1
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "According to patch https://gerrit.opnfv.org/gerrit/#/c/59603/1/jjb/releng/opnfv-docker.yaml, they will be pushed to 2 seperate Docker hub repos. One is dovetail-webportal-api and the other is dovetail-webportal-web.",
       "parentUuid": "da5c1566_8ca0e591",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "ed0512dc08f5a4f399086af8f2eba92f5f8e1fde",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_52e828b4",
+        "filename": "docker/docker-compose.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 585
+      },
+      "writtenOn": "2018-07-10T20:26:04Z",
+      "side": 1,
+      "message": "oh, yes, you are right.",
+      "parentUuid": "da5c1566_52582832",
       "range": {
         "startLine": 23,
         "startChar": 21,
