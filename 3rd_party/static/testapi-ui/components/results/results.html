@@ -23,6 +23,7 @@
             <tr>
                 <th>Upload Date</th>
                 <th>Test ID</th>
+                <th>OVP Version</th>
                 <th>Owner</th>
                 <th>File Name</th>
                 <th>Label</th>
@@ -39,6 +40,7 @@
             <tr ng-repeat="(index, result) in ctrl.data.tests">
                 <td>{{ result.upload_date | limitTo:19}}</td>
                 <td><a  uib-tooltip="{{ result.id }}" tooltip-placement="top" tooltip-append-to-body="true" ng-click="ctrl.gotoResultDetail(result.id, result._id)">{{ result.id | limitTo:8 }}</a></td>
+                <td>{{ result.version }}</td>
                 <td>{{ result.owner }}</td>
                 <td>{{ result.filename || "None"}}</td>
                 <td><div class="popover-wrapper"><a editable-theme="bs3" onbeforesave="ctrl.changeLabel(result, 'label', $data)" editable-text="result.label"> {{ result.label || "None" }}</a></div></td>

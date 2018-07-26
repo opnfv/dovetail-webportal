@@ -27,7 +27,7 @@ Test Filters:<br />
 
 <uib-accordion-group ng-repeat="(type,data) in ctrl.data" is-open="isOpen">
 <uib-accordion-heading>
-        {{ type }}: (Total: 3 test areas, {{ ctrl.statistics[type].total }} tests)
+        {{ type }}: {{ ctrl.statistics[type].total }} tests
         <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isOpen, 'glyphicon-chevron-right': !isOpen}"></i>
     </uib-accordion-heading>
     <ol class="capabilities">

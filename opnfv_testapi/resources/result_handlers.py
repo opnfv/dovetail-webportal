@@ -256,10 +256,17 @@ class ResultsUploadHandler(ResultsCLHandler):
             return
         results = results.split('\n')
         result_ids = []
+        version = ''
         for result in results:
             if result == '':
                 continue
             self.json_args = json.loads(result).copy()
+            # the result files used in the first release of OVP did not
+            # specify an OVP version
+            if self.json_args['version'] == 'master':
+                version = '2018.01'
+            else:
+                version = self.json_args['version']
             build_tag = self.json_args['build_tag']
             _id = yield self._inner_create()
             result_ids.append(str(_id))
@@ -269,7 +276,7 @@ class ResultsUploadHandler(ResultsCLHandler):
         log_filename = "/home/testapi/logs/log_%s.tar.gz" % (test_id)
         with open(log_filename, "wb") as tar_out:
             tar_out.write(fileinfo['body'])
-        resp = {'id': test_id, 'results': result_ids}
+        resp = {'id': test_id, 'results': result_ids, 'version': version}
         self.finish_request(resp)
 
 
