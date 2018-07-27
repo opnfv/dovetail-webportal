@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_0a697e8b",
+        "filename": "3rd_party/static/testapi-ui/components/results-report/resultsReportController.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-07-27T09:40:13Z",
+      "side": 1,
+      "message": "I can only open this html file with chrome. For other explorers it seems doesn\u0027t work.\nI am appreciate that if someone can help to test it.",
+      "range": {
+        "startLine": 92,
+        "startChar": 20,
+        "endLine": 92,
+        "endChar": 51
+      },
+      "revId": "2771802e4f6e253b3b4b8c39087588f7878e8eb1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
