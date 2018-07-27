@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_8f5f6072",
+        "filename": "opnfv_testapi/resources/result_handlers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-07-27T03:57:08Z",
+      "side": 1,
+      "message": "There is a problem here.\nFor our first release, Functest data version is master, but Yardstick data version is unknown.",
+      "range": {
+        "startLine": 266,
+        "startChar": 12,
+        "endLine": 267,
+        "endChar": 35
+      },
+      "revId": "2a496bb33100cd57c49ec20cfa67f38cb3a54c79",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
