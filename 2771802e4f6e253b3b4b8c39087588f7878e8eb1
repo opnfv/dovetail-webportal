@@ -46,6 +46,30 @@
       "revId": "2771802e4f6e253b3b4b8c39087588f7878e8eb1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_e5a27d99",
+        "filename": "3rd_party/static/testapi-ui/components/results-report/resultsReportController.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-07-28T01:08:57Z",
+      "side": 1,
+      "message": "Cool. Then for tempest test cases, can open these html files which look better than the .log files for users.",
+      "parentUuid": "9a561d44_4a653644",
+      "range": {
+        "startLine": 92,
+        "startChar": 20,
+        "endLine": 92,
+        "endChar": 51
+      },
+      "revId": "2771802e4f6e253b3b4b8c39087588f7878e8eb1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
