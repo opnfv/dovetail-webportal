@@ -53,7 +53,7 @@
         ctrl.testId = $stateParams.testID;
         ctrl.innerId = $stateParams.innerID;
         ctrl.validation = '';
-        ctrl.version = ''
+        ctrl.version = '';
 
         /** The HTML template that all accordian groups will use. */
         ctrl.detailsTemplate = 'testapi-ui/components/results-report/partials/' +
@@ -78,12 +78,23 @@
         function gotoResultLog(case_name) {
             var case_area = case_name.split(".")[1];
             var log_url = "/logs/"+ctrl.testId+"/results/";
-            if (case_area == "vping") {
-                log_url += "functest.log";
-            } else if (case_area == "ha") {
-                log_url += "yardstick.log";
+            if (ctrl.version == '2018.01') {
+                if (case_area == "vping") {
+                    log_url += "functest.log";
+                } else if (case_area == "ha") {
+                    log_url += "yardstick.log";
+                } else {
+                    log_url += case_area+"_logs/"+case_name+".log";
+                }
             } else {
-                log_url += case_area+"_logs/"+case_name+".log";
+                log_url += case_area + "_logs/";
+                if (case_area == "tempest" || case_area == "security") {
+                    log_url += case_name + ".html";
+                } else if (case_area == "sdnvpn") {
+                    log_url += case_name + ".functest.log";
+                } else {
+                    log_url += case_name + ".log";
+                }
             }
             var is_reachable = false;
 
@@ -169,7 +180,7 @@
                    $http.get(result_url).then(function(result_resp){
 
                        ctrl.version = result_resp.data.version
-                       if(ctrl.version == 'master') {
+                       if(ctrl.version == 'master' || ctrl.version == 'unknown') {
                             // there was no result format versioning in the first release of OVP but
                             // instead the version was set to 'master'. We are using this as an indicator
                             // that a set of results were created based on the 2018.01 release
