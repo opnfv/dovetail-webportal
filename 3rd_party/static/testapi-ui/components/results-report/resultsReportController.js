@@ -90,8 +90,6 @@
                 log_url += case_area + "_logs/";
                 if (case_area == "tempest" || case_area == "security") {
                     log_url += case_name + ".html";
-                } else if (case_area == "sdnvpn") {
-                    log_url += case_name + ".functest.log";
                 } else {
                     log_url += case_name + ".log";
                 }
