@@ -33,37 +33,30 @@ ENV HOME /home
 
 # Packaged dependencies
 RUN apt-get update && apt-get install -y \
-curl \
-git \
-gcc \
-wget \
-python-dev \
-python-pip \
-crudini \
-libffi-dev \
-libssl-dev \
-libxml2-dev \
-libxslt1-dev \
---no-install-recommends
+    curl \
+    git \
+    gcc \
+    wget \
+    python-dev \
+    python-pip \
+    crudini \
+    libffi-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    --no-install-recommends \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN pip install -U setuptools
 
-WORKDIR /home
+RUN git config --global http.sslVerify false && \
+    git clone https://gerrit.opnfv.org/gerrit/dovetail-webportal $HOME/testapi && \
+    cd $HOME/testapi && \
+    git checkout -f $BRANCH && \
+    mkdir -p $HOME/testapi/logs/api
 
-#RUN pip install --upgrade pip
+WORKDIR $HOME/testapi
 
-RUN git config --global http.sslVerify false
-
-RUN git clone https://gerrit.opnfv.org/gerrit/dovetail-webportal
-
-WORKDIR /home/dovetail-webportal
-RUN git checkout -f $BRANCH
-
-RUN mkdir -p /home/testapi
-RUN mkdir -p /home/testapi/logs/api
-RUN cp -rf /home/dovetail-webportal/* /home/testapi
-
-WORKDIR /home/dovetail-webportal
 RUN pip install -r requirements.txt
 RUN bash install.sh
 
