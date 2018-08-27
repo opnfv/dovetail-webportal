@@ -48,6 +48,7 @@ services:
         container_name: cvp-nginx
         volumes:
             - /var/run/docker.sock:/tmp/docker.sock:ro
+            - ./nginx-proxy/custom_proxy_settings.conf:/etc/nginx/conf.d/custom_proxy_settings.conf
         depends_on:
             - web
         ports:
