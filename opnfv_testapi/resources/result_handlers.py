@@ -245,9 +245,19 @@ class ResultsUploadHandler(ResultsCLHandler):
             @raise 404: pod/project/testcase not exist
             @raise 400: body/pod_name/project_name/case_name not provided
         """
-        fileinfo = self.request.files['file'][0]
-        tar_in = tarfile.open(fileobj=io.BytesIO(fileinfo['body']),
-                              mode="r:gz")
+        file_array = self.request.files.get('file', None)
+        if file_array is None:
+            msg = 'Please upload a file.'
+            self.finish_request({'code': 403, 'msg': msg})
+            return
+        fileinfo = file_array[0]
+        try:
+            tar_in = tarfile.open(fileobj=io.BytesIO(fileinfo['body']),
+                                  mode="r:gz")
+        except tarfile.ReadError:
+            msg = 'Please upload a valid gzip file.'
+            self.finish_request({'code': 403, 'msg': msg})
+            return
         try:
             results = tar_in.extractfile('results/results.json').read()
         except KeyError:
