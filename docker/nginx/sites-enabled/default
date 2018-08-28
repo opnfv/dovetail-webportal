@@ -124,6 +124,12 @@ server {
                 expires 1d;
 	}
 
+    error_page 413 =200 /413.json;
+
+    location /413.json {
+        return 200 '{"msg": "Please upload a file less than 20MB.", "code": 413}';
+    }
+
 	# Only for nginx-naxsi used with nginx-naxsi-ui : process denied requests
 	#location /RequestDenied {
 	#	proxy_pass http://127.0.0.1:8080;    
