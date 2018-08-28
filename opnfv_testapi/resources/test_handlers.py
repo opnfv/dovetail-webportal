@@ -145,9 +145,23 @@ class TestsGURHandler(GenericTestHandler):
             raise gen.Return('API response validation enabled')
 
     @swagger.operation(nickname="deleteTestById")
+    @web.asynchronous
+    @gen.coroutine
     def delete(self, test_id):
-        query = {'_id': objectid.ObjectId(test_id)}
-        self._delete(query=query)
+        curr_user = self.get_secure_cookie(auth_const.OPENID)
+        curr_user_role = self.get_secure_cookie(auth_const.ROLE)
+        if curr_user is not None:
+            query = {'_id': objectid.ObjectId(test_id)}
+            test_data = yield dbapi.db_find_one(self.table, query)
+            if not test_data:
+                raises.NotFound(message.not_found(self.table, query))
+            if curr_user == test_data['owner'] or \
+               curr_user_role.find('administrator') != -1:
+                self._delete(query=query)
+            else:
+                raises.Forbidden(message.no_auth())
+        else:
+            raises.Unauthorized(message.no_auth())
 
     @swagger.operation(nickname="updateTestById")
     @web.asynchronous
