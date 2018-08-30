@@ -74,6 +74,10 @@ class TestsCLHandler(GenericTestHandler):
             'per_page': CONF.api_results_per_page
         }
 
+        curr_user = self.get_secure_cookie(auth_const.OPENID)
+        if curr_user is None:
+            raises.Unauthorized(message.no_auth())
+
         query = yield self.set_query()
         yield self._list(query=query, **limitations)
         logging.debug('list end')

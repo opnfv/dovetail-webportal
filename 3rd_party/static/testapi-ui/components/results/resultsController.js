@@ -111,7 +111,7 @@
         // need auth to browse
         ctrl.isUserResults = $state.current.name === 'userResults';
 
-        ctrl.currentUser = $scope.auth.name;
+        ctrl.currentUser = $scope.auth.currentUser ? $scope.auth.currentUser.openid : null;
         console.log($scope.auth);
 
         // Should only be on user-results-page if authenticated.

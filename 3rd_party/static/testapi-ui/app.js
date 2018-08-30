@@ -55,11 +55,11 @@
                 templateUrl: 'testapi-ui/components/guidelines/guidelines.html',
                 controller: 'GuidelinesController as ctrl'
             }).
-            state('communityResults', {
-                url: '/community_results',
-                templateUrl: 'testapi-ui/components/results/results.html',
-                controller: 'ResultsController as ctrl'
-            }).
+            // state('communityResults', {
+            //     url: '/community_results',
+            //     templateUrl: 'testapi-ui/components/results/results.html',
+            //     controller: 'ResultsController as ctrl'
+            // }).
             state('userResults', {
                 url: '/user_results',
                 templateUrl: 'testapi-ui/components/results/results.html',
@@ -78,7 +78,7 @@
             }).
             state('authPortal', {
                 url: '/auth_portal',
-                templateUrl: 'testapi-ui/components/auth/authPortal.html' 
+                templateUrl: 'testapi-ui/components/auth/authPortal.html'
             }).
             state('authFailure', {
                 url: '/auth_failure',
@@ -173,7 +173,7 @@
         $rootScope.auth.doSignIn = doSignIn;
         $rootScope.auth.doSignOut = doSignOut;
         $rootScope.auth.doSignCheck = doSignCheck;
-        
+
 
         var sign_in_url = testapiApiUrl + '/auth/signin';
         var sign_out_url = testapiApiUrl + '/auth/signout';
