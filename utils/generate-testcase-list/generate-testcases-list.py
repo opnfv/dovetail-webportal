@@ -71,6 +71,7 @@ class TestcaseList:
         }
 
         for area in ['mandatory', 'optional']:
+            total_per_area = 0
             testcase_names = testsuite_data.values()[0]['testcases_list'][area]
             for name in testcase_names:
                 tc = {
@@ -87,7 +88,11 @@ class TestcaseList:
                     tc['cases'] = cases
                     tc['total'] = len(cases)
 
+                total_per_area += tc['total']
                 testcase_list[area][name] = tc
+
+            print "Total number of test cases in area {}: {}".format(
+                    area, total_per_area)
 
         output_file = os.path.join(self.output_dir, 'testcases.json')
         with open(output_file, 'w') as file:
