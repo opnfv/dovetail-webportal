@@ -189,11 +189,11 @@
                            var sub_case_list = get_sub_case_list_2018_01(result_resp.data);
                            extend(sub_case_list);
                        }
-                       else if(ctrl.version == '2018.08') {
-                           // OVP 2018.08 and later results store all results in a single json structure:
+                       else if(ctrl.version == '2018.09') {
+                           // OVP 2018.09 and later results store all results in a single json structure:
                            // Looping over all test cases of this individual test run
                            angular.forEach(result_resp.data.testcases_list, function(testcase, index){
-                               var sub_case_list = get_sub_case_list_2018_08(testcase)
+                               var sub_case_list = get_sub_case_list_2018_09(testcase)
                                extend(sub_case_list)
                            });
                        }
@@ -253,7 +253,7 @@
             return case_list;
         }
 
-        function get_sub_case_list_2018_08(result) {
+        function get_sub_case_list_2018_09(result) {
             var case_list = [];
             if(result.sub_testcase.length == 0 && result.result == "PASS") {
                 case_list.push(result.name);
