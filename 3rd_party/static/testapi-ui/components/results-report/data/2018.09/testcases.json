@@ -229,8 +229,6 @@
                 "neutron.tests.tempest.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination", 
                 "neutron.tests.tempest.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination_page_reverse_asc", 
                 "neutron.tests.tempest.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination_page_reverse_desc", 
-                "neutron.tests.tempest.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination_page_reverse_with_href_links", 
-                "neutron.tests.tempest.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination_with_href_links", 
                 "neutron.tests.tempest.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination_with_marker", 
                 "neutron.tests.tempest.api.test_trunk.TrunksSearchCriteriaTest.test_list_sorts_asc", 
                 "neutron.tests.tempest.api.test_trunk.TrunksSearchCriteriaTest.test_list_sorts_desc", 
@@ -258,7 +256,7 @@
                 "neutron.tests.tempest.api.test_trunk_negative.TrunkTestJSON.test_remove_subport_port_id_disabled_trunk", 
                 "neutron.tests.tempest.scenario.test_trunk.TrunkTest.test_trunk_subport_lifecycle"
             ], 
-            "total": 40
+            "total": 38
         }, 
         "functest.tempest.osinterop": {
             "cases": [
