@@ -29,7 +29,7 @@
                                    target="_blank">Process Workflow&nbsp<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>
                             </div>
                             <div>
-                                <a href="https://na3.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=579ac00d-0a1f-4db3-82ea-ddd977769a60"
+                                <a href="https://na3.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=e5ac4719-9285-4e99-a49c-6b22c1cb02e6"
                                    target="_blank">Participation Form&nbsp<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>
                             </div>
                             <div><a href="https://www.opnfv.org/wp-content/uploads/sites/12/2018/05/OPNFV_Verified_BrandGuide_021618.pdf"
@@ -147,7 +147,7 @@
         <div class="col-md-10">
             <div class="common-main-container">
                 <div class="home-content-title">
-                    <h1>OPNFV is offering an OPNFV Verified Program (OVP) that verifies products and services with the "OPNFV Verified" mark.</h1>
+                    <h1>OPNFV Verified Program verifies products and services with the "OPNFV Verified" mark.</h1>
                 </div>
                 <div class="home-content">
                     <div class="col-md-2">
@@ -155,11 +155,19 @@
                     </div>
                     <div class="col-md-10">
                         <p class="home-content-text" style="padding-bottom:40px;">
-                            The OPNFV Verified program demonstrates the readiness and availability of commercial products based on OPNFV.
-                            Verified products and services submitted by vendors and service providers become compliant by implementing explicitly defined interfaces,
-                            behaviors and key features while retaining distinct and value-added innovations across features and capabilities.
-                            Navigate through the links in the left-hand menu to learn more and get started. You'll find step-step-instructions as well as a participation form.
-                            Use this portal to upload your test results when ready. Please send any questions to verified@opnfv.org<sup><span class="glyphicon glyphicon-envelope" style="font-size:60%;" aria-hidden="true"></span></sup>.
+                            The OPNFV Verified Program (OVP) demonstrates the readiness and availability of commercial
+                            NFV products and services by implementing explicitly defined interfaces, behaviors and key
+                            features. This open source community-led initiative allows vendors and service providers to
+                            establish baseline conformance and interoperability while retaining distinct and value-added
+                            innovations across features and capabilities. Now in its second iteration, the program has
+                            doubled the number of mandatory tests from 215 to 432; and in addition to VNF deployment,
+                            requires verified products to complete additional functional, high-availability, and
+                            NFV-focused tests. Future plans for OVP include adding third-party labs, as well as testing
+                            and verification of VNF deployments. View the directory of verified products and services
+                            below and navigate through the links in the left-hand menu to learn more and get started.
+                            You will find step-by-step-instructions as well as a participation form. Use this portal to
+                            upload your test results when ready. Please send any questions to verified@opnfv.org<sup>
+                            <span class="glyphicon glyphicon-envelope" style="font-size:60%;" aria-hidden="true"></span></sup>.
                         </p>
                     </div>
                 </div>
@@ -175,12 +183,12 @@
                                 <tr>
                                     <th>Company</th>
                                     <th>Product</th>
-                                    <th>Cateogry</th>
+                                    <th>Category</th>
                                     <th>Version</th>
                                 </tr>
                             </thead>
                             <tbody style="overflow: hidden; text-overflow: ellipsis;">
-                                <tr class="company_row" ng-click="ctrl.getCompany(app)" ng-repeat="app in ctrl.applications | filter:{approved:true} | orderBy : 'approve_date'">
+                                <tr class="company_row" ng-click="ctrl.getCompany(app)" ng-repeat="app in ctrl.applications | filter:{approved:true} | orderBy : '-approve_date'">
                                     <td width="400"><img class="company_logo" src="api/v1/cvp/applications/getlogo/{{app.company_logo}}" />{{ app.organization_name}}</td>
                                     <td width="300">{{ app.product_name}}</td>
                                     <td width="150">{{ app.ovp_category}}</td>
