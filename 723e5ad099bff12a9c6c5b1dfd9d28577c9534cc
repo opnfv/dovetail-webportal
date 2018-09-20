@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a682502_fd53296a",
+        "filename": "3rd_party/static/testapi-ui/components/home/home.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 585
+      },
+      "writtenOn": "2018-09-20T07:15:14Z",
+      "side": 1,
+      "message": "@Brandon: I removed this statement because the VNF deployment tests are optional and it reads as if they were mandatory.",
+      "range": {
+        "startLine": 163,
+        "startChar": 83,
+        "endLine": 163,
+        "endChar": 116
+      },
+      "revId": "723e5ad099bff12a9c6c5b1dfd9d28577c9534cc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a682502_5d17bda3",
         "filename": "3rd_party/static/testapi-ui/components/home/home.html",
         "patchSetId": 3
@@ -13,6 +36,30 @@
       "writtenOn": "2018-09-20T07:08:13Z",
       "side": 1,
       "message": "Minor: The dash here should be changed to space. But you can also leave it as it is",
+      "range": {
+        "startLine": 168,
+        "startChar": 54,
+        "endLine": 168,
+        "endChar": 55
+      },
+      "revId": "723e5ad099bff12a9c6c5b1dfd9d28577c9534cc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_7d60b935",
+        "filename": "3rd_party/static/testapi-ui/components/home/home.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 585
+      },
+      "writtenOn": "2018-09-20T07:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a682502_5d17bda3",
       "range": {
         "startLine": 168,
         "startChar": 54,
