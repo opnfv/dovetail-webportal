@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a682502_7d88b922",
+        "filename": "3rd_party/static/testapi-ui/components/home/home.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-09-20T06:35:59Z",
+      "side": 1,
+      "message": "It\u0027s 432 now.",
+      "range": {
+        "startLine": 163,
+        "startChar": 78,
+        "endLine": 163,
+        "endChar": 81
+      },
+      "revId": "5e9603ef1a87ff42849d154a25dbd2a23e12fa7a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
