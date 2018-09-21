@@ -29,6 +29,10 @@
     width: 80%;
 }
 
+.home-heading {
+    font-size: 30px;
+}
+
 #directory_inner th {
     font-size: 20px;
 }
