@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a682502_425235de",
+        "filename": "3rd_party/static/testapi-ui/assets/css/home/home.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2018-09-21T09:54:25Z",
+      "side": 1,
+      "message": "why not keeping the h1 (without any class) and add the following rule?\n\n.home-content-title h1 {\n...\n}",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 1
+      },
+      "revId": "8f8005cfb59568d9e08172b0c2a652c5cf8472c1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_8263adb0",
+        "filename": "3rd_party/static/testapi-ui/components/home/home.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2018-09-21T09:54:25Z",
+      "side": 1,
+      "message": "It will also affect this one and they will be styled with the same font",
+      "revId": "8f8005cfb59568d9e08172b0c2a652c5cf8472c1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
