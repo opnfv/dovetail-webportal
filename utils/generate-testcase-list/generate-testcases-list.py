@@ -35,13 +35,13 @@ class TestcaseList:
         except IOError:
             error = 'Testsuite definition file not found: "{}"'.\
                 format(self.testsuite)
-            print error
+            print(error)
             os.sys.exit(-1)
         except yaml.scanner.ScannerError:
             error = 'Reading test suite definition failed. ' \
                     'Not a valid yaml file: "{}"'. \
                 format(self.testsuite)
-            print error
+            print(error)
             os.sys.exit(-1)
         return testsuite_data
 
@@ -59,7 +59,7 @@ class TestcaseList:
                 error = 'Reading test case definition failed.' \
                         'Not a valid yaml file: "{}"'. \
                     format(file_path)
-                print error
+                print(error)
                 os.sys.exit(-1)
         return testcases
 
@@ -91,8 +91,8 @@ class TestcaseList:
                 total_per_area += tc['total']
                 testcase_list[area][name] = tc
 
-            print "Total number of test cases in area {}: {}".format(
-                    area, total_per_area)
+            print("Total number of test cases in area {}: {}".format(
+                area, total_per_area))
 
         output_file = os.path.join(self.output_dir, 'testcases.json')
         with open(output_file, 'w') as file:

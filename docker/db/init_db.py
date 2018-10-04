@@ -58,7 +58,7 @@ def cases():
                                                            c['project_name'])
                     print(target)
                     post(target, c)
-            except:
+            except Exception:
                 print("useless data")
     add_case("functest", "tempest_custom")
 

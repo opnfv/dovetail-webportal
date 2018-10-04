@@ -18,6 +18,8 @@ def upload(excepted_status, excepted_response):
             status, body = self.upload(request)
             if excepted_status == httplib.OK:
                 getattr(self, excepted_response)(body)
+            elif excepted_status == httplib.BAD_REQUEST:
+                self.assertEqual(excepted_response, body.msg)
             else:
                 self.assertIn(excepted_response, body)
         return wrap

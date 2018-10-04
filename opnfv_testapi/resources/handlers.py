@@ -55,7 +55,7 @@ class GenericApiHandler(web.RequestHandler):
     def get_int(self, key, value):
         try:
             value = int(value)
-        except:
+        except Exception:
             raises.BadRequest(message.must_int(key))
         return value
 
@@ -327,5 +327,5 @@ class VersionHandler(GenericApiHandler):
             @description: list all supported versions
             @rtype: L{Versions}
         """
-        versions = [{'version': 'api.cvp.0.7.0', 'description': 'basics'}]
+        versions = [{'version': 'v1.0', 'description': 'basics'}]
         self.finish_request({'versions': versions})

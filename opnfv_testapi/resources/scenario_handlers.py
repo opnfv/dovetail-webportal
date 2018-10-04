@@ -16,7 +16,7 @@ class GenericScenarioHandler(handlers.GenericApiHandler):
         self.table_cls = models.Scenario
 
 
-class ScenariosCLHandler(GenericScenarioHandler):
+class ScenarioCLHandler(GenericScenarioHandler):
     @swagger.operation(nickname="queryScenarios")
     def get(self):
         """

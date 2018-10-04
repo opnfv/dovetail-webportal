@@ -14,6 +14,10 @@ def key_error(key):
     return "KeyError: '{}'".format(key)
 
 
+def no_file_uploaded():
+    return "Please upload a file."
+
+
 def no_body():
     return 'No Body'
 

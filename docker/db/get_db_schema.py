@@ -18,7 +18,7 @@ def get(url):
     try:
         ret = requests.get(url)
         return ret.json()
-    except:
+    except Exception:
         return None
 
 
@@ -28,7 +28,7 @@ def pod():
         pods = get(source)['pods']
         with open("pods.json", "w") as f:
             f.write(json.dumps(pods, indent=4))
-    except:
+    except Exception:
         return
 
 
@@ -39,7 +39,7 @@ def project():
         projects = get(source)['projects']
         with open("projects.json", "w") as f:
             f.write(json.dumps(projects, indent=4))
-    except:
+    except Exception:
         return
 
     for p in projects:
@@ -52,7 +52,7 @@ def project():
                 f.write(json.dumps(cases))
                 f.write('\n')
                 f.close()
-        except:
+        except Exception:
             print("useless data")
 
 

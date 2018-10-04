@@ -11,13 +11,18 @@ from opnfv_testapi.resources import handlers
 from opnfv_testapi.resources import result_handlers
 from opnfv_testapi.resources import test_handlers
 from opnfv_testapi.resources import application_handlers
+from opnfv_testapi.resources import pod_handlers
+from opnfv_testapi.resources import project_handlers
+from opnfv_testapi.resources import scenario_handlers
 from opnfv_testapi.resources import sut_handlers
+from opnfv_testapi.resources import testcase_handlers
 from opnfv_testapi.ui.auth import sign
 from opnfv_testapi.ui.auth import user
 
 mappings = [
     (r"/versions", handlers.VersionHandler),
 
+    (r"/api/v1/results", result_handlers.ResultsCLHandler),
     (r"/api/v1/results/upload", result_handlers.ResultsUploadHandler),
     (r"/api/v1/results/([^/]+)", result_handlers.ResultsGURHandler),
 
@@ -34,6 +39,14 @@ mappings = [
 
     (r"/api/v1/suts/hardware/([^/]+)", sut_handlers.HardwareHandler),
 
+    (r"/api/v1/pods", pod_handlers.PodCLHandler),
+    (r"/api/v1/pods/([^/]+)", pod_handlers.PodGURHandler),
+    (r"/api/v1/scenarios", scenario_handlers.ScenarioCLHandler),
+    (r"/api/v1/scenarios/([^/]+)", scenario_handlers.ScenarioGURHandler),
+    (r"/api/v1/projects", project_handlers.ProjectCLHandler),
+    (r"/api/v1/projects/([^/]+)", project_handlers.ProjectGURHandler),
+    (r"/api/v1/projects/([^/]+)/cases", testcase_handlers.TestcaseCLHandler),
+    (r"/api/v1/projects/([^/]+)/cases/([^/]+)", testcase_handlers.TestcaseGURHandler),
 
     (r'/api/v1/auth/signin', sign.SigninHandler),
     (r'/api/v1/auth/signin_return', sign.SigninReturnHandler),

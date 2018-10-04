@@ -144,7 +144,7 @@ class TestResultBase(base.TestBase):
 
 
 class TestResultUpload(TestResultBase):
-    @executor.upload(httplib.BAD_REQUEST, message.key_error('file'))
+    @executor.upload(httplib.BAD_REQUEST, message.no_file_uploaded())
     def test_filenotfind(self):
         return None
 
