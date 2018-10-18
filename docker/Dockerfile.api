@@ -53,7 +53,8 @@ RUN git config --global http.sslVerify false && \
     git clone https://gerrit.opnfv.org/gerrit/dovetail-webportal $HOME/testapi && \
     cd $HOME/testapi && \
     git checkout -f $BRANCH && \
-    mkdir -p $HOME/testapi/logs/api
+    mkdir -p $HOME/testapi/logs/api && \
+    mkdir -p $HOME/testapi/media/companies
 
 WORKDIR $HOME/testapi
 
