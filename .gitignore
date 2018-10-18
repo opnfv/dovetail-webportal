@@ -20,6 +20,7 @@ pip-log.txt
 .pytest_cache
 nosetests.xml
 unittest_results.log
+coverage.xml
 
 # Translations
 *.mo

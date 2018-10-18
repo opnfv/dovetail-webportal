@@ -42,7 +42,7 @@ class ApplicationsLogoHandler(GenericApplicationHandler):
 
         fileinfo = self.request.files['file'][0]
         fname = fileinfo['filename']
-        location = '3rd_party/static/testapi-ui/assets/img/'
+        location = 'media/companies/'
         fh = open(location + fname, 'w')
         fh.write(fileinfo['body'])
         msg = 'Successfully uploaded logo: ' + fname
@@ -52,7 +52,7 @@ class ApplicationsLogoHandler(GenericApplicationHandler):
 
 class ApplicationsGetLogoHandler(GenericApplicationHandler):
     def get(self, filename):
-        location = '3rd_party/static/testapi-ui/assets/img/' + filename
+        location = 'media/companies/' + filename
         self.set_header('Content-Type', 'application/force-download')
         self.set_header('Content-Disposition',
                         'attachment; filename=%s' % filename)

@@ -41,6 +41,7 @@ services:
             - config.env
         volumes:
             - cvp-testapi-logs:/home/testapi/logs
+            - cvp-company-logos:/home/testapi/media/companies
         ports:
             - "8011:8011"
     nginx:
@@ -56,4 +57,5 @@ services:
 
 volumes:
     cvp-db:
+    cvp-company-logos:
     cvp-testapi-logs:
