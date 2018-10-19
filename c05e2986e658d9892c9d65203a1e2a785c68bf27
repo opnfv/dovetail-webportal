@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a682502_1fba34de",
+        "filename": "opnfv_testapi/resources/application_handlers.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-10-19T07:54:34Z",
+      "side": 0,
+      "message": "So before the first time Trevor uses the new docker images to update the live web, he needs to copy the files under this directory in the container to the host\u0027s /home/testapi/media/companies, then they will be persistent, am I right?\nAnother question, does this only affect all company logos? How about other company info like the description, product INFO? Will they also be persistent?",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "c05e2986e658d9892c9d65203a1e2a785c68bf27",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
