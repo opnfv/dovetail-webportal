@@ -22,6 +22,30 @@
       "revId": "c05e2986e658d9892c9d65203a1e2a785c68bf27",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_7fa3689e",
+        "filename": "opnfv_testapi/resources/application_handlers.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2018-10-19T08:54:58Z",
+      "side": 0,
+      "message": "The first time the new container is spawned, the docker volume will be created and it will be empty. So, for the first time only, anyone with an administrator role can go to https://verified.opnfv.org/#/application\nand upload the logos with the same name as they exist now. (Bottom of the page)\n\nAbout the second question. All other information of an application (including product info) is stored to mongo and it can be submitted by the same page. Mongo has already a docker volume, so application data are already persistent.\n\nThis is the handler of applications: https://github.com/opnfv/dovetail-webportal/blob/master/opnfv_testapi/resources/application_handlers.py#L76\n\nThis is the generic handler who is inherited by the application handler:\nhttps://github.com/opnfv/dovetail-webportal/blob/master/opnfv_testapi/resources/handlers.py#L42\n\nAnd here is the db connection which is used from the generic handler:\nhttps://github.com/opnfv/dovetail-webportal/blob/master/opnfv_testapi/db/api.py#L5\n\nIf there is any other mystery about web-portal let me know :)",
+      "parentUuid": "5a682502_1fba34de",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "c05e2986e658d9892c9d65203a1e2a785c68bf27",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
