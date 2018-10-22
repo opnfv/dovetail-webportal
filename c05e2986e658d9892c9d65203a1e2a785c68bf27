@@ -46,6 +46,30 @@
       "revId": "c05e2986e658d9892c9d65203a1e2a785c68bf27",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_fd549f55",
+        "filename": "opnfv_testapi/resources/application_handlers.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-10-22T03:10:17Z",
+      "side": 0,
+      "message": "Thanks Stamatis for the explanation.\nAnother one question I am considering is that we may don\u0027t want Trevor/admin to add all companies\u0027 info again after first update with the new docker images and docker-compoase script. Is it possible to copy all images from the container to the host \u0027/home/testapi/media/companies\u0027 to avoid the re-add operation for the first time? Does this make sense?",
+      "parentUuid": "5a682502_7fa3689e",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "c05e2986e658d9892c9d65203a1e2a785c68bf27",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
