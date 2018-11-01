@@ -273,8 +273,8 @@ class ResultsUploadHandler(ResultsCLHandler):
             self.json_args = json.loads(result).copy()
             # the result files used in the first release of OVP did not
             # specify an OVP version
-            if (self.json_args['version'] == 'master' or
-                    self.json_args['version'] == 'unknown'):
+            if (self.json_args['version'] == 'master'
+                    or self.json_args['version'] == 'unknown'):
                 version = '2018.01'
             else:
                 version = self.json_args['version']

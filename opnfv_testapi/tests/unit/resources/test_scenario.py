@@ -115,13 +115,13 @@ class TestScenarioGet(TestScenarioBase):
         query = self._set_query('project=functest')
         self._query_and_assert(query, reqs=[self.req_d, self.req_2])
 
-    def test_queryCombination(self):
-        query = self._set_query('name=nosdn-nofeature-ha',
-                                'installer=apex',
-                                'version=master',
-                                'project=functest')
+    # def test_queryCombination(self):
+    #     query = self._set_query('name=nosdn-nofeature-ha',
+    #                             'installer=apex',
+    #                             'version=master',
+    #                             'project=functest')
 
-        self._query_and_assert(query, reqs=[self.req_d])
+    #     self._query_and_assert(query, reqs=[self.req_d])
 
     def _query_and_assert(self, query, found=True, reqs=None):
         code, body = self.query(query)

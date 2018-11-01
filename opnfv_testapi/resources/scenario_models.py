@@ -50,10 +50,10 @@ class ScenarioProject(models.ModelBase):
                 'trust_indicators': ScenarioTI}
 
     def __eq__(self, other):
-        return [self.project == other.project and
-                self._customs_eq(other) and
-                self._scores_eq(other) and
-                self._ti_eq(other)]
+        return [self.project == other.project
+                and self._customs_eq(other)
+                and self._scores_eq(other)
+                and self._ti_eq(other)]
 
     def __ne__(self, other):
         return not self.__eq__(other)

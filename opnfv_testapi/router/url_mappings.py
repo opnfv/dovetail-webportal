@@ -46,7 +46,8 @@ mappings = [
     (r"/api/v1/projects", project_handlers.ProjectCLHandler),
     (r"/api/v1/projects/([^/]+)", project_handlers.ProjectGURHandler),
     (r"/api/v1/projects/([^/]+)/cases", testcase_handlers.TestcaseCLHandler),
-    (r"/api/v1/projects/([^/]+)/cases/([^/]+)", testcase_handlers.TestcaseGURHandler),
+    (r"/api/v1/projects/([^/]+)/cases/([^/]+)",
+        testcase_handlers.TestcaseGURHandler),
 
     (r'/api/v1/auth/signin', sign.SigninHandler),
     (r'/api/v1/auth/signin_return', sign.SigninReturnHandler),
