@@ -189,7 +189,7 @@
                             </thead>
                             <tbody style="overflow: hidden; text-overflow: ellipsis;">
                                 <tr class="company_row" ng-click="ctrl.getCompany(app)" ng-repeat="app in ctrl.applications | filter:{approved:true} | orderBy : '-approve_date'">
-                                    <td width="400"><img class="company_logo" src="api/v1/cvp/applications/getlogo/{{app.company_logo}}" />{{ app.organization_name}}</td>
+                                    <td width="400"><img class="company_logo" ng-src="api/v1/cvp/applications/getlogo/{{app.company_logo}}" />{{ app.organization_name}}</td>
                                     <td width="300">{{ app.product_name}}</td>
                                     <td width="150">{{ app.ovp_category}}</td>
                                     <td width="150">{{ app.ovp_version}}</td>

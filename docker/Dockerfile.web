@@ -19,12 +19,15 @@ RUN apt-get update && apt-get install -y \
     git \
     nginx \
     supervisor \
+    npm \
  && rm -rf /var/lib/apt/lists/*
 
 RUN git config --global http.sslVerify false && \
     git clone https://gerrit.opnfv.org/gerrit/dovetail-webportal $HOME/testapi && \
     cd $HOME/testapi && \
     git checkout -f $BRANCH && \
+    cd $HOME/testapi/3rd_party/static/testapi-ui && \
+    npm install && \
     mkdir /www && \
     cp -r $HOME/testapi/3rd_party/static /www/
 

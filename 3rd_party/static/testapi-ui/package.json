@@ -1,0 +1,38 @@
+{
+  "name": "testapi-ui",
+  "version": "2.0.0",
+  "description": "Frontend Angular Application for OPNFV Verified Program",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.opnfv.org/dovetail-webportal.git"
+  },
+  "keywords": [
+    "OVP",
+    "Dovetail",
+    "OPNFV"
+  ],
+  "author": "Stamatis Katsaounis",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://jira.opnfv.org/projects/DOVETAIL/issues/"
+  },
+  "homepage": "https://wiki.opnfv.org/display/dovetail/Dovetail+Home",
+  "dependencies": {
+    "angular": "1.3.15",
+    "angular-animate": "1.3.20",
+    "angular-busy": "4.1.3",
+    "angular-confirm": "1.2.3",
+    "angular-mocks": "1.3.15",
+    "angular-resource": "1.3.15",
+    "angular-ui-bootstrap": "0.14.3",
+    "angular-ui-router": "0.2.13",
+    "angular-xeditable": "0.8.0",
+    "bootstrap": "3.3.2",
+    "jquery": "3.2.1",
+    "ng-dialog": "1.4.0"
+  }
+}
