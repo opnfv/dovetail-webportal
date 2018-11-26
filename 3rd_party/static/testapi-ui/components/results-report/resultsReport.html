@@ -5,21 +5,21 @@
     <div class="row">
       <div class="pull-left">
         <div class="test-report">
-          <strong>OVP version:</strong> {{ctrl.version}}<br />
-          <strong>Test ID:</strong> {{ctrl.testId}}<br />
+          <strong>OVP version:</strong> {{ctrl.version}}<br>
+          <strong>Test ID:</strong> {{ctrl.testId}}<br>
         </div>
       </div>
     </div>
   </div>
 
-  <strong>Total: {{ctrl.statistics.total}}, Pass: {{ ctrl.statistics.pass}}, Rate: {{ ctrl.statistics.pass / ctrl.statistics.total * 100 | number:2 }}%</strong><br />
-  <strong>Mandatory Total: {{ctrl.statistics.mandatory.total}}, Pass: {{ ctrl.statistics.mandatory.pass }}, Rate: {{ ctrl.statistics.mandatory.pass / ctrl.statistics.mandatory.total * 100 | number:2 }}%</strong><br />
-  <strong>Optional Total: {{ctrl.statistics.optional.total}}, Pass: {{ ctrl.statistics.optional.pass }}, Rate: {{ ctrl.statistics.optional.pass / ctrl.statistics.optional.total * 100 | number:2 }}%</strong><br />
+  <strong>Total: {{ctrl.statistics.total}}, Pass: {{ ctrl.statistics.pass}}, Rate: {{ ctrl.statistics.pass / ctrl.statistics.total * 100 | number:2 }}%</strong><br>
+  <strong>Mandatory Total: {{ctrl.statistics.mandatory.total}}, Pass: {{ ctrl.statistics.mandatory.pass }}, Rate: {{ ctrl.statistics.mandatory.pass / ctrl.statistics.mandatory.total * 100 | number:2 }}%</strong><br>
+  <strong>Optional Total: {{ctrl.statistics.optional.total}}, Pass: {{ ctrl.statistics.optional.pass }}, Rate: {{ ctrl.statistics.optional.pass / ctrl.statistics.optional.total * 100 | number:2 }}%</strong><br>
   <hr>
-  <strong>{{ ctrl.validation }}</strong><br />
+  <strong>{{ ctrl.validation }}</strong><br>
 
   <div>
-    <hr />
+    <hr>
     <h4>Test Result Overview</h4>
     <uib-accordion close-others=false>
       <!-- The ng-repeat is used to pass in a local variable to the template. -->
@@ -27,7 +27,7 @@
         src="ctrl.detailsTemplate"
         onload="isOpen = true">
       </ng-include>
-      <br />
+      <br>
     </uib-accordion>
   </div>
 </div>
