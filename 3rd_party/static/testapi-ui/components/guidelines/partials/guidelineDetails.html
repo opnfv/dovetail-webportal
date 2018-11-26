@@ -9,9 +9,9 @@ variable 'guidelines'.
   <h4>{{area.area_name}}</h4>
   <ol class="capabilities">
     <li class="capability-list-item" ng-repeat="api in area.value">
-      <span class="capability-name">{{api.api_name}}</span><br />
-      Area: <em>{{area.area_name}}</em><br />
-      Status: <span>Mandatory</span><br />
+      <span class="capability-name">{{api.api_name}}</span><br>
+      Area: <em>{{area.area_name}}</em><br>
+      Status: <span>Mandatory</span><br>
 
       <a ng-click="showTests = !showTests">Tests ({{api.value.length}})</a>
       <ul uib-collapse="!showTests">
@@ -29,8 +29,8 @@ variable 'guidelines'.
   <h4>{{area.area_name}}</h4>
   <ol class="capabilities">
     <li class="capability-list-item" ng-repeat="api in area.value">
-      <span class="capability-name">{{api.api_name}}</span><br />
-      Status: <span>Optional</span><br />
+      <span class="capability-name">{{api.api_name}}</span><br>
+      Status: <span>Optional</span><br>
 
       <a ng-click="showTests = !showTests">Tests ({{api.value.length}})</a>
       <ul uib-collapse="!showTests">
