@@ -1,0 +1,6 @@
+[run]
+omit = opnfv_testapi/tests/*
+[report]
+exclude_lines =
+    pass
+    main()
