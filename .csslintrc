@@ -1,0 +1,28 @@
+{
+  "ignore": [
+    "order-alphabetical",
+    "zero-units",
+    "box-model",
+    "adjoining-classes",
+    "ids",
+    "important",
+    "floats",
+    "unique-headings",
+    "qualified-headings",
+    "outline-none",
+    "overqualified-elements",
+    "font-sizes",
+    "universal-selector",
+    "box-sizing",
+    "text-indent",
+    "regex-selectors",
+    "gradients",
+    "fallback-colors"
+  ],
+  "warnings": [
+  ],
+  "errors": [
+    "known-properties",
+    "vendor-prefix"
+  ]
+}

@@ -1035,7 +1035,7 @@ table {
   color: black;
 }
 .title {
-  font-style: bold;
+  font-weight: bold;
 }
 .secondary_form {
   display: none;

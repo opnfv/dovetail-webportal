@@ -88,12 +88,12 @@ body .vc_text_separator div,
 
 .ascend .nectar-progress-bar .bar-wrap,
 .ascend .nectar-progress-bar span {
-  box-shadow: none;
   -webkit-box-shadow: none;
   -o-box-shadow: none;
-  border-radius: 0;
+  box-shadow: none;
   -webkit-border-radius: 0;
   -o-border-radius: 0;
+  border-radius: 0;
 }
 
 body .carousel-wrap[data-full-width="false"] .control-wrap {
@@ -494,8 +494,9 @@ body.ascend #search-outer #search input[type="text"] {
 }
 
 #search-outer #search #close a:hover {
-  transform: rotate(90deg) translateZ(0);
+  -ms-transform: rotate(90deg) translateZ(0);
   -webkit-transform: rotate(90deg) translateZ(0);
+  transform: rotate(90deg) translateZ(0);
 }
 
 #search-outer #search .span_12 span {
@@ -755,10 +756,10 @@ article.post .more-link span,
 
 .ascend .col.boxed,
 .ascend .wpb_column.boxed {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   padding: 25px 15px 15px;
   position: relative;
@@ -770,12 +771,13 @@ article.post .more-link span,
 
 .ascend .col.boxed:hover,
 .ascend .wpb_column.boxed:hover {
-  transform: translateY(-4px) !important;
+  -ms-transform: translateY(-4px) !important;
   -webkit-transform: translateY(-4px) !important;
-  box-shadow: 0 17px 25px rgba(0, 0, 0, 0.13) !important;
+  transform: translateY(-4px) !important;
   -webkit-box-shadow: 0 17px 25px rgba(0, 0, 0, 0.13);
   -moz-box-shadow: 0 17px 25px rgba(0, 0, 0, 0.13);
   -o-box-shadow: 0 17px 25px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 17px 25px rgba(0, 0, 0, 0.13) !important;
 }
 
 .ascend a.pp_arrow_previous,
@@ -895,8 +897,9 @@ a.pp_arrow_next {
 .woocommerce .pswp__button--arrow--right:after,
 .woocommerce .pswp__button--arrow--left:after {
   top: 17px;
-  transform: translateX(-27px);
+  -ms-transform: translateX(-27px);
   -webkit-transform: translateX(-27px);
+  transform: translateX(-27px);
 }
 
 .ascend .mfp-arrow-left:after,
@@ -946,50 +949,58 @@ a.pp_arrow_next {
 .mfp-arrow-right:hover:after,
 .woocommerce .pswp__button--arrow--right:hover:after {
   opacity: 1;
-  transform: translateX(-18px);
+  -ms-transform: translateX(-18px);
   -webkit-transform: translateX(-18px);
+  transform: translateX(-18px);
 }
 
 .mfp-arrow-right:hover:before,
 .woocommerce .pswp__button--arrow--right:hover:before {
-  transform: translateX(9px);
+  -ms-transform: translateX(9px);
   -webkit-transform: translateX(9px);
+  transform: translateX(9px);
 }
 
 .mfp-arrow-left:hover:before,
 .woocommerce .pswp__button--arrow--left:hover:before {
-  transform: translateX(-9px);
+  -ms-transform: translateX(-9px);
   -webkit-transform: translateX(-9px);
+  transform: translateX(-9px);
 }
 
 .mfp-arrow-right:hover:after,
 .woocommerce .pswp__button--arrow--right:hover:after {
-  transform: translateX(-1px);
+  -ms-transform: translateX(-1px);
   -webkit-transform: translateX(-1px);
+  transform: translateX(-1px);
 }
 
 .ascend a.pp_arrow_next:hover .icon-default-style {
-  transform: translateX(7px);
+  -ms-transform: translateX(7px);
   -webkit-transform: translateX(7px);
+  transform: translateX(7px);
 }
 
 .ascend a.pp_arrow_previous:hover .icon-default-style:after,
 .mfp-arrow-left:hover:after,
 .woocommerce .pswp__button--arrow--left:hover:after {
   opacity: 1;
-  transform: translateX(-51px);
+  -ms-transform: translateX(-51px);
   -webkit-transform: translateX(-51px);
+  transform: translateX(-51px);
 }
 
 .mfp-arrow-left:hover:after,
 .woocommerce .pswp__button--arrow--left:hover:after {
-  transform: translateX(-58px);
+  -ms-transform: translateX(-58px);
   -webkit-transform: translateX(-58px);
+  transform: translateX(-58px);
 }
 
 .ascend a.pp_arrow_previous:hover .icon-default-style {
-  transform: translateX(-7px);
+  -ms-transform: translateX(-7px);
   -webkit-transform: translateX(-7px);
+  transform: translateX(-7px);
 }
 
 .container-wrap input[type="text"],
@@ -1002,10 +1013,10 @@ a.pp_arrow_next {
 .container-wrap input[type="date"] {
   background-color: transparent !important;
   border: 1px solid #ccc !important;
-  box-shadow: none !important;
   -webkit-box-shadow: none !important;
-  font-size: 16px !important;
   -o-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 16px !important;
   padding: 16px !important;
 }
 
