@@ -216,6 +216,7 @@ ul.tabs {
   margin: auto;
   background-color: #f5f5f5;
   -webkit-border-radius: 3px;
+  border-radius: 3px;
   border: 1px solid #d8d8d8;
   border-top: 1px solid #bcbcbc;
 }
@@ -239,7 +240,6 @@ ul.tabs {
 .tabs li a {
   margin: 0px;
   display: inline-block;
-  text-align: left;
   color: #41728d;
   font-size: 13px;
   font-family: 'PT Sans', serif;
@@ -284,13 +284,12 @@ a.button {
   text-decoration: none;
   font-size: 14px;
   line-height: 3em;
-  background: #ddd;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   text-shadow: #fff 0px 1px 1px;
   background: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#bebebe));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#bebebe');
+  background: #ddd;
 }
 
 a.button:hover {
@@ -299,12 +298,12 @@ a.button:hover {
 }
 
 a.button:active {
-  background: #ababab;
-  box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  box-shadow: none;
   border-color: #ababab;
   border-top-color: #636363;
+  background: #ababab;
   background: -webkit-gradient(linear, left top, left bottom, from(#bebebe), to(#dddddd));
   -webkit-transition: none;
   padding: 4px 29px 2px 31px !important;
@@ -326,15 +325,13 @@ input.action {
   /* firefox */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFFFFF), color-stop(50%, #F3F3F3), color-stop(100%, #EBEBEB));
   /* webkit */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#EBEBEB',GradientType=0 );
-  /* ie */
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
   text-shadow: #fff 0px 1px 1px;
-  border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
+  border-radius: 3px;
   border-bottom-color: #a0a0a0;
   border-right-color: #bababa;
   border-left-color: #bababa;
@@ -349,12 +346,12 @@ input.action:hover {
 
 a.roundedButton:active,
 input.action:active {
-  background: #ababab;
-  box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  box-shadow: none;
   border-color: #ababab;
   border-top-color: #636363;
+  background: #ababab;
   background: -webkit-gradient(linear, left top, left bottom, from(#bebebe), to(#dddddd));
   -webkit-transition: none;
   padding: 4px 15px;
@@ -593,6 +590,7 @@ a.downloadLink {
   padding-right: 7px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
+  border-radius: 3px;
   color: #757575;
   font-size: 0.7em;
   text-decoration: none;
@@ -717,9 +715,9 @@ ul#quotes p.name strong {
   background: rgba(0, 0, 0, 0.8);
   padding: 1px 8px;
   color: white;
-  border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
+  border-radius: 4px;
 }
 
 a.Datasheet {
@@ -809,6 +807,7 @@ ul.user-project-list li {
   background-color: #e2f1f5;
   border: 1px solid #89c6d6;
   -webkit-border-radius: 3px;
+  border-radius: 3px;
   padding: 2px 8px;
   margin-bottom: 5px;
   color: #1a4b6b;
@@ -870,10 +869,12 @@ ul.user-project-list li {
 .user-photo img {
   border: 5px solid white;
   -webkit-box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .siteMessage {
   -webkit-border-radius: 4px;
+  border-radius: 4px;
   border: 1px solid;
   margin-bottom: 10px;
   margin-top: 20px;
@@ -1790,6 +1791,7 @@ a.featured-link:hover {
 
 .news-section .news-wrapper ul {
   margin: 30px 0;
+  -moz-padding-start: 0;
   -webkit-padding-start: 0;
 }
 
@@ -1977,6 +1979,7 @@ a.featured-link:hover {
 
 .footer-links ul {
   margin-left: 0;
+  -moz-padding-start: 0;
   -webkit-padding-start: 0;
 }
 
@@ -2660,8 +2663,7 @@ ul.marketplace-nav li:last-child {
 
 @media (max-width: 680px) {
   ul.marketplace-nav li {
-    display: block;
-    float: left;
+    display: table-cell;
     border-right: none;
     text-align: left;
     border-bottom: 1px solid #e8e8e8;
@@ -2708,7 +2710,6 @@ ul.marketplace-nav a span {
   ul.marketplace-nav a span {
     display: table-cell;
     vertical-align: middle;
-    float: left;
   }
 }
 
@@ -3428,7 +3429,6 @@ i.mobile-expand {
   i.mobile-expand {
     position: relative;
     display: inline-block;
-    float: right;
     cursor: pointer;
   }
 
@@ -3448,7 +3448,6 @@ i.mobile-expand {
   .navbar-nav > li.open i.mobile-expand {
     position: relative;
     display: inline-block;
-    float: right;
     cursor: pointer;
   }
 
