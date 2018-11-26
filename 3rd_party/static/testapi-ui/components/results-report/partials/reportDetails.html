@@ -3,22 +3,22 @@ HTML for each accordion group that separates the status types on the results
 report page.
 -->
 
-Test Filters:<br />
+Test Filters:<br>
 <div class="btn-toolbar" role="toolbar">
   <div class="btn-group button-margin" data-toggle="buttons">
     <label class="btn btn-default" ng-click="ctrl.changeStatus('total')"
            ng-class="{'active': ctrl.testStatus === 'total'}">
-      <input type="radio" ng-model="ctrl.testStatus" value="total">
+      <input type="radio" ng-model="ctrl.testStatus" value="total" name="total">
       <span class="text-primary">All</span>
     </label>
     <label class="btn btn-default" ng-click="ctrl.changeStatus('passed')"
            ng-class="{'active': ctrl.testStatus === 'passed'}">
-      <input type="radio" ng-model="ctrl.testStatus" value="passed">
+      <input type="radio" ng-model="ctrl.testStatus" value="passed" name="passed">
       <span class="text-success">Passed</span>
     </label>
     <label class="btn btn-default" ng-click="ctrl.changeStatus('not passed')"
            ng-class="{'active': ctrl.testStatus === 'not passed'}">
-      <input type="radio" ng-model="ctrl.testStatus" value="not passed">
+      <input type="radio" ng-model="ctrl.testStatus" value="not passed" name="not passed">
       <span class="text-danger">Not Passed</span>
     </label>
   </div>
@@ -35,10 +35,14 @@ Test Filters:<br />
        ng-class="{'glyphicon-chevron-down': isOpen, 'glyphicon-chevron-right': !isOpen}"></i>
   </uib-accordion-heading>
   <ol class="capabilities">
-    <li ng-repeat="(area, value) in data" ng-show="(ctrl.testStatus == 'passed' && value.pass != 0) || (ctrl.testStatus == 'not passed' && value.fail != 0) || ctrl.testStatus == 'total'">
+    <li ng-repeat="(area, value) in data"
+        ng-show="(ctrl.testStatus == 'passed' && value.pass != 0) || (ctrl.testStatus == 'not passed' && value.fail != 0) || ctrl.testStatus == 'total'">
       <a ng-click="value.folder = !value.folder">
         {{ area }}
-        <span ng-if="ctrl.testStatus == 'total'" ng-class="{'text-success': value.total == value.pass, 'text-warning': (value.pass < value.total && value.pass > 0), 'text-danger': value.pass == 0}">[{{ value.pass }}/{{ value.total }}]</span>
+        <span ng-if="ctrl.testStatus == 'total'"
+              ng-class="{'text-success': value.total == value.pass, 'text-warning': (value.pass < value.total && value.pass > 0), 'text-danger': value.pass == 0}">
+          [{{ value.pass }}/{{ value.total }}]
+        </span>
         <span ng-if="ctrl.testStatus == 'passed'" class="text-success">[{{ value.pass }}]</span>
         <span ng-if="ctrl.testStatus == 'not passed'" class="text-danger">[{{ value.fail }}]</span>
       </a>

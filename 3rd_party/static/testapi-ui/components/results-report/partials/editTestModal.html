@@ -12,14 +12,14 @@
         <option value="true">Yes</option>
         <option value="">No</option>
       </select>
-      <br />
+      <br>
       <strong>Associated Guideline:</strong>
       <select ng-model="modal.metaCopy.guideline"
               ng-options="o as o.slice(0, -5) for o in modal.versionList"
               class="form-control">
         <option value="">None</option>
       </select>
-      <br />
+      <br>
       <strong>Associated Target Program:</strong>
       <select ng-model="modal.metaCopy.target"
               class="form-control">
@@ -28,7 +28,7 @@
         <option value="compute">OpenStack Powered Compute</option>
         <option value="object">OpenStack Powered Object Storage</option>
       </select>
-      <hr />
+      <hr>
       <strong>Associated Product:</strong>
       <select ng-options="product as product.name for product in modal.products | arrayConverter | orderBy: 'name' track by product.id"
               ng-model="modal.selectedProduct"
