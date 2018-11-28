@@ -1,17 +1,6 @@
 ---
 version: '3'
 services:
-    testapi:
-        image: opnfv/testapi:cvp.0.5.0
-        container_name: cvp-testapi
-        env_file:
-            - config.env
-        volumes:
-            - cvp-testapi-logs:/home/testapi/logs
-        links:
-            - mongodb
-        ports:
-            - "8010:8010"
     mongodb:
         image: mongo:3.2.1
         container_name: cvp-db
@@ -30,7 +19,6 @@ services:
             - cvp-testapi-logs:/home/testapi/logs
         links:
             - mongodb
-            - testapi
             - cvpapi
         ports:
             - "8000:8000"
@@ -43,7 +31,7 @@ services:
             - cvp-testapi-logs:/home/testapi/logs
             - cvp-company-logos:/home/testapi/media/companies
         ports:
-            - "8011:8011"
+            - "8010:8010"
     nginx:
         image: jwilder/nginx-proxy
         container_name: cvp-nginx

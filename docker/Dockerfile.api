@@ -49,8 +49,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install -U setuptools
 
-RUN git config --global http.sslVerify false && \
-    git clone https://gerrit.opnfv.org/gerrit/dovetail-webportal $HOME/testapi && \
+RUN git clone https://gerrit.opnfv.org/gerrit/dovetail-webportal $HOME/testapi && \
     cd $HOME/testapi && \
     git checkout -f $BRANCH && \
     mkdir -p $HOME/testapi/logs/api && \
