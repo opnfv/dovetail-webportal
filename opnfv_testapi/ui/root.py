@@ -4,7 +4,7 @@ from opnfv_testapi.common.config import CONF
 
 class RootHandler(GenericApiHandler):
     def get_template_path(self):
-        return CONF.static_path
+        return CONF.ui_static_path
 
     def get(self):
         self.render('testapi-ui/index.html')

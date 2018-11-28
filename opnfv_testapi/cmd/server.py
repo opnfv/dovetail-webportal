@@ -45,7 +45,7 @@ my_logger.addHandler(handler)
 
 def make_app():
     swagger.docs(base_url=CONF.swagger_base_url,
-                 static_path=CONF.static_path)
+                 static_path=CONF.ui_static_path)
     return swagger.Application(
         url_mappings.mappings,
         debug=CONF.api_debug,
