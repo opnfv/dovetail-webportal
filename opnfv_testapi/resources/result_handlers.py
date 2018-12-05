@@ -20,6 +20,7 @@ from bson import objectid
 from opnfv_testapi.common.config import CONF
 from opnfv_testapi.common import message
 from opnfv_testapi.common import raises
+from opnfv_testapi.db import api as dbapi
 from opnfv_testapi.resources import handlers
 from opnfv_testapi.resources import result_models
 from opnfv_testapi.tornado_swagger import swagger
@@ -41,6 +42,7 @@ class GenericResultHandler(handlers.GenericApiHandler):
             raises.BadRequest(message.must_int(key))
         return value
 
+    @gen.coroutine
     def set_query(self):
         query = dict()
         date_range = dict()
@@ -82,11 +84,15 @@ class GenericResultHandler(handlers.GenericApiHandler):
             if 'start_date' in query and '$lt' not in query['start_date']:
                 query['start_date'].update({'$lt': str(datetime.now())})
 
-        return query
+        query['is_onap'] = 'true' if self.is_onap else None
+
+        raise gen.Return((query))
 
 
 class ResultsCLHandler(GenericResultHandler):
     @swagger.operation(nickname="queryTestResults")
+    @web.asynchronous
+    @gen.coroutine
     def get(self):
         """
             @description: Retrieve result(s) for a test project
@@ -195,7 +201,8 @@ class ResultsCLHandler(GenericResultHandler):
             'per_page': CONF.api_results_per_page
         }
 
-        self._list(query=self.set_query(), **limitations)
+        query = yield self.set_query()
+        yield self._list(query=query, **limitations)
 
     @swagger.operation(nickname="createTestResult")
     def post(self):
@@ -267,10 +274,19 @@ class ResultsUploadHandler(ResultsCLHandler):
         results = results.split('\n')
         result_ids = []
         version = ''
+        vnf_type = None
+        vnf_checksum = None
         for result in results:
             if result == '':
                 continue
             self.json_args = json.loads(result).copy()
+            openid = self.get_secure_cookie(auth_const.OPENID)
+            if openid:
+                self.json_args['owner'] = openid
+            if self.is_onap:
+                self.json_args['is_onap'] = 'true'
+                vnf_type = self.json_args['vnf_type']
+                vnf_checksum = self.json_args['vnf_checksum']
             # the result files used in the first release of OVP did not
             # specify an OVP version
             if (self.json_args['version'] == 'master'
@@ -288,14 +304,30 @@ class ResultsUploadHandler(ResultsCLHandler):
         with open(log_filename, "wb") as tar_out:
             tar_out.write(fileinfo['body'])
         resp = {'id': test_id, 'results': result_ids, 'version': version}
+        if vnf_type:
+            resp['vnf_type'] = vnf_type
+            resp['vnf_checksum'] = vnf_checksum
         self.finish_request(resp)
 
 
 class ResultsGURHandler(GenericResultHandler):
     @swagger.operation(nickname='DeleteTestResultById')
+    @gen.coroutine
     def delete(self, result_id):
-        query = {'_id': objectid.ObjectId(result_id)}
-        self._delete(query=query)
+        curr_user = self.get_secure_cookie(auth_const.OPENID)
+        curr_user_role = self.get_secure_cookie(auth_const.ROLE)
+        if curr_user is not None:
+            query = {'_id': objectid.ObjectId(result_id)}
+            test_data = yield dbapi.db_find_one(self.table, query)
+            if not test_data:
+                raises.NotFound(message.not_found(self.table, query))
+            if curr_user == test_data['owner'] or \
+               curr_user_role.find('administrator') != -1:
+                self._delete(query=query)
+            else:
+                raises.Forbidden(message.no_auth())
+        else:
+            raises.Unauthorized(message.no_auth())
 
     @swagger.operation(nickname='getTestResultById')
     def get(self, result_id):
