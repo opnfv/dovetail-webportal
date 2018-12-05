@@ -1,0 +1,31 @@
+.navbar.lfn-navbar {
+  background-color: rgba(10,59,97,100);
+  margin-bottom: 0;
+  border-radius: 0;
+  border: 0;
+}
+
+.nav-login {
+  color: rgb(255, 255, 255);
+}
+
+.navbar-brand > img {
+  width: 220px;
+  position: relative;
+  top: 3px;
+}
+
+.bg-area img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.vp-button:hover {
+  text-decoration: none;
+}
+
+.vp-button img {
+  width: 400px;
+  height: 80px;
+}
