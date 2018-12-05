@@ -41,6 +41,7 @@ DEFAULT_REPRESENTATION = "application/json"
 
 class GenericApiHandler(web.RequestHandler):
     def __init__(self, application, request, **kwargs):
+        self.is_onap = False
         super(GenericApiHandler, self).__init__(application, request, **kwargs)
         self.json_args = None
         self.table = None
@@ -51,6 +52,9 @@ class GenericApiHandler(web.RequestHandler):
         self.db_results = 'results'
         self.db_scenarios = 'scenarios'
         self.auth = self.settings["auth"]
+
+    def initialize(self, is_onap=False):
+        self.is_onap = is_onap
 
     def get_int(self, key, value):
         try:
@@ -106,6 +110,8 @@ class GenericApiHandler(web.RequestHandler):
             # empty/None/null/'' start_date will also be returned
             if 'start_date' in query and '$lt' not in query['start_date']:
                 query['start_date'].update({'$lt': str(datetime.now())})
+
+        query['is_onap'] = 'true' if self.is_onap else None
 
         logging.debug("query:%s", query)
         raise gen.Return((query))
@@ -184,7 +190,7 @@ class GenericApiHandler(web.RequestHandler):
         if query and table:
             data = yield dbapi.db_find_one(table, query)
             if data:
-                raise gen.Return((True, 'Data alreay exists. %s' % (query)))
+                raise gen.Return((True, 'Data already exists. %s' % (query)))
         raise gen.Return((False, 'Data does not exist. %s' % (query)))
 
     # @web.asynchronous
