@@ -1,0 +1,125 @@
+<div class="container-fluid common-main-container">
+  <div class="top-site-banner">
+    <div class="container">
+      <p class="p1">Application Details</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-lg-12 container">
+      <p class="message" style="display: none;"></p>
+      <fieldset>
+        <div class="field text col-md-4">
+          <label class="left">Company Name</label>
+          <i uib-tooltip="Company Name" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.company_name }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Company Logo</label>
+          <i uib-tooltip="Company Logo using the dimensions Width: 165pixels and Height 28pixels" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.company_logo }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Company Logo</label>
+          <i uib-tooltip="Company Logo using the dimensions Width: 165pixels and Height 28pixels" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.company_website }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">ONAP Version</label>
+          <i uib-tooltip="ONAP Version<" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.onap_version }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary Contact Name</label>
+          <i uib-tooltip="Primary Contact name (optional)"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.primary_contact_name }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary Contact Number</label>
+          <i uib-tooltip="Primary Contact phone number(optional)"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.primary_phone_number }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary Contact Email</label>
+          <i uib-tooltip="Primary Contact email (optional)"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.primary_business_email }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Location</label>
+          <i uib-tooltip="Location" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.lab_location }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Version</label>
+          <i uib-tooltip="xNF Version"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.xnf_version }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Name</label>
+          <i uib-tooltip="xNF Name"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.xnf_name }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Type</label>
+          <i uib-tooltip="xNF Type"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.xnf_type }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Description</label>
+          <i uib-tooltip="xNF Description"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.xnf_description }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNFD Id</label>
+          <i uib-tooltip="xNFD Id" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.xnfd_id }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Model Language</label>
+          <i uib-tooltip="xNF Model Language<" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.xnfd_model_lang }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Test period</label>
+          <i uib-tooltip="VNFSDK Define the VNF Test period<" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">{{ ctrl.application.xnf_test_period }}</div>
+        </div>
+        <div ng-if="ctrl.lab_location=='third'" class="field text">
+          <div class="field text col-md-4">
+            <label class="left">Lab Name</label>
+            <i uib-tooltip="Lab Name" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div>{{ ctrl.application.lab_name }}</div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Email</label>
+            <i uib-tooltip="Lab Email" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div>{{ ctrl.application.lab_email }}</div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Address</label>
+            <i uib-tooltip="Lab Address" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div>{{ ctrl.application.lab_address }}</div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Phone Number</label>
+            <i uib-tooltip="Lab Phone Number" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div>{{ ctrl.application.lab_phone }}</div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .ngdialog.custom-background .ngdialog-content {
+    background: #ffffff;
+  }
+</style>
