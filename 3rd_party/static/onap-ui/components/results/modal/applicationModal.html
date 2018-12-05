@@ -1,0 +1,183 @@
+<div class="container-fluid common-main-container">
+  <div class="top-site-banner">
+    <div class="container">
+      <p class="p1">Application Details</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-lg-12 container">
+      <p class="message" style="display: none;"></p>
+      <fieldset>
+        <div class="field text col-md-4">
+          <label class="left">Description</label>
+          <i uib-tooltip="Product Description" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.description">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">SUT Version</label>
+          <i uib-tooltip="SUT Version" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.sut_version">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">SUT HW Version</label>
+          <i uib-tooltip="SUT HW Version - leave blank if not applicable"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.sut_hw_version">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">ONAPVP Version</label>
+          <i uib-tooltip="ONAPVP Version" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.onap_version" value="2018.11">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">ONAPVP Category</label>
+          <i uib-tooltip="ONAPVP Category" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.onap_category" value="Infrastructure">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Vendor Name</label>
+          <i uib-tooltip="Vendor name (optional)"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.vendor_name">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Vendor phone</label>
+          <i uib-tooltip="Vendor phone (optional)"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.vendor_phone">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Vendor email</label>
+          <i uib-tooltip="Vendor email (optional)"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.vendor_email">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Company Logo</label>
+          <i uib-tooltip="Company Logo" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.company_logo">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Location</label>
+          <i uib-tooltip="Location" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <select class="form-control" ng-model="ctrl.lab_location">
+              <option selected value="internal">internal vendor lab</option>
+              <option value="third">third-party lab</option>
+            </select>
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">VNF Version</label>
+          <i uib-tooltip="VNF Version"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.vnf_version">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">VNF Name</label>
+          <i uib-tooltip="VNF Name"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.vnf_name">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">VNF Type</label>
+          <i uib-tooltip="VNF Type"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.vnf_type">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">VNF Description</label>
+          <i uib-tooltip="VNF Description"
+             class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.vnf_description">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">VNFD Id</label>
+          <i uib-tooltip="VNFD Id" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <input type="text" class="text form-control" ng-model="ctrl.vnfd_id">
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">VNF Model Language</label>
+          <i uib-tooltip="VNF Model Language<" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <select class="form-control" ng-model="ctrl.vnfd_model_lang">
+              <option selected value="TOSCA">TOSCA Based</option>
+              <option value="HEAT">Heat Based</option>
+            </select>
+          </div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">VNF Test period</label>
+          <i uib-tooltip="VNFSDK Define the VNF Test period<" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+          <div class="middleColumn">
+            <select class="form-control" ng-model="ctrl.vnf_test_period">
+              <option value="Packaging">Packaging Test</option>
+              <option value="Lifecycle">Lifecycle Test</option>
+              <option selected value="Functional">Functional Test</option>
+              <option value="Performance">Performance Test</option>
+            </select>
+          </div>
+        </div>
+        <div ng-if="ctrl.lab_location=='third'" class="field text">
+          <div class="field text col-md-4">
+            <label class="left">Lab Name</label>
+            <i uib-tooltip="Lab Name" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <input type="text" class="text form-control" ng-model="ctrl.lab_name">
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Email</label>
+            <i uib-tooltip="Lab Email" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <input type="text" class="text form-control" ng-model="ctrl.lab_email">
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Address</label>
+            <i uib-tooltip="Lab Address" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <input type="text" class="text form-control" ng-model="ctrl.lab_address">
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Phone Number</label>
+            <i uib-tooltip="Lab Phone Number" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <input type="text" class="text form-control" ng-model="ctrl.lab_phone">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <button class="btn btn-default"
+          ng-click="ctrl.openConfirmModal(ctrl.tempResult)">Submit</button>
+</div>
+
+<style type="text/css">
+  .ngdialog.custom-background .ngdialog-content {
+    background: #ffffff;
+  }
+</style>
