@@ -111,6 +111,8 @@ class TestsCLHandler(GenericTestHandler):
             self.finish_request({'code': '403', 'msg': msg})
             return
 
+        if self.is_onap:
+            self.json_args['is_onap'] = 'true'
         self._create(miss_fields=miss_fields, carriers=carriers)
 
 
@@ -149,7 +151,6 @@ class TestsGURHandler(GenericTestHandler):
             raise gen.Return('API response validation enabled')
 
     @swagger.operation(nickname="deleteTestById")
-    @web.asynchronous
     @gen.coroutine
     def delete(self, test_id):
         curr_user = self.get_secure_cookie(auth_const.OPENID)
