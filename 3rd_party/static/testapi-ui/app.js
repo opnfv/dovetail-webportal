@@ -90,36 +90,6 @@
                 templateUrl: 'testapi-ui/components/logout/logout.html',
                 controller: 'LogoutController as ctrl'
             }).
-            state('userVendors', {
-                url: '/user_vendors',
-                templateUrl: '/testapi-ui/components/vendors/vendors.html',
-                controller: 'VendorsController as ctrl'
-            }).
-            state('publicVendors', {
-                url: '/public_vendors',
-                templateUrl: '/testapi-ui/components/vendors/vendors.html',
-                controller: 'VendorsController as ctrl'
-            }).
-            state('vendor', {
-                url: '/vendor/:vendorID',
-                templateUrl: '/swagger/testapi-ui/components/vendors/vendor.html',
-                controller: 'VendorController as ctrl'
-            }).
-            state('userProducts', {
-                url: '/user_products',
-                templateUrl: '/testapi-ui/components/products/products.html',
-                controller: 'ProductsController as ctrl'
-            }).
-            state('publicProducts', {
-                url: '/public_products',
-                templateUrl: '/testapi-ui/components/products/products.html',
-                controller: 'ProductsController as ctrl'
-            }).
-            state('cloud', {
-                url: '/cloud/:id',
-                templateUrl: '/testapi-ui/components/products/cloud.html',
-                controller: 'ProductController as ctrl'
-            }).
             state('sut', {
                 url: '/suts/:testID',
                 templateUrl: '/testapi-ui/components/sut/sut.html',
@@ -129,11 +99,6 @@
                 url: '/application',
                 templateUrl: '/testapi-ui/components/application/application.html',
                 controller: 'ApplicationController as ctrl'
-            }).
-            state('distro', {
-                url: '/distro/:id',
-                templateUrl: '/testapi-ui/components/products/distro.html',
-                controller: 'ProductController as ctrl'
             });
     }
 
