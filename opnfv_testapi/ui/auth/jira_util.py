@@ -17,12 +17,12 @@ from tlslite.utils import keyfactory
 from opnfv_testapi.common.config import CONF
 
 
-class SignatureMethod_RSA_SHA1(oauth.SignatureMethod):
-    name = 'RSA-SHA1'
+class SignatureMethod_RSA_SHA256(oauth.SignatureMethod):
+    name = 'RSA-SHA256'
 
     def signing_base(self, request, consumer, token):
         if not hasattr(request, 'normalized_url') or \
-            request.normalized_url is None:
+           request.normalized_url is None:
             raise ValueError("Base URL for request is not set.")
 
         sig = (
