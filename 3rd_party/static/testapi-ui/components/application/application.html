@@ -107,26 +107,6 @@
               </div>
             </div>
             <div class="field text col-md-4">
-              <label class="left">User ID Type</label>
-              <i uib-tooltip="User ID Type" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-              <div class="middleColumn">
-                <select class="form-control" ng-model="ctrl.id_type">
-                  <option value="Linux Foundation">Linux Foundation</option>
-                  <option value="Openstack">Openstack</option>
-                  <option value="Github">Github</option>
-                  <option value="Google">Google</option>
-                  <option value="Fackbook">Fackbook</option>
-                </select>
-              </div>
-            </div>
-            <div class="field text col-md-4">
-              <label class="left">User ID for CVP web portal</label>
-              <i uib-tooltip="User ID for CVP web portal" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-              <div class="middleColumn">
-                <input type="text" class="text form-control" ng-model="ctrl.user_id">
-              </div>
-            </div>
-            <div class="field text col-md-4">
               <label class="left">Description</label>
               <i uib-tooltip="Product Description" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
               <div class="middleColumn">
@@ -245,8 +225,7 @@
             <th>Primary business email</th>
             <th>Primary postal address</th>
             <th>Primary phone number</th>
-            <th>User ID Type</th>
-            <th>User ID</th>
+            <th>Owner</th>
             <th>Description</th>
             <th>SUT version</th>
             <th>SUT HW version</th>
@@ -305,8 +284,7 @@
             <td>{{ app.prim_email }}</td>
             <td>{{ app.prim_address }}</td>
             <td>{{ app.prim_phone }}</td>
-            <td>{{ app.id_type }}</td>
-            <td>{{ app.user_id }}</td>
+            <td>{{ app.owner }}</td>
             <td>{{ app.description }}</td>
             <td>{{ app.sut_version }}</td>
             <td>{{ app.sut_hw_version }}</td>
