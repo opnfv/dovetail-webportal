@@ -130,6 +130,8 @@ class ApplicationsCLHandler(GenericApplicationHandler):
         openid = self.get_secure_cookie(auth_const.OPENID)
         if openid:
             self.json_args['owner'] = openid
+        if self.is_onap:
+            self.json_args['is_onap'] = 'true'
 
         self._post()
 
@@ -138,14 +140,8 @@ class ApplicationsCLHandler(GenericApplicationHandler):
         miss_fields = []
         carriers = []
 
-        role = self.get_secure_cookie(auth_const.ROLE)
-        if role.find('administrator') == -1:
-            self.finish_request({'code': '403', 'msg': 'Only administrator \
-                is allowed to submit application.'})
-            return
-
-        query = {"openid": self.json_args['user_id']}
-        table = "users"
+        query = {'openid': self.json_args['owner']}
+        table = 'users'
         ret, msg = yield self._check_if_exists(table=table, query=query)
         logging.debug('ret:%s', ret)
         if not ret:
@@ -153,7 +149,7 @@ class ApplicationsCLHandler(GenericApplicationHandler):
             return
         self._create(miss_fields=miss_fields, carriers=carriers)
 
-        self._send_email()
+        # self._send_email()
 
     def _send_email(self):
 
@@ -173,7 +169,6 @@ This is a new application:
     Primary Email: {},
     Primary Address: {},
     Primary Phone: {},
-    User ID Type: {},
     User ID: {}
 
 Best Regards,
@@ -188,8 +183,7 @@ CVP Team
                    data.prim_email,
                    data.prim_address,
                    data.prim_phone,
-                   data.id_type,
-                   data.user_id)
+                   data.owner)
 
         utils.send_email(subject, content)
 
