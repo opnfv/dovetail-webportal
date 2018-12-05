@@ -1,0 +1,13 @@
+{
+    "mandatory": {
+        "onap-vtp.validate.csar": {
+            "cases": [
+                "onap-vtp.validate.csar"
+            ],
+            "total": 1
+        }
+    },
+    "optional": {
+
+    }
+}
