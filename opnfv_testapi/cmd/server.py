@@ -31,6 +31,7 @@ TODOs :
 
 import tornado.ioloop
 import logging
+import sys
 
 from opnfv_testapi.common.config import CONF
 from opnfv_testapi.router import url_mappings
@@ -42,12 +43,19 @@ handler = logging.handlers.RotatingFileHandler(
 my_logger.setLevel(logging.DEBUG)
 my_logger.addHandler(handler)
 
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.DEBUG)
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+my_logger.addHandler(ch)
+
 
 def make_app():
     swagger.docs(base_url=CONF.swagger_base_url,
                  static_path=CONF.ui_static_path)
     return swagger.Application(
-        url_mappings.mappings,
+        url_mappings.mappings + url_mappings.onap_mappings,
         debug=CONF.api_debug,
         auth=CONF.api_authenticate,
         cookie_secret='opnfv-testapi',

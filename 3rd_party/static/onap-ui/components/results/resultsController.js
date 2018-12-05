@@ -1,0 +1,598 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+(function () {
+    'use strict';
+
+    angular
+        .module('testapiApp')
+        .controller('ResultsController', ResultsController);
+
+    angular
+        .module('testapiApp')
+        .directive('fileModel', ['$parse', function ($parse) {
+            return {
+                restrict: 'A',
+                link: function(scope, element, attrs) {
+                    var model = $parse(attrs.fileModel);
+                    var modelSetter = model.assign;
+
+                    element.bind('change', function(){
+                        scope.$apply(function(){
+                            modelSetter(scope, element[0].files[0]);
+                        });
+                    });
+                }
+            };
+        }]);
+
+    angular
+        .module('testapiApp')
+        .directive('modalFileModel', ['$parse', function ($parse) {
+            return {
+                restrict: 'A',
+                link: function(scope, element, attrs) {
+                    var model = $parse(attrs.modalFileModel);
+                    var modelSetter = model.assign;
+
+                    element.bind('change', function(){
+                        scope.$apply(function(){
+                            modelSetter(scope.$parent, element[0].files[0]);
+                        });
+                    });
+                }
+            };
+        }]);
+
+    ResultsController.$inject = [
+        '$scope', '$http', '$filter', '$state', 'testapiApiUrl','raiseAlert', 'ngDialog', '$resource'
+    ];
+
+    /**
+     * TestAPI Results Controller
+     * This controller is for the '/results' page where a user can browse
+     * a listing of community uploaded results.
+     */
+    function ResultsController($scope, $http, $filter, $state, testapiApiUrl, raiseAlert, ngDialog, $resource) {
+        var ctrl = this;
+
+        ctrl.uploadFile=uploadFile;
+        ctrl.update = update;
+        ctrl.open = open;
+        ctrl.clearFilters = clearFilters;
+        ctrl.associateMeta = associateMeta;
+        ctrl.gotoResultDetail = gotoResultDetail;
+        ctrl.toggleCheck = toggleCheck;
+        ctrl.changeLabel = changeLabel;
+        ctrl.toApprove = toApprove;
+        ctrl.toDisapprove = toDisapprove;
+        ctrl.toReview = toReview;
+        ctrl.toPrivate = toPrivate;
+        ctrl.removeSharedUser = removeSharedUser;
+        ctrl.addSharedUser = addSharedUser;
+        ctrl.openSharedModal = openSharedModal;
+        ctrl.downloadLogs = downloadLogs;
+        ctrl.deleteApplication = deleteApplication;
+        ctrl.deleteTest = deleteTest;
+        ctrl.openApplicationModal = openApplicationModal;
+        ctrl.openApplicationView = openApplicationView;
+        ctrl.submitApplication = submitApplication;
+        ctrl.openConfirmModal = openConfirmModal;
+        ctrl.openReviewsModal = openReviewsModal;
+
+        /** Mappings of Interop WG components to marketing program names. */
+        ctrl.targetMappings = {
+            'platform': 'Openstack Powered Platform',
+            'compute': 'OpenStack Powered Compute',
+            'object': 'OpenStack Powered Object Storage'
+        };
+
+        /** Initial page to be on. */
+        ctrl.currentPage = 1;
+
+        /**
+         * How many results should display on each page. Since pagination
+         * is server-side implemented, this value should match the
+         * 'results_per_page' configuration of the TestAPI server which
+         * defaults to 20.
+         */
+        ctrl.itemsPerPage = 20;
+
+        /**
+         * How many page buttons should be displayed at max before adding
+         * the '...' button.
+         */
+        ctrl.maxSize = 5;
+
+        /** The upload date lower limit to be used in filtering results. */
+        ctrl.startDate = '';
+
+        /** The upload date upper limit to be used in filtering results. */
+        ctrl.endDate = '';
+
+        /** The date format for the date picker. */
+        ctrl.format = 'yyyy-MM-dd';
+
+        ctrl.userName = null;
+
+        /** Check to see if this page should display user-specific results. */
+        ctrl.isUserResults = $state.current.name === 'userResults';
+
+        /** Check to see if this page should display community results. */
+        ctrl.isReviewer = $scope.auth.currentUser.role.indexOf('reviewer') != -1;
+        ctrl.isAdministrator = $scope.auth.currentUser.role.indexOf('administrator') != -1;
+
+        ctrl.currentUser = $scope.auth.currentUser ? $scope.auth.currentUser.openid : null;
+
+        // Should only be on user-results-page if authenticated.
+        if (!$scope.auth.isAuthenticated) {
+            $state.go('home');
+        }
+        // Should only be on community-results if reviewer
+        if (!ctrl.isUserResults && !ctrl.isReviewer) {
+            $state.go('home');
+        }
+
+        ctrl.pageHeader = ctrl.isUserResults ?
+            'Private test results' : 'Community test results';
+
+        ctrl.pageParagraph = ctrl.isUserResults ?
+            'Your most recently uploaded test results are listed here.' :
+            'The most recently uploaded community test results are listed ' +
+            'here.';
+
+        ctrl.uploadState = '';
+
+        ctrl.authRequest = $scope.auth.doSignCheck().then(ctrl.update);
+
+        function downloadLogs(id) {
+            // var logsUrl = testapiApiUrl + "/logs/log_" + id+".tar.gz";
+            var logsUrl = "/logs/" + id + "/results/";
+            window.location.href = logsUrl;
+            // $http.get(logsUrl);
+        }
+
+        function deleteTest(inner_id) {
+          var resp = confirm('Are you sure to delete this test?');
+          if (!resp)
+            return;
+
+          var delUrl = testapiApiUrl + "/onap/tests/" + inner_id;
+          $http.get(delUrl)
+            .then( function(resp) {
+              var results = resp.data.results;
+              $http.delete(delUrl)
+                .then( function(ret) {
+                  if(ret.data.code && ret.data.code != 0) {
+                    alert(ret.data.msg);
+                    return;
+                  }
+                  ctrl.update();
+                  angular.forEach(results, function(ele) {
+                    delUrl = testapiApiUrl + "/results/" + ele;
+                    $http.delete(delUrl);
+                  });
+                });
+            });
+        }
+
+        function deleteApplication (result) {
+            var resp = confirm('Are you sure you want to delete this application?');
+            if (!resp)
+                return;
+
+            $http.get(testapiApiUrl + "/onap/cvp/applications?test_id=" + result.id).then(function(response) {
+                    ctrl.application = response.data.applications[0];
+                    var app_id = ctrl.application._id;
+                    var delUrl = testapiApiUrl + "/cvp/applications/" + app_id;
+                    $http.delete(delUrl)
+                        .then(function(ret) {
+                        if (ret.data.code && ret.data.code != 0) {
+                            alert(ret.data.msg);
+                            return;
+                        }
+                        result['status'] = 'private';
+                    });
+
+                }, function(error) {
+                    /* do nothing */
+                });
+
+        }
+
+        function uploadLogo(file) {
+            var fd = new FormData();
+            fd.append('file', file);
+
+            $http.post(testapiApiUrl + "/cvp/applications/uploadlogo", fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            }).then(function(resp) {
+                if (resp.data.code && resp.data.code != 0) {
+                    alert(resp.data.msg);
+                    return;
+                }
+            }, function(error) {
+                /* do nothing */
+            });
+        };
+
+        function submitApplication(result) {
+            var file = $scope.logoFile;
+            var logo_name = null;
+            if (typeof file !== 'undefined') {
+                uploadLogo(file);
+                logo_name = file.name;
+            }
+            var data = {
+                "description": ctrl.description,
+                "onap_version": ctrl.onap_version,
+                "company_name": ctrl.company_name,
+                "company_logo": logo_name,
+                "company_website": ctrl.company_website,
+                "approve_date": '',
+                "approved": "false",
+                "test_id": result.id,
+                "lab_location": ctrl.lab_location,
+                "lab_email": ctrl.lab_email,
+                "lab_address": ctrl.lab_address,
+                "lab_phone": ctrl.lab_phone,
+                "xnf_version": ctrl.xnf_version,
+                "certification_type": ctrl.certification_type,
+                "xnf_name": ctrl.xnf_name,
+                "xnf_type": ctrl.xnf_type,
+                "xnf_description": ctrl.xnf_description,
+                "xnfd_id": ctrl.xnfd_id,
+                "xnfd_model_lang": ctrl.xnfd_model_lang,
+                "xnf_test_period": ctrl.xnf_test_period,
+                "primary_contact_name": ctrl.primary_contact_name,
+                "primary_phone_number": ctrl.primary_phone_number,
+                "primary_business_email": ctrl.primary_business_email
+            };
+            $http.post(testapiApiUrl + "/onap/cvp/applications", data).then(function(resp) {
+                if (resp.data.code && resp.data.code != 0) {
+                    alert(resp.data.msg);
+                    return;
+                }
+                toggleCheck(result, 'status', 'review');
+            }, function(error) {
+                /* do nothing */
+            });
+            ngDialog.close();
+        }
+
+        function openConfirmModal(result) {
+            var resp = confirm("Are you sure to submit?");
+            if (resp) {
+                ctrl.submitApplication(result);
+            }
+        }
+
+        function openApplicationModal(result) {
+            ctrl.tempResult = result;
+                ngDialog.open({
+                    preCloseCallback: function(value) {
+                    },
+                    template: 'onap-ui/components/results/modal/applicationModal.html',
+                    scope: $scope,
+                    className: 'ngdialog-theme-default custom-background',
+                    width: 950,
+                    showClose: true,
+                    closeByDocument: true
+                });
+        }
+
+        function openApplicationView(result) {
+
+           $http.get(testapiApiUrl + "/onap/cvp/applications?test_id=" + result.id).then(function(response) {
+                    ctrl.application = response.data.applications[0];
+                }, function(error) {
+                    /* do nothing */
+                });
+
+            ctrl.tempResult = result;
+                ngDialog.open({
+                    preCloseCallback: function(value) {
+                    },
+                    template: 'onap-ui/components/results/modal/applicationView.html',
+                    scope: $scope,
+                    className: 'ngdialog-theme-default custom-background',
+                    width: 950,
+                    showClose: true,
+                    closeByDocument: true
+                });
+        }
+
+        function getReviews(test) {
+            var reviews_url = testapiApiUrl + '/onap/reviews?test_id=' + test;
+            ctrl.reviewsRequest =
+                $http.get(reviews_url).success(function (data) {
+                    ctrl.reviews = data.reviews;
+                }).error(function (error) {
+                    ctrl.reviews = null;
+                });
+        }
+
+        function openReviewsModal(test) {
+            getReviews(test);
+            ngDialog.open({
+                preCloseCallback: function(value) {
+                },
+                template: 'onap-ui/components/results/modal/reviewsModal.html',
+                scope: $scope,
+                className: 'ngdialog-theme-default custom-background',
+                width: 950,
+                showClose: true,
+                closeByDocument: true
+            });
+        }
+
+        function toggleCheck(result, item, newValue) {
+            var id = result._id;
+            var updateUrl = testapiApiUrl + "/onap/tests/"+ id;
+
+            var data = {};
+            data['item'] = item;
+            data[item] = newValue;
+
+            $http.put(updateUrl, JSON.stringify(data), {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': 'application/json'}}).then(function(ret) {
+                    if(ret.data.code && ret.data.code != 0) {
+                        alert(ret.data.msg);
+                    } else {
+                        result[item] = newValue;
+                    }
+            }, function(error) {
+                alert('Error when update data');
+            });
+        }
+
+        function changeLabel(result, key, data){
+            if (result[key] !== data) {
+                toggleCheck(result, key, data);
+            }
+        }
+
+        function doReview(test, outcome) {
+            var createUrl = testapiApiUrl + "/onap/reviews";
+            var data = {
+                'test_id': test._id,
+                'outcome': outcome
+            };
+
+            $http.post(createUrl, JSON.stringify(data), {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': 'application/json'}}).then(function(ret) {
+                    if (ret.data.code && ret.data.code != 0) {
+                        alert(ret.data.msg);
+                    }
+            }, function(error) {
+                alert('Error when creating review');
+            });
+        }
+
+        function toApprove(test) {
+            var resp = confirm('Once you approve a test result, your action will become visible. Do you want to proceed?');
+            if (resp) {
+                doReview(test, 'positive');
+            }
+        }
+
+        function toDisapprove(test) {
+            var resp = confirm('Once you disapprove a test result, your action will become visible. Do you want to proceed?');
+            if (resp) {
+                doReview(test, 'negative');
+            }
+        }
+
+        function toReview(result, value){
+            var resp = confirm('Once you submit a test result for review, it will become readable to all ONAPVP reviewers. Do you want to proceed?');
+            if(resp){
+                toggleCheck(result, 'status', value);
+            }
+        }
+
+        function toPrivate(result, value){
+            var resp = confirm('Do you want to proceed?');
+            if(resp){
+                toggleCheck(result, 'status', value);
+            }
+        }
+
+        function openSharedModal(result){
+            ctrl.tempResult = result;
+                ngDialog.open({
+                    preCloseCallback: function(value) {
+                    },
+                    template: 'onap-ui/components/results/modal/sharedModal.html',
+                    scope: $scope,
+                    className: 'ngdialog-theme-default',
+                    width: 950,
+                    showClose: true,
+                    closeByDocument: true
+                });
+        }
+
+        function addSharedUser(result, userId){
+            var tempList = copy(result.shared);
+            tempList.push(userId);
+            toggleCheck(result, 'shared', tempList);
+            ngDialog.close();
+        }
+
+        function removeSharedUser(result, userId){
+            var tempList = copy(result.shared);
+            var idx = tempList.indexOf(userId);
+            if(idx != -1){
+                tempList.splice(idx, 1);
+                toggleCheck(result, 'shared', tempList);
+            }
+        }
+
+        function copy(arrList){
+            var tempList = [];
+            angular.forEach(arrList, function(ele){
+                tempList.push(ele);
+            });
+            return tempList;
+        }
+
+        function uploadFileToUrl(file, uploadUrl){
+            var fd = new FormData();
+            fd.append('file', file);
+
+            $http.post(uploadUrl, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            }).then(function(data){
+
+                if(data.data.code && data.data.code != 0){
+                    alert(data.data.msg);
+                    return;
+                }
+
+                ctrl.uploadState = "";
+                data.data.filename = file.name;
+                var createTestUrl = testapiApiUrl + "/onap/tests"
+
+                $http.post(createTestUrl, data.data).then(function(data){
+                    if (data.data.code && data.data.code != 0) {
+                        alert(data.data.msg);
+                    } else {
+                        ctrl.update();
+                    }
+                }, function(error){
+                });
+
+             }, function(error){
+                ctrl.uploadState = "Upload failed. Error code is " + error.status;
+            });
+        }
+
+        function uploadFile(){
+           var file = $scope.resultFile;
+
+           var uploadUrl = testapiApiUrl + "/onap/results/upload";
+           uploadFileToUrl(file, uploadUrl);
+        };
+
+        /**
+         * This will contact the TestAPI API to get a listing of test run
+         * results.
+         */
+        function update() {
+            ctrl.showError = false;
+            // Construct the API URL based on user-specified filters.
+            var content_url = testapiApiUrl + '/onap/tests';
+            var start = $filter('date')(ctrl.startDate, 'yyyy-MM-dd');
+            var end = $filter('date')(ctrl.endDate, 'yyyy-MM-dd');
+
+            content_url += '?page=' + ctrl.currentPage;
+            content_url += '&per_page=' + ctrl.itemsPerPage;
+            if (start) {
+                content_url += '&from=' + start + ' 00:00:00';
+            }
+            if (end) {
+                content_url += '&to=' + end + ' 23:59:59';
+            }
+            if (ctrl.isUserResults) {
+                content_url += '&signed';
+            } else {
+                content_url += '&status={"$ne":"private"}';
+            }
+
+            ctrl.resultsRequest =
+                $http.get(content_url).success(function (data) {
+                    ctrl.data = data;
+                    ctrl.totalItems = ctrl.data.pagination.total_pages * ctrl.itemsPerPage;
+                    ctrl.currentPage = ctrl.data.pagination.current_page;
+                    ctrl.numPages = ctrl.data.pagination.total_pages;
+                }).error(function (error) {
+                    ctrl.data = null;
+                    ctrl.totalItems = 0;
+                    ctrl.showError = true;
+                    ctrl.error =
+                        'Error retrieving results listing from server: ' +
+                        angular.toJson(error);
+                });
+        }
+
+        /**
+         * This is called when the date filter calendar is opened. It
+         * does some event handling, and sets a scope variable so the UI
+         * knows which calendar was opened.
+         * @param {Object} $event - The Event object
+         * @param {String} openVar - Tells which calendar was opened
+         */
+        function open($event, openVar) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            ctrl[openVar] = true;
+        }
+
+        /**
+         * This function will clear all filters and update the results
+         * listing.
+         */
+        function clearFilters() {
+            ctrl.startDate = null;
+            ctrl.endDate = null;
+            ctrl.update();
+        }
+
+        /**
+         * This will send an API request in order to associate a metadata
+         * key-value pair with the given testId
+         * @param {Number} index - index of the test object in the results list
+         * @param {String} key - metadata key
+         * @param {String} value - metadata value
+         */
+        function associateMeta(index, key, value) {
+            var testId = ctrl.data.results[index].id;
+            var metaUrl = [
+                testapiApiUrl, '/results/', testId, '/meta/', key
+            ].join('');
+
+            var editFlag = key + 'Edit';
+            if (value) {
+                ctrl.associateRequest = $http.post(metaUrl, value)
+                    .success(function () {
+                        ctrl.data.results[index][editFlag] = false;
+                    }).error(function (error) {
+                        raiseAlert('danger', error.title, error.detail);
+                    });
+            }
+            else {
+                ctrl.unassociateRequest = $http.delete(metaUrl)
+                    .success(function () {
+                        ctrl.data.results[index][editFlag] = false;
+                    }).error(function (error) {
+                        if (error.code == 404) {
+                            // Key doesn't exist, so count it as a success,
+                            // and don't raise an alert.
+                            ctrl.data.results[index][editFlag] = false;
+                        }
+                        else {
+                            raiseAlert('danger', error.title, error.detail);
+                        }
+                    });
+            }
+        }
+
+        function gotoResultDetail(testId, innerID) {
+            $state.go('resultsDetail', {'testID': testId, 'innerID': innerID});
+        }
+    }
+})();
