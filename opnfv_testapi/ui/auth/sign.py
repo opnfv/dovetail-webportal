@@ -45,7 +45,8 @@ class SigninHandler(base.BaseHandler):
             renew=False,
             extra_login_params=False,
             server_url=CONF.lfid_url,
-            service_url=CONF.lfid_return_url
+            service_url='http://{0}/{1}'.format(self.request.host,
+                                                CONF.lfid_return_url)
         )
         redirect_url = client.get_login_url()
         self.redirect(url=redirect_url, permanent=False)
@@ -154,7 +155,8 @@ class SigninReturnCasHandler(base.BaseHandler):
             renew=False,
             extra_login_params=False,
             server_url=CONF.lfid_url,
-            service_url=CONF.lfid_return_url
+            service_url='http://{0}/{1}'.format(self.request.host,
+                                                CONF.lfid_return_url)
         )
         user, attrs, _ = client.verify_ticket(ticket)
         logging.debug("user:%s", user)
@@ -180,7 +182,7 @@ class SigninReturnCasHandler(base.BaseHandler):
         self.set_secure_cookie(const.ROLE, role)
         self.set_secure_cookie('ticket', ticket)
 
-        self.redirect("/")
+        self.redirect('http://{0}'.format(self.request.host))
 
 
 class SigninReturnJiraHandler(base.BaseHandler):
@@ -275,7 +277,12 @@ class SignoutHandler(base.BaseHandler):
             renew=False,
             extra_login_params=False,
             server_url=CONF.lfid_url,
-            service_url=CONF.lfid_return_url
+            service_url='http://{0}/{1}'.format(self.request.host,
+                                                CONF.lfid_return_url)
         )
-        url = client.get_logout_url(CONF.ui_url)
+
+        self.clear_cookie('ticket')
+        self.clear_cookie('signin_type')
+
+        url = client.get_logout_url('http://{0}'.format(self.request.host))
         self.redirect(url)
