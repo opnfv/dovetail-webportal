@@ -1,0 +1,13 @@
+{
+    "mandatory": {
+        "onap-vvp.validate.heat": {
+            "cases": [
+                "onap-vvp.validate.heat"
+            ],
+            "total": 1
+        }
+    },
+    "optional": {
+
+    }
+}
