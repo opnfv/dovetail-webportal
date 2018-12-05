@@ -57,3 +57,14 @@ mappings = [
     (r'/api/v1/profile', user.ProfileHandler),
 
 ]
+
+onap_mappings = [
+    (r'/api/v1/onap/results', result_handlers.ResultsCLHandler,
+        dict(is_onap=True)),
+    (r'/api/v1/onap/results/upload', result_handlers.ResultsUploadHandler,
+        dict(is_onap=True)),
+    (r'/api/v1/onap/tests', test_handlers.TestsCLHandler,
+        dict(is_onap=True)),
+    (r'/api/v1/onap/cvp/applications',
+        application_handlers.ApplicationsCLHandler, dict(is_onap=True)),
+]

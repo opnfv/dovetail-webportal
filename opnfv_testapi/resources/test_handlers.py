@@ -111,6 +111,8 @@ class TestsCLHandler(GenericTestHandler):
             self.finish_request({'code': '403', 'msg': msg})
             return
 
+        if self.is_onap:
+            self.json_args['is_onap'] = 'true'
         self._create(miss_fields=miss_fields, carriers=carriers)
 
 
