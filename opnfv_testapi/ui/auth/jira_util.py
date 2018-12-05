@@ -22,7 +22,7 @@ class SignatureMethod_RSA_SHA1(oauth.SignatureMethod):
 
     def signing_base(self, request, consumer, token):
         if not hasattr(request, 'normalized_url') or \
-            request.normalized_url is None:
+           request.normalized_url is None:
             raise ValueError("Base URL for request is not set.")
 
         sig = (
