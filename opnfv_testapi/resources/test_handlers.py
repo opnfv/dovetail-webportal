@@ -78,9 +78,27 @@ class TestsCLHandler(GenericTestHandler):
         if curr_user is None:
             raises.Unauthorized(message.no_auth())
 
+        review = self.request.query_arguments.pop('review', None)
         query = yield self.set_query()
-        yield self._list(query=query, **limitations)
+        if review:
+            yield self._list(query=query, res_op=self.check_review,
+                             **limitations)
+        else:
+            yield self._list(query=query, **limitations)
         logging.debug('list end')
+
+    @gen.coroutine
+    def check_review(self, data, *args):
+        current_user = self.get_secure_cookie(auth_const.OPENID)
+        for test in data:
+            query = {'reviewer_openid': current_user, 'test_id': test['id']}
+            ret = yield dbapi.db_find_one('reviews', query)
+            if ret:
+                test['voted'] = 'true'
+            else:
+                test['voted'] = 'false'
+
+        raise gen.Return({self.table: data})
 
     @swagger.operation(nickname="createTest")
     @web.asynchronous
@@ -111,6 +129,8 @@ class TestsCLHandler(GenericTestHandler):
             self.finish_request({'code': '403', 'msg': msg})
             return
 
+        if self.is_onap:
+            self.json_args['is_onap'] = 'true'
         self._create(miss_fields=miss_fields, carriers=carriers)
 
 
@@ -149,7 +169,6 @@ class TestsGURHandler(GenericTestHandler):
             raise gen.Return('API response validation enabled')
 
     @swagger.operation(nickname="deleteTestById")
-    @web.asynchronous
     @gen.coroutine
     def delete(self, test_id):
         curr_user = self.get_secure_cookie(auth_const.OPENID)
@@ -161,6 +180,9 @@ class TestsGURHandler(GenericTestHandler):
                 raises.NotFound(message.not_found(self.table, query))
             if curr_user == test_data['owner'] or \
                curr_user_role.find('administrator') != -1:
+                yield dbapi.db_delete('applications',
+                                      {'test_id': test_data['id']})
+                yield dbapi.db_delete('reviews', {'test_id': test_data['id']})
                 self._delete(query=query)
             else:
                 raises.Forbidden(message.no_auth())
@@ -198,7 +220,7 @@ class TestsGURHandler(GenericTestHandler):
         if query and table:
             data = yield dbapi.db_find_one(table, query)
             if data:
-                raise gen.Return((True, 'Data alreay exists. %s' % (query),
+                raise gen.Return((True, 'Data already exists. %s' % (query),
                                   data.get("openid")))
         raise gen.Return((False, 'Data does not exist. %s' % (query), None))
 
@@ -255,9 +277,9 @@ class TestsGURHandler(GenericTestHandler):
                 return
 
         if item == "status":
-            if value in {'approved', 'not approved'}:
+            if value == 'verified':
                 if test['status'] == 'private':
-                    msg = 'Not allowed to approve/not approve'
+                    msg = 'Not allowed to verify'
                     self.finish_request({'code': 403, 'msg': msg})
                     return
 
@@ -272,7 +294,7 @@ class TestsGURHandler(GenericTestHandler):
                     self.finish_request({'code': 403, 'msg': msg})
                     return
 
-                if not test['sut_label']:
+                if not self.is_onap and not test['sut_label']:
                     msg = 'Please fill out SUT version before submission'
                     self.finish_request({'code': 403, 'msg': msg})
                     return
@@ -284,8 +306,7 @@ class TestsGURHandler(GenericTestHandler):
                     'id': test['id'],
                     '$or': [
                         {'status': 'review'},
-                        {'status': 'approved'},
-                        {'status': 'not approved'}
+                        {'status': 'verified'}
                     ]
                 }
                 record = yield dbapi.db_find_one("tests", test_query)
@@ -311,12 +332,12 @@ class TestsGURHandler(GenericTestHandler):
                 logging.debug('check review')
                 query['user_id'] = user
                 data = yield dbapi.db_find_one('applications', query)
-                if not data:
-                    logging.debug('not found')
+                if data:
+                    logging.debug('results are bound to an application')
                     raise gen.Return((False, message.no_auth()))
-            if value == "approve" or value == "not approved":
-                logging.debug('check approve')
-                query['role'] = {"$regex": ".*reviewer.*"}
+            if value == "verified":
+                logging.debug('check verify')
+                query['role'] = {"$regex": ".*administrator.*"}
                 query['openid'] = user
                 data = yield dbapi.db_find_one('users', query)
                 if not data:
