@@ -111,6 +111,8 @@ class TestsCLHandler(GenericTestHandler):
             self.finish_request({'code': '403', 'msg': msg})
             return
 
+        if self.is_onap:
+            self.json_args['is_onap'] = 'true'
         self._create(miss_fields=miss_fields, carriers=carriers)
 
 
@@ -149,7 +151,6 @@ class TestsGURHandler(GenericTestHandler):
             raise gen.Return('API response validation enabled')
 
     @swagger.operation(nickname="deleteTestById")
-    @web.asynchronous
     @gen.coroutine
     def delete(self, test_id):
         curr_user = self.get_secure_cookie(auth_const.OPENID)
@@ -272,7 +273,7 @@ class TestsGURHandler(GenericTestHandler):
                     self.finish_request({'code': 403, 'msg': msg})
                     return
 
-                if not test['sut_label']:
+                if not self.is_onap and not test['sut_label']:
                     msg = 'Please fill out SUT version before submission'
                     self.finish_request({'code': 403, 'msg': msg})
                     return
@@ -311,8 +312,8 @@ class TestsGURHandler(GenericTestHandler):
                 logging.debug('check review')
                 query['user_id'] = user
                 data = yield dbapi.db_find_one('applications', query)
-                if not data:
-                    logging.debug('not found')
+                if data:
+                    logging.debug('results are bound to an application')
                     raise gen.Return((False, message.no_auth()))
             if value == "approve" or value == "not approved":
                 logging.debug('check approve')
