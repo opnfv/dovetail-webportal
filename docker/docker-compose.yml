@@ -8,13 +8,13 @@ services:
             - cvp-db:/data/db
         expose:
             - "27017"
-    web:
+    web-opnfv:
         image: opnfv/dovetail-webportal-web:latest
-        container_name: cvp-web
+        container_name: cvp-web-opnfv
         restart: always
         env_file:
             - config.env
-            - vhost.env
+            - vhost-opnfv.env
         volumes:
             - cvp-testapi-logs:/home/testapi/logs
         links:
@@ -22,6 +22,34 @@ services:
             - cvpapi
         ports:
             - "8000:8000"
+    web-onap:
+        image: opnfv/dovetail-webportal-web-onap:latest
+        container_name: cvp-web-onap
+        restart: always
+        env_file:
+            - config.env
+            - vhost-onap.env
+        volumes:
+            - cvp-testapi-logs:/home/testapi/logs
+        links:
+            - mongodb
+            - cvpapi
+        ports:
+            - "8001:8000"
+    web-lfn:
+        image: opnfv/dovetail-webportal-web-lfn:latest
+        container_name: cvp-web-lfn
+        restart: always
+        env_file:
+            - config.env
+            - vhost-lfn.env
+        volumes:
+            - cvp-testapi-logs:/home/testapi/logs
+        links:
+            - mongodb
+            - cvpapi
+        ports:
+            - "8002:8000"
     cvpapi:
         image: opnfv/dovetail-webportal-api:latest
         container_name: cvp-cvpapi
@@ -39,7 +67,9 @@ services:
             - /var/run/docker.sock:/tmp/docker.sock:ro
             - ./nginx-proxy/custom_proxy_settings.conf:/etc/nginx/conf.d/custom_proxy_settings.conf
         depends_on:
-            - web
+            - web-opnfv
+            - web-onap
+            - web-lfn
         ports:
             - "80:80"
 
