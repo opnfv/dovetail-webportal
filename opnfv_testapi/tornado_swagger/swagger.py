@@ -255,7 +255,8 @@ class operation(DocParser):
 
     def _parse_args(self, func):
         argspec = inspect.getargspec(func)
-        argspec.args.remove("self")
+        if 'self' in argspec.args:
+            argspec.args.remove('self')
 
         defaults = []
         if argspec.defaults:

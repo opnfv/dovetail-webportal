@@ -43,8 +43,6 @@
                 ctrl.prim_email = null;
                 ctrl.prim_address = null;
                 ctrl.prim_phone = null;
-                ctrl.id_type = "Linux Foundation";
-	            ctrl.user_id = null;
                 ctrl.description = null;
                 ctrl.sut_version = null;
                 ctrl.sut_hw_version = null;
@@ -86,8 +84,6 @@
                     "prim_email": ctrl.prim_email,
                     "prim_address": ctrl.prim_address,
                     "prim_phone": ctrl.prim_phone,
-                    "id_type": ctrl.id_type,
-		    "user_id": ctrl.user_id,
                     "description": ctrl.description,
                     "sut_version": ctrl.sut_version,
                     "sut_hw_version": ctrl.sut_hw_version,
@@ -107,7 +103,7 @@
                     if(resp.data.code && resp.data.code != 0) {
                         alert(resp.data.msg);
                         return;
-                    }  
+                    }
                     getApplication();
 		}, function(error){
 		});
