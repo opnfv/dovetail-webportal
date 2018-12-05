@@ -3,47 +3,77 @@ version: '3'
 services:
     mongodb:
         image: mongo:3.2.1
-        container_name: cvp-db
+        container_name: lfn-db
         volumes:
-            - cvp-db:/data/db
+            - lfn-db:/data/db
         expose:
             - "27017"
-    web:
+    webopnfv:
         image: opnfv/dovetail-webportal-web:latest
-        container_name: cvp-web
+        container_name: web-opnfv
         restart: always
         env_file:
             - config.env
-            - vhost.env
+            - vhost-opnfv.env
         volumes:
-            - cvp-testapi-logs:/home/testapi/logs
+            - lfn-testapi-logs:/home/testapi/logs
         links:
             - mongodb
-            - cvpapi
+            - lfnapi
         ports:
             - "8000:8000"
-    cvpapi:
+    webonap:
+        image: opnfv/dovetail-webportal-web-onap:latest
+        container_name: web-onap
+        restart: always
+        env_file:
+            - config.env
+            - vhost-onap.env
+        volumes:
+            - lfn-testapi-logs:/home/testapi/logs
+        links:
+            - mongodb
+            - lfnapi
+        ports:
+            - "8001:8000"
+    weblfn:
+        image: opnfv/dovetail-webportal-web-lfn:latest
+        container_name: web-lfn
+        restart: always
+        env_file:
+            - config.env
+            - vhost-lfn.env
+        volumes:
+            - lfn-testapi-logs:/home/testapi/logs
+        links:
+            - mongodb
+            - lfnapi
+        ports:
+            - "8002:8000"
+    lfnapi:
         image: opnfv/dovetail-webportal-api:latest
-        container_name: cvp-cvpapi
+        container_name: lfn-api
         env_file:
             - config.env
         volumes:
-            - cvp-testapi-logs:/home/testapi/logs
-            - cvp-company-logos:/home/testapi/media/companies
+            - lfn-testapi-logs:/home/testapi/logs
+            - lfn-company-logos:/home/testapi/media/companies
         ports:
             - "8010:8010"
     nginx:
         image: jwilder/nginx-proxy
-        container_name: cvp-nginx
+        container_name: lfn-nginx
         volumes:
             - /var/run/docker.sock:/tmp/docker.sock:ro
             - ./nginx-proxy/custom_proxy_settings.conf:/etc/nginx/conf.d/custom_proxy_settings.conf
         depends_on:
-            - web
+            - webopnfv
+            - webonap
+            - weblfn
         ports:
             - "80:80"
 
 volumes:
-    cvp-db:
-    cvp-company-logos:
-    cvp-testapi-logs:
+    lfn-db:
+    lfn-company-logos:
+    lfn-testapi-logs:
