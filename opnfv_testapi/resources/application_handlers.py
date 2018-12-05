@@ -6,15 +6,20 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
+from datetime import datetime
 import logging
 import json
+import os
 
 from tornado import web
 from tornado import gen
 from bson import objectid
+from slugify import slugify
+from PIL import Image
 
 from opnfv_testapi.common.config import CONF
 from opnfv_testapi.common import utils
+from opnfv_testapi.db import api as dbapi
 from opnfv_testapi.resources import handlers
 from opnfv_testapi.resources import application_models
 from opnfv_testapi.tornado_swagger import swagger
@@ -34,19 +39,28 @@ class ApplicationsLogoHandler(GenericApplicationHandler):
     @web.asynchronous
     @gen.coroutine
     def post(self):
-        role = self.get_secure_cookie(auth_const.ROLE)
-        if role.find('administrator') == -1:
-            msg = 'Only administrator is allowed to upload logos'
-            self.finish_request({'code': '-1', 'msg': msg})
-            return
-
         fileinfo = self.request.files['file'][0]
+        company_logo_name = fileinfo['filename'].rsplit('.', 1)[0]
+        extension_name = fileinfo['filename'].split('.')[-1]
+        company_logo_name = slugify(company_logo_name)
+        fileinfo['filename'] = company_logo_name
         fname = fileinfo['filename']
         location = 'media/companies/'
-        fh = open(location + fname, 'w')
+        fh = open(location + fname + '.' + extension_name, 'w')
         fh.write(fileinfo['body'])
+        fh.close()
+        img = Image.open(location + fname + '.' + extension_name)
+        if (img.size[0] > 165) or (img.size[1] > 40):
+            os.remove(location + fname + '.' + extension_name)
+            msg = 'The size of the image is not according to the compliance' \
+                  ' program. Please try again, loading an image with proper' \
+                  ' dimensions (Max Values: 165px width and 40px height).'
+            self.finish_request({'code': 403, 'msg': msg})
+            return
+
         msg = 'Successfully uploaded logo: ' + fname
-        resp = {'code': '1', 'msg': msg}
+        resp = {'code': 0, 'msg': msg,
+                'filename': fname + '.' + extension_name}
         self.finish_request(resp)
 
 
@@ -130,6 +144,8 @@ class ApplicationsCLHandler(GenericApplicationHandler):
         openid = self.get_secure_cookie(auth_const.OPENID)
         if openid:
             self.json_args['owner'] = openid
+        if self.is_onap:
+            self.json_args['is_onap'] = 'true'
 
         self._post()
 
@@ -138,22 +154,21 @@ class ApplicationsCLHandler(GenericApplicationHandler):
         miss_fields = []
         carriers = []
 
-        role = self.get_secure_cookie(auth_const.ROLE)
-        if role.find('administrator') == -1:
-            self.finish_request({'code': '403', 'msg': 'Only administrator \
-                is allowed to submit application.'})
-            return
-
-        query = {"openid": self.json_args['user_id']}
-        table = "users"
-        ret, msg = yield self._check_if_exists(table=table, query=query)
+        query = {'openid': self.json_args['owner']}
+        ret, msg = yield self._check_if_exists(table='users', query=query)
         logging.debug('ret:%s', ret)
         if not ret:
-            self.finish_request({'code': '403', 'msg': msg})
+            self.finish_request({'code': 403, 'msg': msg})
+            return
+        query = {'test_id': self.json_args['test_id']}
+        ret, _ = yield self._check_if_exists(table=self.table, query=query)
+        if ret:
+            msg = 'An application for these test results already exists'
+            self.finish_request({'code': 403, 'msg': msg})
             return
         self._create(miss_fields=miss_fields, carriers=carriers)
 
-        self._send_email()
+        # self._send_email()
 
     def _send_email(self):
 
@@ -173,7 +188,6 @@ This is a new application:
     Primary Email: {},
     Primary Address: {},
     Primary Phone: {},
-    User ID Type: {},
     User ID: {}
 
 Best Regards,
@@ -188,19 +202,26 @@ CVP Team
                    data.prim_email,
                    data.prim_address,
                    data.prim_phone,
-                   data.id_type,
-                   data.user_id)
+                   data.owner)
 
         utils.send_email(subject, content)
 
 
 class ApplicationsGURHandler(GenericApplicationHandler):
     @swagger.operation(nickname="deleteAppById")
+    @gen.coroutine
     def delete(self, id):
         query = {'_id': objectid.ObjectId(id)}
+        application = yield dbapi.db_find_one(self.table, query)
+        test_id = application['test_id']
+        t_query = {'id': test_id}
+        yield dbapi.db_delete('reviews', {'test_id': test_id})
+        yield dbapi.db_update('tests', t_query,
+                              {'$set': {'status': 'private'}})
         self._delete(query=query)
 
     @swagger.operation(nickname="updateApplicationById")
+    @web.asynchronous
     def put(self, application_id):
         """
             @description: update a single application by id
@@ -222,12 +243,23 @@ class ApplicationsGURHandler(GenericApplicationHandler):
             logging.error('except:%s', e)
             return
 
-    @web.asynchronous
     @gen.coroutine
     def update(self, application_id, item, value):
         self.json_args = {}
         self.json_args[item] = value
-        query = {'_id': application_id, 'owner':
+        query = {'_id': objectid.ObjectId(application_id), 'owner':
                  self.get_secure_cookie(auth_const.OPENID)}
         db_keys = ['_id', 'owner']
+        if item == 'approved':
+            if value == 'true':
+                status = 'verified'
+                self.json_args['approve_date'] = str(datetime.now())
+            else:
+                status = 'review'
+                self.json_args['approve_date'] = ''
+            application = yield dbapi.db_find_one(self.table, query)
+            test_id = application['test_id']
+            t_query = {'id': test_id}
+            yield dbapi.db_update('tests', t_query,
+                                  {'$set': {'status': status}})
         self._update(query=query, db_keys=db_keys)
