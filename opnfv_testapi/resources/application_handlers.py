@@ -144,8 +144,8 @@ class ApplicationsCLHandler(GenericApplicationHandler):
                 is allowed to submit application.'})
             return
 
-        query = {"openid": self.json_args['user_id']}
-        table = "users"
+        query = {'openid': self.json_args['owner']}
+        table = 'users'
         ret, msg = yield self._check_if_exists(table=table, query=query)
         logging.debug('ret:%s', ret)
         if not ret:
@@ -173,7 +173,6 @@ This is a new application:
     Primary Email: {},
     Primary Address: {},
     Primary Phone: {},
-    User ID Type: {},
     User ID: {}
 
 Best Regards,
@@ -188,8 +187,7 @@ CVP Team
                    data.prim_email,
                    data.prim_address,
                    data.prim_phone,
-                   data.id_type,
-                   data.user_id)
+                   data.owner)
 
         utils.send_email(subject, content)
 
