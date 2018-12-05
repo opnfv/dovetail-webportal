@@ -1,8 +1,8 @@
 #!/bin/bash
-FILE=/etc/nginx/sites-enabled/default
+NGINX_CONF=/etc/nginx/sites-enabled/default
 
 if [ "$testapi_url" != "" ]; then
-    sed -i "s/server localhost:8010/server $testapi_url/" $FILE
+    sed -i "s/server lfnapi:8010/server $testapi_url/" $NGINX_CONF
 fi
 
 service supervisor start

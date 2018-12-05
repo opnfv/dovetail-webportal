@@ -1,2 +1,3 @@
 config.env
-vhost.env
+vhost-opnfv.env
+vhost-onap.env
