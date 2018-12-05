@@ -37,46 +37,10 @@ server {
         autoindex_localtime on;
     }
 
-    location /api/v1/cvp {
-        proxy_pass http://cvpapi/api/v1/cvp;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-    }
-
-    location /api/v1/auth {
-        proxy_pass http://cvpapi/api/v1/auth;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-    }
-
-    location /api/v1/profile {
-        proxy_pass http://cvpapi/api/v1/profile;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-    }
-
-    location /api/v1/test {
-        proxy_pass http://cvpapi/api/v1/test;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-    }
-
-    location = /api/v1/results {
-        proxy_pass http://cvpapi/api/v1/results;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-    }
-
-    location ~* /api/v1/results/([a-zA-Z0-9]+) {
+    location = /api/v1/onap/results/upload {
         client_max_body_size 20m;
-        proxy_pass http://cvpapi/api/v1/results/$1;
+        proxy_pass http://cvpapi/api/v1/onap/results/upload;
         proxy_set_header X-Real_IP $remote_addr;
-        proxy_set_header Host $host;
-    }
-
-    location ~* /api/v1/suts/hardware/([a-zA-Z0-9\-]+) {
-        proxy_pass http://cvpapi/api/v1/suts/hardware/$1;
-        proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
     }
 
