@@ -1,0 +1,44 @@
+<!--
+HTML for guidelines page for all OpenStack Powered (TM) guideline schemas
+This expects the JSON data of the guidelines file to be stored in scope
+variable 'guidelines'.
+-->
+
+<h3 ng-show="ctrl.showMandatory">{{ctrl.data.mandatory.name}}</h3>
+<div ng-repeat="area in ctrl.data.mandatory.value" ng-show="ctrl.showMandatory">
+  <h4>{{area.area_name}}</h4>
+  <ol class="capabilities">
+    <li class="capability-list-item" ng-repeat="api in area.value">
+      <span class="capability-name">{{api.api_name}}</span><br>
+      Area: <em>{{area.area_name}}</em><br>
+      Status: <span>Mandatory</span><br>
+
+      <a ng-click="showTests = !showTests">Tests ({{api.value.length}})</a>
+      <ul uib-collapse="!showTests">
+        <li ng-repeat="test in api.value">
+          <span ng-class="{'glyphicon glyphicon-flag text-warning': capability.flagged.indexOf(test) > -1}"></span>
+          {{test}}
+        </li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+<h3 ng-show="ctrl.showOptional">{{ctrl.data.optional.name}}</h3>
+<div ng-repeat="area in ctrl.data.optional.value" ng-show="ctrl.showOptional">
+  <h4>{{area.area_name}}</h4>
+  <ol class="capabilities">
+    <li class="capability-list-item" ng-repeat="api in area.value">
+      <span class="capability-name">{{api.api_name}}</span><br>
+      Status: <span>Optional</span><br>
+
+      <a ng-click="showTests = !showTests">Tests ({{api.value.length}})</a>
+      <ul uib-collapse="!showTests">
+        <li ng-repeat="test in api.value">
+          <span ng-class="{'glyphicon glyphicon-flag text-warning': capability.flagged.indexOf(test) > -1}"></span>
+          {{test}}
+        </li>
+      </ul>
+    </li>
+  </ol>
+</div>
