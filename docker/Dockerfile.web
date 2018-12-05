@@ -10,6 +10,8 @@ MAINTAINER Leo Wang <grakiss.wanglei@huawei.com>
 LABEL version="v2" description="OVP nginx"
 
 ARG BRANCH=master
+ARG GUI=testapi-ui
+ARG CONTAINER=opnfv
 
 ENV HOME /home
 WORKDIR $HOME
@@ -22,16 +24,17 @@ RUN apt-get update && apt-get install -y \
     npm \
  && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://gerrit.opnfv.org/gerrit/dovetail-webportal $HOME/testapi && \
-    cd $HOME/testapi && \
-    git checkout -f $BRANCH && \
-    cd $HOME/testapi/3rd_party/static/testapi-ui && \
+RUN git init $HOME/testapi && \
+    (cd $HOME/testapi && \
+        git fetch --tags https://gerrit.opnfv.org/gerrit/dovetail-webportal $BRANCH && \
+        git checkout FETCH_HEAD) && \
+    cd $HOME/testapi/3rd_party/static/$GUI && \
     npm install && \
-    mkdir /www && \
-    cp -r $HOME/testapi/3rd_party/static /www/
+    mkdir -p /www/static && \
+    cp -r $HOME/testapi/3rd_party/static/$GUI /www/static
 
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
-ADD nginx/sites-available/default /etc/nginx/sites-available/default
+ADD nginx/sites-available/default-$CONTAINER /etc/nginx/sites-available/default
 ADD supervisor/conf.d/nginx.conf /etc/supervisor/conf.d/nginx.conf
 ADD start-nginx.sh $HOME/start-nginx.sh
 

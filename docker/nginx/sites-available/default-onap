@@ -1,5 +1,5 @@
-upstream cvpapi {
-    server cvpapi:8010;
+upstream lfnapi {
+    server lfnapi:8010;
 }
 
 server {
@@ -11,7 +11,7 @@ server {
 
     server_name localhost;
 
-    location ~* /testapi-ui/ {
+    location ~* /onap-ui/ {
         root /www/static;
         expires 1d;
     }
@@ -38,56 +38,56 @@ server {
     }
 
     location /api/v1/cvp {
-        proxy_pass http://cvpapi/api/v1/cvp;
+        proxy_pass http://lfnapi/api/v1/cvp;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
     }
 
     location /api/v1/auth {
-        proxy_pass http://cvpapi/api/v1/auth;
+        proxy_pass http://lfnapi/api/v1/auth;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
     }
 
     location /api/v1/profile {
-        proxy_pass http://cvpapi/api/v1/profile;
+        proxy_pass http://lfnapi/api/v1/profile;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
     }
 
     location /api/v1/test {
-        proxy_pass http://cvpapi/api/v1/test;
+        proxy_pass http://lfnapi/api/v1/test;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
     }
 
     location = /api/v1/results {
-        proxy_pass http://cvpapi/api/v1/results;
+        proxy_pass http://lfnapi/api/v1/results;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
     }
 
     location ~* /api/v1/results/([a-zA-Z0-9]+) {
         client_max_body_size 20m;
-        proxy_pass http://cvpapi/api/v1/results/$1;
+        proxy_pass http://lfnapi/api/v1/results/$1;
         proxy_set_header X-Real_IP $remote_addr;
         proxy_set_header Host $host;
     }
 
     location ~* /api/v1/suts/hardware/([a-zA-Z0-9\-]+) {
-        proxy_pass http://cvpapi/api/v1/suts/hardware/$1;
+        proxy_pass http://lfnapi/api/v1/suts/hardware/$1;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
     }
 
     location /api/v1/ {
-        proxy_pass http://cvpapi/api/v1/;
+        proxy_pass http://lfnapi/api/v1/;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
     }
 
     location / {
-        root /www/static/testapi-ui;
+        root /www/static/onap-ui;
         expires 1d;
     }
 
