@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a622d24_1feff9b1",
+        "filename": "3rd_party/static/onap-ui/components/guidelines/data/danube.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-12-06T03:48:30Z",
+      "side": 1,
+      "message": "Is this file still be used?",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "4798fa635a3bc4f04b391be08161c1a571d27cfc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_3ff2b59a",
+        "filename": "3rd_party/static/onap-ui/components/guidelines/data/gen.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-12-06T03:48:30Z",
+      "side": 1,
+      "message": "not sure if this gen.py script still be called somewhere.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 12
+      },
+      "revId": "4798fa635a3bc4f04b391be08161c1a571d27cfc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_dff46189",
+        "filename": "3rd_party/static/onap-ui/components/guidelines/data/mandatory.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-12-06T03:48:30Z",
+      "side": 1,
+      "message": "Is this file still necessary?\nThere are ovp.2018.01/testcases.json and ovp.2018.09/testcases.json.",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 51
+      },
+      "revId": "4798fa635a3bc4f04b391be08161c1a571d27cfc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_fff79d8a",
+        "filename": "3rd_party/static/onap-ui/shared/footer/footer.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-12-06T03:48:30Z",
+      "side": 1,
+      "message": "Seems this version hasn\u0027t been updated for a long time.",
+      "range": {
+        "startLine": 2,
+        "startChar": 21,
+        "endLine": 2,
+        "endChar": 43
+      },
+      "revId": "4798fa635a3bc4f04b391be08161c1a571d27cfc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
