@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a622d24_715581c5",
+        "filename": "3rd_party/static/onap-ui/assets/css/cvp-style.css",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2018-12-10T14:52:44Z",
+      "side": 1,
+      "message": "this is not a good solution. Try to find where the button exists inside html. Then add to it another class. Then, apply these rules to that class.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "f041293d930dab697c54c677a24e60e4903ea403",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
