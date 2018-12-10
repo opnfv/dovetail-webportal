@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a622d24_ce403459",
+        "filename": "docker/Dockerfile.web",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-12-10T03:34:45Z",
+      "side": 1,
+      "message": "Don\u0027t we need to create 2 other dockerfile for onap and lfn?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "92da25fd50b4b4d2b91b5a102f27fd46e69ee95e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_ae31780d",
+        "filename": "docker/config.env.sample",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-12-10T03:34:45Z",
+      "side": 1,
+      "message": "Is it possible to change \u0027cvpapi\u0027 to something else? It seems that the api is not only for ovp (ovp was used to be called as cvp). Could we call it lfnapi or something else?",
+      "range": {
+        "startLine": 3,
+        "startChar": 12,
+        "endLine": 3,
+        "endChar": 18
+      },
+      "revId": "92da25fd50b4b4d2b91b5a102f27fd46e69ee95e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_8e363c02",
+        "filename": "docker/docker-compose.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-12-10T03:34:45Z",
+      "side": 1,
+      "message": "Suggest to change all the \u0027cvp\u0027 here to \u0027lfn\u0027 or \u0027cvc\u0027 or something else that are proper.",
+      "range": {
+        "startLine": 6,
+        "startChar": 24,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "92da25fd50b4b4d2b91b5a102f27fd46e69ee95e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_ee3b70e9",
+        "filename": "docker/docker-compose.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-12-10T03:34:45Z",
+      "side": 1,
+      "message": "If we decide to put the 2 new docker images into these 2 docker repos, then need to send email to OPNFV helpdesk to ask help to create another 2 docker repo (opnfv/dovetail-webportal-web-onap and opnfv/dovetail-webportal-web-lfn) within opnfv dockerhub. Also need to add 2 docker build CI jobs on OPNFV jenkins.\nI will do that after we achieve the agreement.\nComment here to let you know more details about the web portal.",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "92da25fd50b4b4d2b91b5a102f27fd46e69ee95e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
