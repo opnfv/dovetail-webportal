@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1a622d24_82528d11",
+        "filename": "docker/Dockerfile.web",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2018-12-13T03:16:29Z",
+      "side": 1,
+      "message": "The OPNFV docker build CI jobs don\u0027t accept these args now. See https://github.com/opnfv/releng/blob/master/jjb/releng/opnfv-docker.sh#L137\nIf we decide this solution for building these 3 images, then we need to update releng scripts.",
+      "parentUuid": "1a622d24_a72cfb4b",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "92da25fd50b4b4d2b91b5a102f27fd46e69ee95e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a622d24_ae31780d",
         "filename": "docker/config.env.sample",
         "patchSetId": 3
