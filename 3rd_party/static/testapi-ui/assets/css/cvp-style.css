@@ -2,6 +2,15 @@
   font-size: 18px;
 }
 
+.nav>li>a:hover,
+.nav>li>a:focus,
+.nav>li.active,
+.nav>li.active>a {
+  background-color: #27CFC3;
+  color: #1C1C1C;
+}
+
+
 table {
   font-size: 15px;
 }
@@ -95,4 +104,23 @@ table .btn.medium {
 
 a {
   cursor: pointer;
+}
+
+.btn-success-cust {
+color: #fff;
+background-color: #27CFC3;
+border-color: #27CFC3;
+}
+
+.btn-success-cust:focus, .btn-success-cust:hover {
+border-color: #1FA79C;
+background-color: #1FA79C;
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 2px solid black;
 }

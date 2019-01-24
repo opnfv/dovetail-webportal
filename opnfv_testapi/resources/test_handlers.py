@@ -294,11 +294,6 @@ class TestsGURHandler(GenericTestHandler):
                     self.finish_request({'code': 403, 'msg': msg})
                     return
 
-                if not self.is_onap and not test['sut_label']:
-                    msg = 'Please fill out SUT version before submission'
-                    self.finish_request({'code': 403, 'msg': msg})
-                    return
-
                 query['owner'] = curr_user
                 db_keys.append('owner')
 

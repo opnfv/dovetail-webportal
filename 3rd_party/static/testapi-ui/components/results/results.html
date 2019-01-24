@@ -7,11 +7,11 @@
          uib-tooltip="results file is logs.xxx.tar.gz under your dovetail installation path"></i>
     </h4>
     <div class="form-group col-m-3">
-      <input class="form-contrl btn btn-success cvp-btn medium accent-color regular-button" type="file"
+      <input class="form-contrl btn btn-success-cust cvp-btn medium accent-color regular-button" type="file"
              file-model="resultFile">
     </div>
     <div class="form-group col-m-3">
-      <a class="btn btn-success cvp-btn medium accent-color regular-button" ng-click="ctrl.uploadFile()">
+      <a class="btn btn-success-cust cvp-btn medium accent-color regular-button" ng-click="ctrl.uploadFile()">
         <span>upload result</span>
       </a>
     </div>
@@ -36,7 +36,8 @@
           <th>Status</th>
           <th>Log</th>
           <th>SUT</th>
-          <th>SUT Version</th>
+          <th>Application</th>
+          <th>Review Status</th>
           <th class="col-md-2">Operation</th>
           <th class="col-md-2">Share List</th>
         </tr>
@@ -62,43 +63,52 @@
           <td><a ng-click="ctrl.downloadLogs(result.id)">logs</a></td>
           <td><a ng-click="ctrl.gotoSUT(result.id)">info</a></td>
           <td>
-            <div class="popover-wrapper">
-              <a editable-theme="bs3" onbeforesave="ctrl.changeLabel(result, 'sut_label', $data)"
-                 editable-text="result.sut_label">{{ result.sut_label || "None" }}</a>
-            </div>
+            <a ng-if="result.status !='private'" ng-click="ctrl.openApplicationView(result)">View Application</a>
+            <div ng-if="result.status == 'private'">Not created</div>
+          </td>
+          <td><a ng-if="result.status !='private'" ng-click="ctrl.openReviewsModal(result.id)">View Reviews</a>
+            <div ng-if="result.status == 'private'"></div>
           </td>
           <td>
             <div class="btn-group" uib-dropdown>
-              <a id="single-button" type="button" class="btn btn-success cvp-btn medium accent-color regular-button"
+              <a id="single-button" type="button" class="btn btn-success-cust cvp-btn medium accent-color regular-button"
                  uib-dropdown-toggle>
                 Operation<span class="caret"></span>
               </a>
               <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                <li role="menuitem" ng-if="auth.currentUser.openid == result.owner"
+                <li role="menuitem" ng-if="auth.currentUser.openid == result.owner && ctrl.isUserResults"
                     class="menu-item menu-item-type-post_type menu-item-object-page">
-                  <a ng-class="{'hide': result.status == 'private'}"
-                     ng-click="ctrl.toPrivate(result, 'private')">withdraw submit</a>
+                  <a ng-class="{'hide': result.status != 'review'}"
+                     ng-click="ctrl.deleteApplication(result)">withdraw submit</a>
                 </li>
-                <li role="menuitem" ng-if="auth.currentUser.openid == result.owner"
+                <li role="menuitem" ng-if="auth.currentUser.openid == result.owner && ctrl.isUserResults"
                     class="menu-item menu-item-type-post_type menu-item-object-page">
                   <a ng-class="{'hide': result.status != 'private'}"
-                     ng-click="ctrl.toReview(result, 'review')">submit to review</a>
+                     ng-click="ctrl.openApplicationModal(result)">submit to review</a>
                 </li>
-                <li role="menuitem" ng-if="auth.currentUser.role.indexOf('administrator') != -1"
+                <li role="menuitem"
+                    ng-if="auth.currentUser.role.indexOf('reviewer') != -1 && !ctrl.isUserResults"
                     class="menu-item menu-item-type-post_type menu-item-object-page">
-                  <a ng-class="{'hide': result.status == 'approved' || result.status == 'private'}"
-                     ng-click="ctrl.toggleCheck(result, 'status', 'approved')">approve</a>
+                  <a ng-class="{'hide': (result.voted == 'true') || (result.status != 'review')}"
+                     ng-click="ctrl.toApprove(result)">approve</a>
                 </li>
-                <li role="menuitem" ng-if="auth.currentUser.role.indexOf('administrator') != -1"
+                <li role="menuitem"
+                    ng-if="auth.currentUser.role.indexOf('reviewer') != -1 && !ctrl.isUserResults"
                     class="menu-item menu-item-type-post_type menu-item-object-page">
-                  <a ng-class="{'hide': result.status == 'not approved' || result.status == 'private'}"
-                     ng-click="ctrl.toggleCheck(result, 'status', 'not approved')">not approve</a>
+                  <a ng-class="{'hide': (result.voted == 'true') || (result.status != 'review')}"
+                     ng-click="ctrl.toDisapprove(result)">not approve</a>
                 </li>
-                <li role="menuitem" ng-if="auth.currentUser.openid == result.owner"
+                <li role="menuitem"
+                    ng-if="auth.currentUser.role.indexOf('reviewer') != -1 && !ctrl.isUserResults"
+                    class="menu-item menu-item-type-post_type menu-item-object-page">
+                  <a ng-class="{'hide': (result.voted == 'false') || (result.status != 'review')}"
+                     ng-click="ctrl.toUndo(result)">undo</a>
+                </li>
+                <li role="menuitem" ng-if="auth.currentUser.openid == result.owner && ctrl.isUserResults"
                     class="menu-item menu-item-type-post_type menu-item-object-page">
                   <a ng-click="ctrl.openSharedModal(result)">share with</a>
                 </li>
-                <li role="menuitem" ng-if="auth.currentUser.openid == result.owner"
+                <li role="menuitem" ng-if="auth.currentUser.openid == result.owner && ctrl.isUserResults"
                     class="menu-item menu-item-type-post_type menu-item-object-page">
                   <a ng-click="ctrl.deleteTest(result._id)">delete</a>
                 </li>
@@ -108,7 +118,7 @@
           <td>
             <div class="btn-group" uib-dropdown>
               <a id="single-button-two" type="button"
-                 class="btn btn-success cvp-btn medium accent-color regular-button" style="width: 130px;"
+                 class="btn btn-success-cust cvp-btn medium accent-color regular-button" style="width: 130px;"
                  uib-dropdown-toggle>
                 Share List<span class="caret"></span>
               </a>
