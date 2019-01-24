@@ -55,11 +55,11 @@
                 templateUrl: 'testapi-ui/components/guidelines/guidelines.html',
                 controller: 'GuidelinesController as ctrl'
             }).
-            // state('communityResults', {
-            //     url: '/community_results',
-            //     templateUrl: 'testapi-ui/components/results/results.html',
-            //     controller: 'ResultsController as ctrl'
-            // }).
+            state('communityResults', {
+                url: '/community_results',
+                templateUrl: 'testapi-ui/components/results/results.html',
+                controller: 'ResultsController as ctrl'
+            }).
             state('userResults', {
                 url: '/user_results',
                 templateUrl: 'testapi-ui/components/results/results.html',
@@ -173,11 +173,25 @@
         $rootScope.auth.doSignIn = doSignIn;
         $rootScope.auth.doSignOut = doSignOut;
         $rootScope.auth.doSignCheck = doSignCheck;
+        $rootScope.auth.canReview = canReview;
 
 
         var sign_in_url = testapiApiUrl + '/auth/signin';
         var sign_out_url = testapiApiUrl + '/auth/signout';
         var profile_url = testapiApiUrl + '/profile';
+
+        function canReview(user) {
+            if (typeof user.role == undefined) {
+                return false;
+            } else if (user.role.indexOf('administrator') != -1) {
+                return true;
+            } else if (user.role.indexOf('reviewer') != -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
 
         /** This function initiates a sign in. */
         function doSignIn(type) {

@@ -311,10 +311,10 @@ class TestsGURHandler(GenericTestHandler):
                 logging.debug('check review')
                 query['user_id'] = user
                 data = yield dbapi.db_find_one('applications', query)
-                if not data:
-                    logging.debug('not found')
+                if data:
+                    logging.debug('results are bound to an application')
                     raise gen.Return((False, message.no_auth()))
-            if value == "approve" or value == "not approved":
+            if value == "approved" or value == "not approved":
                 logging.debug('check approve')
                 query['role'] = {"$regex": ".*reviewer.*"}
                 query['openid'] = user
