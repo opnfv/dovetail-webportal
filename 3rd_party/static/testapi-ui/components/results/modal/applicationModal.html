@@ -1,0 +1,221 @@
+<div class="container-fluid common-main-container">
+  <div class="top-site-banner">
+    <div class="container">
+      <p class="p1">Complete this application then start your CVP journey</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-lg-12 container">
+      <p class="message" style="display: none;"></p>
+      <fieldset>
+          <div class="field text col-md-4">
+            <label class="left" >Organization name</label>
+            <i uib-tooltip="Organization name" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.organization_name"
+                     ng-init="ctrl.organization_name=auth.currentUser.companyName" required="required"
+                     aria-required="true">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Company Logo</label>
+            <i uib-tooltip="Required dimensions (Max Values): {width: 165pixels, height: 40pixels}" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input class="form-control btn btn-success-cust cvp-btn medium accent-color regular-button"
+                     modal-file-model="logoFile" type="file" style="padding: 0;" required>
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Organization website (if public)</label>
+            <i uib-tooltip="Organization website if it is public"
+               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.organization_web"
+                     ng-init="ctrl.organization_web=auth.currentUser.companyWebsite" required="required"
+                     aria-required="true">
+            </div>
+          </div>
+          <!--<div class="col-md-4"></div>-->
+          <div class="field text col-md-4">
+            <label class="left">Product name and/or identifier</label>
+            <i uib-tooltip="Product name and/or identifier" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="email text form-control" ng-model="ctrl.product_name" required="required"
+                     aria-required="true">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Product specifications</label>
+            <i uib-tooltip="A link of product specifications"
+               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.product_spec" required="required"
+                     aria-required="true">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Product public documentation</label>
+            <i uib-tooltip="A link of product public documentation"
+               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.product_documentation" required="required"
+                     aria-required="true">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Product categories</label>
+            <i uib-tooltip="Product categories" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <select class="form-control" ng-model="ctrl.product_categories" ng-init="ctrl.product_categories='soft&hard'">
+                <option value="soft&hard">software and hardware</option>
+                <option value="soft&3rd">software and third party hardware</option>
+              </select>
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Primary contact name</label>
+            <i uib-tooltip="Primary contact name" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.prim_name"
+                     ng-init="ctrl.prim_name=auth.currentUser.primaryContactName" required="required"
+                     aria-required="true">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Primary business email</label>
+            <i uib-tooltip="Only the Business email address should be used for official communication with OPNFV CVP"
+               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.prim_email"
+                     ng-init="ctrl.prim_email=auth.currentUser.primaryBusinessEmail" required="required"
+                     aria-required="true">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Primary postal address</label>
+            <i uib-tooltip="Primary postal address" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.prim_address"
+                     ng-init="ctrl.prim_address=auth.currentUser.primaryPostalAddress" required="required"
+                     aria-required="true">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Primary phone number</label>
+            <i uib-tooltip="Primary phone number" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.prim_phone"
+                     ng-init="ctrl.prim_phone=auth.currentUser.primaryPhoneNumber" required="required"
+                     aria-required="true">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Description</label>
+            <i uib-tooltip="Product Description" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.description">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">SUT Version</label>
+            <i uib-tooltip="SUT Version" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.sut_version">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">SUT HW Version</label>
+            <i uib-tooltip="SUT HW Version - leave blank if not applicable"
+               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.sut_hw_version">
+            </div>
+          </div>
+          <!--<div class="field text col-md-4">-->
+            <!--<label class="left">OVP Version</label>-->
+            <!--<i uib-tooltip="OVP Version" class="glyphicon glyphicon-question-sign opnfv-blue"></i>-->
+            <!--<div class="middleColumn">-->
+              <!--<input type="text" class="text form-control" ng-model="ctrl.ovp_version">-->
+            <!--</div>-->
+          <!--</div>-->
+          <div class="field text col-md-4">
+            <label class="left">OVP Category</label>
+            <i uib-tooltip="OVP Category" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.ovp_category">
+            </div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Company Logo</label>
+            <i uib-tooltip="Company Logo" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <input type="text" class="text form-control" ng-model="ctrl.company_logo">
+            </div>
+          </div>
+          <!--<div class="field text col-md-4">-->
+            <!--<label class="left">Approve Date</label>-->
+            <!--<i uib-tooltip="Approve Date - YYYY-MM-DD" class="glyphicon glyphicon-question-sign opnfv-blue"></i>-->
+            <!--<div class="middleColumn">-->
+              <!--<input type="text" class="text form-control" ng-model="ctrl.approve_date">-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="field text col-md-4">-->
+            <!--<label class="left">Approved</label>-->
+            <!--<i uib-tooltip="Approved - insert true or false" class="glyphicon glyphicon-question-sign opnfv-blue"></i>-->
+            <!--<div class="middleColumn">-->
+              <!--<input type="text" class="text form-control" ng-model="ctrl.approved">-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="field text col-md-4">-->
+            <!--<label class="left">Test ID</label>-->
+            <!--<i uib-tooltip="Test ID - enter approved test_id"-->
+               <!--class="glyphicon glyphicon-question-sign opnfv-blue"></i>-->
+            <!--<div class="middleColumn">-->
+              <!--<input type="text" class="text form-control" ng-model="ctrl.test_id">-->
+            <!--</div>-->
+          <!--</div>-->
+          <div class="field text col-md-4">
+            <label class="left">Location</label>
+            <i uib-tooltip="Location" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+            <div class="middleColumn">
+              <select class="form-control" ng-model="ctrl.lab_location" ng-init="ctrl.lab_location='internal'">
+                <option value="internal">internal vendor lab</option>
+                <option value="third">third-party lab</option>
+              </select>
+            </div>
+          </div>
+          <div ng-if="ctrl.lab_location=='third'" class="field text">
+            <div class="field text col-md-4">
+              <label class="left">Lab Name</label>
+              <i uib-tooltip="Lab Name" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+              <input type="text" class="text form-control" ng-model="ctrl.lab_name">
+            </div>
+            <div class="field text col-md-4">
+              <label class="left">Lab Email</label>
+              <i uib-tooltip="Lab Email" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+              <input type="text" class="text form-control" ng-model="ctrl.lab_email">
+            </div>
+            <div class="field text col-md-4">
+              <label class="left">Lab Address</label>
+              <i uib-tooltip="Lab Address" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+              <input type="text" class="text form-control" ng-model="ctrl.lab_address">
+            </div>
+            <div class="field text col-md-4">
+              <label class="left">Lab Phone Number</label>
+              <i uib-tooltip="Lab Phone Number" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
+              <input type="text" class="text form-control" ng-model="ctrl.lab_phone">
+            </div>
+          </div>
+      </fieldset>
+    </div>
+  </div>
+  <button class="btn btn-default"
+          ng-click="ctrl.openConfirmModal(ctrl.tempResult)">Submit</button>
+</div>
+
+<style type="text/css">
+  .ngdialog.custom-background .ngdialog-content {
+    background: #ffffff;
+  }
+</style>

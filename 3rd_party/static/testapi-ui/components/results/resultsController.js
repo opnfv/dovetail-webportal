@@ -37,6 +37,24 @@
             };
          }]);
 
+    angular
+        .module('testapiApp')
+        .directive('modalFileModel', ['$parse', function ($parse) {
+            return {
+               restrict: 'A',
+               link: function(scope, element, attrs) {
+                  var model = $parse(attrs.modalFileModel);
+                  var modelSetter = model.assign;
+
+                  element.bind('change', function(){
+                     scope.$apply(function(){
+                        modelSetter(scope.$parent, element[0].files[0]);
+                     });
+                  });
+               }
+            };
+         }]);
+
     ResultsController.$inject = [
         '$scope', '$http', '$filter', '$state', 'testapiApiUrl','raiseAlert', 'ngDialog', '$resource'
     ];
@@ -70,6 +88,14 @@
         ctrl.openSharedModal = openSharedModal;
         ctrl.downloadLogs = downloadLogs;
         ctrl.deleteTest = deleteTest;
+        ctrl.deleteApplication = deleteApplication;
+        ctrl.openApplicationModal = openApplicationModal;
+        ctrl.toApprove = toApprove;
+        ctrl.toDisapprove = toDisapprove;
+        ctrl.toUndo = toUndo;
+        ctrl.openConfirmModal = openConfirmModal;
+        ctrl.openApplicationView = openApplicationView;
+        ctrl.submitApplication = submitApplication;
 
         /** Mappings of Interop WG components to marketing program names. */
         ctrl.targetMappings = {
@@ -110,8 +136,15 @@
         // ctrl.isUserResults = $state.current.name === 'userResults';
         // need auth to browse
         ctrl.isUserResults = $state.current.name === 'userResults';
+        ctrl.isReviewer = $scope.auth.currentUser.role.indexOf('reviewer') != -1;
+        ctrl.isAdministrator = $scope.auth.currentUser.role.indexOf('administrator') != -1;
 
         ctrl.currentUser = $scope.auth.currentUser ? $scope.auth.currentUser.openid : null;
+
+        // Should only be on user-results-page if authenticated.
+        if (!$scope.auth.isAuthenticated) {
+            $state.go('home');
+        }
 
         // Should only be on user-results-page if authenticated.
         if (ctrl.isUserResults && !$scope.auth.isAuthenticated) {
@@ -165,6 +198,167 @@
                   });
                 });
             });
+        }
+
+        function deleteApplication (result) {
+            var resp = confirm('Are you sure you want to delete this application?');
+            if (!resp)
+                return;
+
+            $http.get(testapiApiUrl + "/cvp/applications?test_id=" + result.id).then(function(response) {
+                    ctrl.application = response.data.applications[0];
+                    var app_id = ctrl.application._id;
+                    var delUrl = testapiApiUrl + "/cvp/applications/" + app_id;
+                    $http.delete(delUrl)
+                        .then(function(ret) {
+                        if (ret.data.code && ret.data.code != 0) {
+                            alert(ret.data.msg);
+                            return;
+                        }
+                        result['status'] = 'private';
+                    });
+
+                }, function(error) {
+                    /* do nothing */
+                });
+
+        }
+
+        function submitApplication(result) {
+            var file = $scope.logoFile;
+            var logo_name = null;
+            if (typeof file !== 'undefined') {
+                var fd = new FormData();
+                fd.append('file', file);
+                fd.append('company_name', ctrl.company_name)
+
+                $http.post(testapiApiUrl + "/cvp/applications/uploadlogo", fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                }).then(function(resp) {
+                    if (resp.data.code && resp.data.code != 0) {
+                        alert(resp.data.msg);
+                        return;
+                    } else {
+                        logo_name = resp.data.filename;
+                        var data = {
+                            "organization_name": ctrl.organization_name,
+                            "organization_web": ctrl.organization_web,
+                            "product_name": ctrl.product_name,
+                            "product_spec": ctrl.product_spec,
+                            "product_documentation": ctrl.product_documentation,
+                            "product_categories": ctrl.product_categories,
+                            "prim_name": ctrl.prim_name,
+                            "prim_email": ctrl.prim_email,
+                            "prim_address": ctrl.prim_address,
+                            "prim_phone": ctrl.prim_phone,
+                            "description": ctrl.description,
+                            "sut_version": ctrl.sut_version,
+                            "sut_hw_version": ctrl.sut_hw_version,
+                            "ovp_version": result.version,
+                            "ovp_category": ctrl.ovp_category,
+                            "company_logo": logo_name,
+                            "approve_date": "",
+                            "approved": "false",
+                            "test_id": result.id,
+                            "lab_location": ctrl.lab_location,
+                            "lab_email": ctrl.lab_email,
+                            "lab_address": ctrl.lab_address,
+                            "lab_phone": ctrl.lab_phone
+                        };
+
+                        $http.post(testapiApiUrl + "/cvp/applications", data).then(function(resp) {
+                            if (resp.data.code && resp.data.code != 0) {
+                                alert(resp.data.msg);
+                                return;
+                            }
+                            toggleCheck(result, 'status', 'review');
+                        }, function(error) {
+                            /* do nothing */
+                        });
+                    }
+                }, function(error) {
+                    /* do nothing */
+                });
+                logo_name = file.name;
+            }
+            ngDialog.close();
+        }
+
+        function openConfirmModal(result) {
+            var resp = confirm("Are you sure to submit?");
+            if (resp) {
+                ctrl.submitApplication(result);
+            }
+        }
+
+        function openApplicationModal(result) {
+            ctrl.tempResult = result;
+                ngDialog.open({
+                    preCloseCallback: function(value) {
+                    },
+                    template: 'testapi-ui/components/results/modal/applicationModal.html',
+                    scope: $scope,
+                    className: 'ngdialog-theme-default custom-background',
+                    width: 950,
+                    showClose: true,
+                    closeByDocument: true
+                });
+        }
+
+        function openApplicationView(result) {
+           $http.get(testapiApiUrl + "/cvp/applications?test_id=" + result.id).then(function(response) {
+                    ctrl.application = response.data.applications[0];
+                }, function(error) {
+                    /* do nothing */
+                });
+
+            ctrl.tempResult = result;
+                ngDialog.open({
+                    preCloseCallback: function(value) {
+                    },
+                    template: 'testapi-ui/components/results/modal/applicationView.html',
+                    scope: $scope,
+                    className: 'ngdialog-theme-default custom-background',
+                    width: 950,
+                    showClose: true,
+                    closeByDocument: true
+                });
+        }
+
+        function toApprove(test) {
+            var resp = confirm('Once you approve a test result, your action will become visible. Do you want to proceed?');
+            if (resp) {
+                doReview(test, 'positive');
+            }
+        }
+
+        function toDisapprove(test) {
+            var resp = confirm('Once you disapprove a test result, your action will become visible. Do you want to proceed?');
+            if (resp) {
+                doReview(test, 'negative');
+            }
+        }
+
+        function toUndo(test) {
+            var resp = confirm('Once you undo your previous vote, your action will become visible. Do you want to proceed?');
+            if (resp) {
+                doReview(test, null);
+            }
+        }
+
+        function toReview(result, value){
+            var resp = confirm('Once you submit a test result for review, it will become readable to all OVP reviewers. Do you want to proceed?');
+            if(resp){
+                toggleCheck(result, 'status', value);
+            }
+        }
+
+        function toPrivate(result, value){
+            var resp = confirm('Do you want to proceed?');
+            if(resp){
+                toggleCheck(result, 'status', value);
+            }
         }
 
         function toggleCheck(result, item, newValue) {
@@ -291,20 +485,27 @@
         function update() {
             ctrl.showError = false;
             // Construct the API URL based on user-specified filters.
-            var content_url = testapiApiUrl + '/tests' +
-                '?page=' + ctrl.currentPage;
+            var content_url = testapiApiUrl + '/tests';
+//            var content_url = testapiApiUrl + '/tests' +
+//                '?page=' + ctrl.currentPage;
             var start = $filter('date')(ctrl.startDate, 'yyyy-MM-dd');
+            var end = $filter('date')(ctrl.endDate, 'yyyy-MM-dd');
+            content_url += '?page=' + ctrl.currentPage;
+            content_url += '&per_page=' + ctrl.itemsPerPage;
             if (start) {
                 content_url =
                     content_url + '&from=' + start + ' 00:00:00';
             }
-            var end = $filter('date')(ctrl.endDate, 'yyyy-MM-dd');
             if (end) {
                 content_url = content_url + '&to=' + end + ' 23:59:59';
             }
             if (ctrl.isUserResults) {
-                content_url = content_url + '&signed'+'&per_page='+ ctrl.itemsPerPage;
+//                content_url = content_url + '&signed'+'&per_page='+ ctrl.itemsPerPage;
+                content_url += '&signed';
+            } else {
+                content_url += '&status={"$ne":"private"}&review';
             }
+
             ctrl.resultsRequest =
                 $http.get(content_url).success(function (data) {
                     ctrl.data = data;
