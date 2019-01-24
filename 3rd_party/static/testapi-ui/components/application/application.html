@@ -1,207 +1,4 @@
 <div class="container-fluid common-main-container">
-  <div class="top-site-banner">
-    <div class="container">
-      <p class="p1">Complete this application then start your CVP journey</p>
-    </div>
-  </div>
-
-  <div class="row" style="margin-top: 20px;">
-    <div class="col-lg-12 container">
-      <form id="OsLogoProgramForm_Form" action="/brand/logo-request/Form" method="post"
-            enctype="application/x-www-form-urlencoded">
-        <p id="OsLogoProgramForm_Form_error" class="message" style="display: none;"></p>
-        <fieldset>
-          <div class="field text col-md-4">
-            <label class="left" >Organization name</label>
-            <i uib-tooltip="Organization name" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.organization_name" required="required"
-                     aria-required="true">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Organization website (if public)</label>
-            <i uib-tooltip="Organization website if it is public"
-               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.organization_web" required="required"
-                     aria-required="true">
-            </div>
-          </div>
-          <div class="col-md-4"></div>
-          <div class="field email text col-md-4">
-            <label class="left">Product name and/or identifier</label>
-            <i uib-tooltip="Product name and/or identifier" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="email text form-control" ng-model="ctrl.product_name" required="required"
-                     aria-required="true">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Product specifications</label>
-            <i uib-tooltip="A link of product specifications"
-               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.product_spec" required="required"
-                     aria-required="true">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Product public documentation</label>
-            <i uib-tooltip="A link of product public documentation"
-               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.product_documentation" required="required"
-                     aria-required="true">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Product categories</label>
-            <i uib-tooltip="Product categories" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <select class="form-control" ng-model="ctrl.product_categories">
-                <option value="soft&hard">software and hardware</option>
-                <option value="soft&3rd">software and third party hardware</option>
-              </select>
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Primary contact name</label>
-            <i uib-tooltip="Primary contact name" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.prim_name" required="required"
-                     aria-required="true">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Primary business email</label>
-            <i uib-tooltip="Only the Business email address should be used for official communication with OPNFV CVP"
-               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.prim_email" required="required"
-                     aria-required="true">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Primary postal address</label>
-            <i uib-tooltip="Primary postal address" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.prim_address" required="required"
-                     aria-required="true">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Primary phone number</label>
-            <i uib-tooltip="Primary phone number" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.prim_phone" required="required"
-                     aria-required="true">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Description</label>
-            <i uib-tooltip="Product Description" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.description">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">SUT Version</label>
-            <i uib-tooltip="SUT Version" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.sut_version">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">SUT HW Version</label>
-            <i uib-tooltip="SUT HW Version - leave blank if not applicable"
-               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.sut_hw_version">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">OVP Version</label>
-            <i uib-tooltip="OVP Version" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.ovp_version">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">OVP Category</label>
-            <i uib-tooltip="OVP Category" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.ovp_category">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Company Logo</label>
-            <i uib-tooltip="Company Logo" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.company_logo">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Approve Date</label>
-            <i uib-tooltip="Approve Date - YYYY-MM-DD" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.approve_date">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Approved</label>
-            <i uib-tooltip="Approved - insert true or false" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.approved">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Test ID</label>
-            <i uib-tooltip="Test ID - enter approved test_id"
-               class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <input type="text" class="text form-control" ng-model="ctrl.test_id">
-            </div>
-          </div>
-          <div class="field text col-md-4">
-            <label class="left">Location</label>
-            <i uib-tooltip="Location" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-            <div class="middleColumn">
-              <select class="form-control" ng-model="ctrl.lab_location">
-                <option value="internal">internal vendor lab</option>
-                <option value="third">third-party lab</option>
-              </select>
-            </div>
-          </div>
-          <div ng-if="ctrl.lab_location=='third'" class="field text">
-            <div class="field text col-md-4">
-              <label class="left">Lab Name</label>
-              <i uib-tooltip="Lab Name" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-              <input type="text" class="text form-control" ng-model="ctrl.lab_name">
-            </div>
-            <div class="field text col-md-4">
-              <label class="left">Lab Email</label>
-              <i uib-tooltip="Lab Email" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-              <input type="text" class="text form-control" ng-model="ctrl.lab_email">
-            </div>
-            <div class="field text col-md-4">
-              <label class="left">Lab Address</label>
-              <i uib-tooltip="Lab Address" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-              <input type="text" class="text form-control" ng-model="ctrl.lab_address">
-            </div>
-            <div class="field text col-md-4">
-              <label class="left">Lab Phone Number</label>
-              <i uib-tooltip="Lab Phone Number" class="glyphicon glyphicon-question-sign opnfv-blue"></i>
-              <input type="text" class="text form-control" ng-model="ctrl.lab_phone">
-            </div>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-  </div>
-  <div class="Actions">
-    <button class="btn btn-success cvp-btn" ng-click="ctrl.openConfirmModal()">Submit</button>
-  </div>
   <div class="results-table" style="margin-top: 30px; overflow: scroll;">
     <table class="table table-striped table-hover">
       <thead>
@@ -217,7 +14,7 @@
           <th>Primary business email</th>
           <th>Primary postal address</th>
           <th>Primary phone number</th>
-          <th>Owner</th>
+          <th>User ID</th>
           <th>Description</th>
           <th>SUT version</th>
           <th>SUT HW version</th>
@@ -225,7 +22,6 @@
           <th>OVP category</th>
           <th>Company logo</th>
           <th>Approve date</th>
-          <th>Approved</th>
           <th>Test ID</th>
           <th>Location</th>
           <th>Operation</th>
@@ -284,7 +80,6 @@
           <td>{{ app.ovp_category }}</td>
           <td>{{ app.company_logo }}</td>
           <td>{{ app.approve_date }}</td>
-          <td>{{ app.approved }}</td>
           <td>{{ app.test_id }}</td>
           <td>
             <span popover-enable="app.lab_location != 'internal'" uib-popover-template="ctrl.lab_tpl"
@@ -293,7 +88,13 @@
             <i ng-if="app.lab_location != 'internal'" class="glyphicon glyphicon-info-sign opnfv-blue"></i>
           </td>
           <td>
-            <a ng-click="ctrl.deleteApp(app._id)" class="badge badge-info">
+            <a ng-click="ctrl.toggleApproveApp(app._id, 'true')" class="badge badge-info"
+               ng-if="app.approved == 'false'"
+               data-toggle="tooltip" title="Approve Application">
+              <i class="glyphicon glyphicon-ok" ></i>
+            </a>
+            <a ng-click="ctrl.deleteApp(app._id)" class="badge badge-info"
+               data-toggle="tooltip" title="Delete Application">
               <i class="glyphicon glyphicon-remove" ></i>
             </a>
           </td>
@@ -314,21 +115,5 @@
           ng-change="ctrl.updatePage()">
       </uib-pagination>
     </div>
-  </div>
-
-  <div>
-    <br>
-    <h3>Company Logo Upload for Directory</h3>
-    <form enctype="multipart/form-data" method="post">
-      <div class="form-group col-m-3">
-        <input class="form-contrl btn btn-success cvp-btn medium accent-color regular-button" file-model="logoFile"
-               type="file">
-      </div>
-      <div class="form-group col-m-3">
-        <a class="btn btn-success cvp-btn medium accent-color regular-button" ng-click="ctrl.uploadLogo()">
-          <span>Upload Logo</span>
-        </a>
-      </div>
-    </form>
   </div>
 </div>

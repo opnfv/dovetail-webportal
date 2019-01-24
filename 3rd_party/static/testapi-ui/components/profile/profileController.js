@@ -51,10 +51,36 @@
         ctrl.updatePubKeys = updatePubKeys;
         ctrl.openImportPubKeyModal = openImportPubKeyModal;
         ctrl.openShowPubKeyModal = openShowPubKeyModal;
+        ctrl.changeProfileDetails = changeProfileDetails;
 
         // Must be authenticated to view this page.
         if (!$scope.auth.isAuthenticated) {
             $state.go('home');
+        }
+
+        ctrl.authRequest = $scope.auth.doSignCheck();
+        ctrl.profile = $scope.auth.currentUser;
+
+        function changeProfileDetails(profile, key, newValue){
+            if (profile[key] === newValue) {
+                return;
+            }
+            var updateUrl = testapiApiUrl + "/profile";
+
+            var data = {};
+            data[key] = newValue;
+
+            $http.put(updateUrl, JSON.stringify(data), {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': 'application/json'}}).then(function(ret) {
+                    if (ret.data.code && ret.data.code != 0) {
+                        alert(ret.data.msg);
+                    } else {
+                        profile[key] = newValue;
+                    }
+            }, function(error) {
+                alert("Error  when update data");
+            });
         }
 
         /**

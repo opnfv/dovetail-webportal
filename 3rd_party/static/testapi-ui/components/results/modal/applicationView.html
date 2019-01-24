@@ -1,0 +1,107 @@
+<div class="container-fluid common-main-container">
+  <div class="top-site-banner">
+    <div class="container">
+      <p class="p1">Application Details</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-lg-12 container">
+      <p class="message" style="display: none;"></p>
+      <fieldset>
+        <div class="field text col-md-4">
+          <label class="left">Organization name</label>
+          <div class="middleColumn">{{ ctrl.application.organization_name }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Company Logo</label>
+          <div class="middleColumn">{{ ctrl.application.company_logo }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Organization website</label>
+          <div class="middleColumn">{{ ctrl.application.organization_web }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Product name and/or identifier</label>
+          <div class="middleColumn">{{ ctrl.application.product_name }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Product specifications</label>
+          <div class="middleColumn">{{ ctrl.application.product_spec }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Product public documentation</label>
+          <div class="middleColumn">{{ ctrl.application.product_documentation }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Product categories</label>
+          <div class="middleColumn">{{ ctrl.application.product_categories }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary contact name</label>
+          <div class="middleColumn">{{ ctrl.application.prim_name }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary business email</label>
+          <div class="middleColumn">{{ ctrl.application.prim_email }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary postal address</label>
+          <div class="middleColumn">{{ ctrl.application.prim_address }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary phone number</label>
+          <div class="middleColumn">{{ ctrl.application.prim_phone }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Description</label>
+          <div class="middleColumn">{{ ctrl.application.description }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">SUT Version</label>
+          <div class="middleColumn">{{ ctrl.application.sut_version }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">SUT Label</label>
+          <div class="middleColumn">{{ ctrl.application.sut_label }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">SUT HW Version</label>
+          <div class="middleColumn">{{ ctrl.application.sut_hw_version }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">OVP Category</label>
+          <div class="middleColumn">{{ ctrl.application.ovp_category }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Location</label>
+          <div class="middleColumn">{{ ctrl.application.lab_location }}</div>
+        </div>
+        <div ng-if="ctrl.lab_location=='third'" class="field text">
+          <div class="field text col-md-4">
+            <label class="left">Lab Name</label>
+            <div>{{ ctrl.application.lab_name }}</div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Email</label>
+            <div>{{ ctrl.application.lab_email }}</div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Address</label>
+            <div>{{ ctrl.application.lab_address }}</div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Phone Number</label>
+            <div>{{ ctrl.application.lab_phone }}</div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .ngdialog.custom-background .ngdialog-content {
+    background: #ffffff;
+  }
+</style>
