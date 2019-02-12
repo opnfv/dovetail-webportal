@@ -3,7 +3,7 @@
     <button type="button" class="close" aria-hidden="true" ng-click="modal.close()">&times;</button>
     <h4>Test List ({{modal.testListCount}})</h4>
     <p>Use this test list with
-      <a title="testapi-client" target="_blank" href="https://github.com/openstack/testapi-client">testapi-client</a>
+      <a title="testapi-client" target="_blank" rel="noopener" href="https://github.com/openstack/testapi-client">testapi-client</a>
       to run only tests in the {{modal.version}} OpenStack Powered&#8482; guideline from capabilities with the
       following statuses:
     </p>
@@ -39,7 +39,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <a target="_blank" href="{{modal.testListUrl}}" download="{{modal.version + '-test-list.txt'}}">
+    <a target="_blank" rel="noopener" href="{{modal.testListUrl}}" download="{{modal.version + '-test-list.txt'}}">
       <button class="btn btn-primary" ng-if="modal.testListCount > 0" type="button">Download</button>
     </a>
     <button class="btn btn-primary" type="button" ng-click="modal.close()">Close</button>
