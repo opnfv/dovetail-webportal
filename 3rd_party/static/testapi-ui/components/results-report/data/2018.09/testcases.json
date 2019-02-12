@@ -54,8 +54,6 @@
                 "patrole_tempest_plugin.tests.api.network.test_floating_ips_rbac.FloatingIpsRbacTest.test_show_floating_ip", 
                 "patrole_tempest_plugin.tests.api.network.test_floating_ips_rbac.FloatingIpsRbacTest.test_update_floating_ip", 
                 "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network", 
-                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_provider_network_type", 
-                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_provider_segmentation_id", 
                 "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_router_external", 
                 "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_shared", 
                 "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_subnet", 
@@ -128,7 +126,7 @@
                 "patrole_tempest_plugin.tests.api.network.test_subnets_rbac.SubnetsRbacTest.test_show_subnet", 
                 "patrole_tempest_plugin.tests.api.network.test_subnets_rbac.SubnetsRbacTest.test_update_subnet"
             ], 
-            "total": 119
+            "total": 117
         }, 
         "functest.tempest.compute": {
             "cases": [
@@ -567,6 +565,13 @@
                 "functest.bgpvpn.tenant_separation"
             ], 
             "total": 1
+        }, 
+        "functest.security.patrole_vxlan_dependent": {
+            "cases": [
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_provider_network_type[admin]", 
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_provider_segmentation_id[admin]"
+            ], 
+            "total": 2
         }, 
         "functest.snaps.smoke": {
             "cases": [
