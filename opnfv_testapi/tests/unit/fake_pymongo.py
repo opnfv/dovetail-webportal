@@ -13,9 +13,9 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 def thread_execute(method, *args, **kwargs):
-        with ThreadPoolExecutor(max_workers=2) as executor:
-            result = executor.submit(method, *args, **kwargs)
-        return result
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        result = executor.submit(method, *args, **kwargs)
+    return result
 
 
 class MemCursor(object):
