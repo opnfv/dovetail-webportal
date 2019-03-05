@@ -50,7 +50,6 @@
         }
 
         ctrl.getCompany = function(row){
-            //console.log(row)
             $state.go('directory', {'companyID': row.organization_name, 'logo': row.company_logo});
         }
 
