@@ -16,6 +16,11 @@ Test Filters:<br>
       <input type="radio" ng-model="ctrl.testStatus" value="passed" name="passed">
       <span class="text-success">Passed</span>
     </label>
+    <label class="btn btn-default" ng-click="ctrl.changeStatus('skipped')"
+           ng-class="{'active': ctrl.testStatus === 'skipped'}">
+      <input type="radio" ng-model="ctrl.testStatus" value="skipped" name="skipped">
+      <span class="text-warning">Skipped</span>
+    </label>
     <label class="btn btn-default" ng-click="ctrl.changeStatus('not passed')"
            ng-class="{'active': ctrl.testStatus === 'not passed'}">
       <input type="radio" ng-model="ctrl.testStatus" value="not passed" name="not passed">
@@ -36,7 +41,7 @@ Test Filters:<br>
   </uib-accordion-heading>
   <ol class="capabilities">
     <li ng-repeat="(area, value) in data"
-        ng-show="(ctrl.testStatus == 'passed' && value.pass != 0) || (ctrl.testStatus == 'not passed' && value.fail != 0) || ctrl.testStatus == 'total'">
+        ng-show="(ctrl.testStatus == 'passed' && value.pass != 0) || (ctrl.testStatus == 'skipped' && value.skip != 0) || (ctrl.testStatus == 'not passed' && value.fail != 0) || ctrl.testStatus == 'total'">
       <a ng-click="value.folder = !value.folder">
         {{ area }}
         <span ng-if="ctrl.testStatus == 'total'"
@@ -44,13 +49,16 @@ Test Filters:<br>
           [{{ value.pass }}/{{ value.total }}]
         </span>
         <span ng-if="ctrl.testStatus == 'passed'" class="text-success">[{{ value.pass }}]</span>
+        <span ng-if="ctrl.testStatus == 'skipped'" class="text-warning">[{{ value.skip }}]</span>
         <span ng-if="ctrl.testStatus == 'not passed'" class="text-danger">[{{ value.fail }}]</span>
       </a>
       <a uib-tooltip="view log" ng-click="ctrl.gotoResultLog(area)"><span class="glyphicon glyphicon-cog"></span></a>
       <ul class="list-unstyled" uib-collapse="value.folder">
         <li ng-repeat="case in value.cases"
-            ng-if="(ctrl.testStatus=='passed' && ctrl.case_list.indexOf(case) > -1) || (ctrl.testStatus=='not passed' && ctrl.case_list.indexOf(case) == -1) || ctrl.testStatus=='total'">
-          <span ng-class="{'glyphicon glyphicon-ok text-success':ctrl.case_list.indexOf(case) > -1, 'glyphicon glyphicon-remove text-warning':ctrl.case_list.indexOf(case) == -1}"
+            ng-if="(ctrl.testStatus=='passed' && ctrl.case_list.indexOf(case) > -1) || (ctrl.testStatus=='not passed' && ctrl.case_list.indexOf(case) == -1) || (ctrl.testStatus=='skipped'
+            && ctrl.case_list_skip.indexOf(case) > -1) || ctrl.testStatus=='total'">
+          <span ng-class="{'glyphicon glyphicon-ok text-success':ctrl.case_list.indexOf(case) > -1, 'glyphicon glyphicon-remove text-warning':ctrl.case_list_skip.indexOf(case) > -1,
+           'glyphicon glyphicon-minus text-success':ctrl.case_list.indexOf(case) == -1}"
                 aria-hidden="true"></span>
           <a ng-click="ctrl.gotoDoc(case)">{{ case }}</a>
         </li>
