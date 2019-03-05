@@ -112,7 +112,6 @@
         ctrl.isUserResults = $state.current.name === 'userResults';
 
         ctrl.currentUser = $scope.auth.currentUser ? $scope.auth.currentUser.openid : null;
-        console.log($scope.auth);
 
         // Should only be on user-results-page if authenticated.
         if (ctrl.isUserResults && !$scope.auth.isAuthenticated) {
@@ -184,7 +183,6 @@
                     }
                     else {
                         result[item] = newValue;
-                        console.log('update success');
                     }
             }, function(error){
                 alert("Error  when update data");
@@ -281,8 +279,6 @@
 
         function uploadFile(){
            var file = $scope.resultFile;
-           console.log('file is ' );
-           console.dir(file);
 
            var uploadUrl = testapiApiUrl + "/results/upload";
            uploadFileToUrl(file, uploadUrl);
@@ -315,7 +311,6 @@
                     ctrl.totalItems = ctrl.data.pagination.total_pages * ctrl.itemsPerPage;
                     ctrl.currentPage = ctrl.data.pagination.current_page;
                     ctrl.numPages = ctrl.data.pagination.total_pages;
-                    console.log(ctrl.data);
                 }).error(function (error) {
                     ctrl.data = null;
                     ctrl.totalItems = 0;
