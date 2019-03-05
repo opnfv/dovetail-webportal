@@ -36,11 +36,12 @@
 
         ctrl.testStatus = 'total';
         ctrl.case_list = [];
+        ctrl.case_list_skip = [];
         ctrl.data = {};
         ctrl.statistics = {
-            'total': 0, 'pass': 0, 'fail': 0,
-            'mandatory': {'total': 0, 'pass': 0, 'fail': 0, 'area': 0},
-            'optional': {'total': 0, 'pass': 0, 'fail': 0, 'area': 0}
+            'total': 0, 'pass': 0, 'fail': 0, 'skip': 0,
+            'mandatory': {'total': 0, 'pass': 0, 'fail': 0, 'skip': 0, 'area': 0},
+            'optional': {'total': 0, 'pass': 0, 'fail': 0, 'skip': 0, 'area': 0}
         };
 
         ctrl.gotoDoc = gotoDoc;
@@ -68,6 +69,12 @@
         function extend(case_list) {
             angular.forEach(case_list, function(ele){
                 ctrl.case_list.push(ele);
+            });
+        }
+
+        function extend_skip(case_list_skip) {
+            angular.forEach(case_list_skip, function(ele){
+                ctrl.case_list_skip.push(ele);
             });
         }
 
@@ -122,6 +129,7 @@
                         ctrl.data.mandatory[name].folder = true;
                         ctrl.data.mandatory[name].pass = 0;
                         ctrl.data.mandatory[name].fail = 0;
+                        ctrl.data.mandatory[name].skip = 0;
                         angular.forEach(value.cases, function(sub_case){
                             ctrl.statistics.total += 1;
                             ctrl.statistics.mandatory.total += 1;
@@ -129,6 +137,10 @@
                                 ctrl.data.mandatory[name].pass += 1;
                                 ctrl.statistics.mandatory.pass += 1;
                                 ctrl.statistics.pass += 1;
+                            }else if(ctrl.case_list_skip.indexOf(sub_case) > -1){
+                                ctrl.data.mandatory[name].skip += 1;
+                                ctrl.statistics.mandatory.skip += 1;
+                                ctrl.statistics.skip += 1;
                             }else{
                                 ctrl.data.mandatory[name].fail += 1;
                                 ctrl.statistics.mandatory.fail += 1;
@@ -142,6 +154,7 @@
                         ctrl.data.optional[name].folder = true;
                         ctrl.data.optional[name].pass = 0;
                         ctrl.data.optional[name].fail = 0;
+                        ctrl.data.optional[name].skip = 0;
                         angular.forEach(value.cases, function(sub_case){
                             ctrl.statistics.total += 1;
                             ctrl.statistics.optional.total += 1;
@@ -149,6 +162,10 @@
                                 ctrl.data.optional[name].pass += 1;
                                 ctrl.statistics.optional.pass += 1;
                                 ctrl.statistics.pass += 1;
+                            }else if(ctrl.case_list_skip.indexOf(sub_case) > -1){
+                                ctrl.data.optional[name].skip += 1;
+                                ctrl.statistics.optional.skip += 1;
+                                ctrl.statistics.skip += 1;
                             }else{
                                 ctrl.data.optional[name].fail += 1;
                                 ctrl.statistics.optional.fail += 1;
@@ -186,15 +203,21 @@
                        }
 
                        if(ctrl.version == '2018.01') {
-                           var sub_case_list = get_sub_case_list_2018_01(result_resp.data);
+                           var sub_case_list_total = get_sub_case_list_2018_01(result_resp.data);
+                           var sub_case_list = sub_case_list_total[0];
+                           var sub_case_list_skip = sub_case_list_total[1];
                            extend(sub_case_list);
+                           extend_skip(sub_case_list_skip);
                        }
                        else if(ctrl.version == '2018.09') {
                            // OVP 2018.09 and later results store all results in a single json structure:
                            // Looping over all test cases of this individual test run
                            angular.forEach(result_resp.data.testcases_list, function(testcase, index){
-                               var sub_case_list = get_sub_case_list_2018_09(testcase)
-                               extend(sub_case_list)
+                               var sub_case_list_total = get_sub_case_list_2018_09(testcase);
+                               var sub_case_list = sub_case_list_total[0];
+                               var sub_case_list_skip = sub_case_list_total[1];
+                               extend(sub_case_list);
+                               extend_skip(sub_case_list_skip);
                            });
                        }
 
@@ -220,19 +243,23 @@
 
         function yardstickPass_2018_01(result) {
             var case_list = [];
+            var case_list_skip = [];
             angular.forEach(result.details.results, function(ele){
                 if(ele.benchmark){
                     if(ele.benchmark.data.sla_pass == 1){
                         case_list.push(result.case_name);
                         return case_list;
+                    } else if(ele.benchmark.data.sla_skip == 1){
+                        case_list_skip.push(result.case_name);
                     }
                 }
             });
-            return case_list;
+            return [case_list, case_list_skip];
         }
 
         function functestPass_2018_01(result){
             var case_list = [];
+            var case_list_skip = [];
             if(result.case_name == 'refstack_defcore'){
                 angular.forEach(result.details.success, function(ele){
                     if(strip(ele) == 'tempest.api.identity.v3.test_t'){
@@ -248,24 +275,33 @@
             }else{
                 if(result.criteria == 'PASS'){
                     case_list.push(result.case_name);
+                } else if(result.criteria == 'SKIP'){
+                    case_list_skip.push(result.case_name);
                 }
             }
-            return case_list;
+            return [case_list, case_list_skip];
         }
 
         function get_sub_case_list_2018_09(result) {
             var case_list = [];
+            var case_list_skip = [];
             if(result.sub_testcase.length == 0 && result.result == "PASS") {
                 case_list.push(result.name);
+            }
+            else if(result.sub_testcase.length == 0 && result.result == "SKIP") {
+
+                case_list_skip.push(result.name);
             }
             else {
                 angular.forEach(result.sub_testcase, function(subtest, index) {
                     if(subtest.result == "PASS") {
-                        case_list.push(subtest.name)
+                        case_list.push(subtest.name);
+                    } else if(subtest.result == "SKIP") {
+                        case_list_skip.push(subtest.name);
                     }
                 });
             }
-            return case_list;
+            return [case_list, case_list_skip];
         }
 
         function gotoDoc(sub_case){
