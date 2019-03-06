@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da01753e_6b5f7d73",
+        "filename": "opnfv_testapi/resources/application_handlers.py",
+        "patchSetId": 58
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2019-03-06T09:48:16Z",
+      "side": 1,
+      "message": "is this line necessary? I cannot understand why it is used",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "fd560f2721287a9ae2e3ff64657bba83f6c6978e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
