@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da01753e_8b83c1cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2019-03-06T09:40:21Z",
+      "side": 1,
+      "message": "This can be removed",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "d7d95f7b21a8d5182b371700fe2a1764c3790a6a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_6b881de8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2019-03-06T09:40:21Z",
+      "side": 1,
+      "message": "display",
+      "range": {
+        "startLine": 10,
+        "startChar": 57,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "d7d95f7b21a8d5182b371700fe2a1764c3790a6a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_cb6ca939",
+        "filename": "3rd_party/static/testapi-ui/components/results-report/partials/reportDetails.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2019-03-06T09:40:21Z",
+      "side": 1,
+      "message": "I would recommend glyphicon-minus (-) to indicate that we do not count them",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "d7d95f7b21a8d5182b371700fe2a1764c3790a6a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
