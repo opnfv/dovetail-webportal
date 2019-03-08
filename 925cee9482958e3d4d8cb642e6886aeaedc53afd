@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da01753e_3a3ca093",
+        "filename": "3rd_party/static/testapi-ui/components/results-report/resultsReportController.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2019-03-08T12:17:31Z",
+      "side": 1,
+      "message": "minor: Can you remove this line?",
+      "revId": "925cee9482958e3d4d8cb642e6886aeaedc53afd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_9a414c0e",
+        "filename": "3rd_party/static/testapi-ui/components/results-report/resultsReportController.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2019-03-08T12:17:31Z",
+      "side": 1,
+      "message": "same",
+      "revId": "925cee9482958e3d4d8cb642e6886aeaedc53afd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
