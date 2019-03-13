@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da01753e_90092d2f",
+        "filename": "3rd_party/static/onap-ui/components/results/modal/applicationView.html",
+        "patchSetId": 59
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2019-03-13T08:49:36Z",
+      "side": 1,
+      "message": "it is SHA256. Can you try find if we use SHA1 in other places and change it as well?",
+      "range": {
+        "startLine": 73,
+        "startChar": 44,
+        "endLine": 73,
+        "endChar": 48
+      },
+      "revId": "cccc9edec7b1625bb0eeac18287a34677e0a7898",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
