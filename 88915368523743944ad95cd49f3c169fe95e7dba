@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da01753e_442b8382",
+        "filename": "3rd_party/static/testapi-ui/assets/css/cvp-style.css",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2019-03-20T08:08:49Z",
+      "side": 1,
+      "message": "add two white spaces for indentation for attributes inside blocks",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 1
+      },
+      "revId": "88915368523743944ad95cd49f3c169fe95e7dba",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
