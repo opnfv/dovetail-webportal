@@ -1,0 +1,103 @@
+<div class="container-fluid common-main-container">
+  <div class="top-site-banner">
+    <div class="container">
+      <p class="p1">Application Details</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-lg-12 container">
+      <p class="message" style="display: none;"></p>
+      <fieldset>
+        <div class="field text col-md-4">
+          <label class="left">Company Name</label>
+          <div class="middleColumn">{{ ctrl.application.company_name }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Company Logo</label>
+          <div class="middleColumn">{{ ctrl.application.company_logo }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Company Website</label>
+          <div class="middleColumn">{{ ctrl.application.company_website }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">ONAP Version</label>
+          <div class="middleColumn">{{ ctrl.application.onap_version }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary Contact Name</label>
+          <div class="middleColumn">{{ ctrl.application.primary_contact_name }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary Contact Number</label>
+          <div class="middleColumn">{{ ctrl.application.primary_phone_number }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Primary Contact Email</label>
+          <div class="middleColumn">{{ ctrl.application.primary_business_email }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Test Agency</label>
+          <div class="middleColumn">{{ ctrl.application.lab_location }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Version</label>
+          <div class="middleColumn">{{ ctrl.application.xnf_version }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Name</label>
+          <div class="middleColumn">{{ ctrl.application.xnf_name }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Test Type</label>
+          <div class="middleColumn">{{ ctrl.application.xnf_type }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Description</label>
+          <div class="middleColumn">{{ ctrl.application.xnf_description }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNFD Id</label>
+          <div class="middleColumn">{{ ctrl.application.xnfd_id }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Model Language</label>
+          <div class="middleColumn">{{ ctrl.application.xnfd_model_lang }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">Test Category</label>
+          <div class="middleColumn">{{ ctrl.application.xnf_test_period }}</div>
+        </div>
+        <div class="field text col-md-4">
+          <label class="left">xNF Checksum (SHA256)</label>
+          <div class="middleColumn">{{ ctrl.application.xnf_checksum }}</div>
+        </div>
+        <div ng-if="ctrl.lab_location=='third'" class="field text">
+          <div class="field text col-md-4">
+            <label class="left">Lab Name</label>
+            <div>{{ ctrl.application.lab_name }}</div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Email</label>
+            <div>{{ ctrl.application.lab_email }}</div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Address</label>
+            <div>{{ ctrl.application.lab_address }}</div>
+          </div>
+          <div class="field text col-md-4">
+            <label class="left">Lab Phone Number</label>
+            <div>{{ ctrl.application.lab_phone }}</div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .ngdialog.custom-background .ngdialog-content {
+    background: #ffffff;
+  }
+</style>
