@@ -20,9 +20,10 @@
 }
 
 .header-title {
-  font-size: 35px;
+  font-size: 40px;
+  font-weight: bold;
   color: #fff;
-  padding-top: 30px;
+  padding-top: 25px;
 }
 
 .header-login {
