@@ -22,6 +22,30 @@
       "revId": "bbe2302282443d152032d2949a868c63130ff192",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_137edeae",
+        "filename": "3rd_party/static/onap-ui/shared/header/header.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3543
+      },
+      "writtenOn": "2019-03-28T13:07:50Z",
+      "side": 1,
+      "message": "My understanding from Brandon / Heather is, all the LFN programs are going to be branded under the common OVP branding that already was established for the NFVI work.  Bradges (logos) will differentiate the different testing times (NVFI / VNF / etc.), but the headings will be based on OVP.",
+      "parentUuid": "da01753e_73600a36",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "bbe2302282443d152032d2949a868c63130ff192",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
