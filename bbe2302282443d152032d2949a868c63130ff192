@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "da01753e_6e4dbd72",
+        "filename": "3rd_party/static/onap-ui/components/home/home.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-03-28T15:06:06Z",
+      "side": 1,
+      "message": "You have comment out the part of the code which the verified applications are displayed. Why is that? \nDo you want to update the fields or the info that should be appeared? or something else?\nIf this patch merged or loaded without this code, the ONAP verified applications would not be displayed in the home page.",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "bbe2302282443d152032d2949a868c63130ff192",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da01753e_73600a36",
         "filename": "3rd_party/static/onap-ui/shared/header/header.html",
         "patchSetId": 2
