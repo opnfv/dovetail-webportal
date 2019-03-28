@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da01753e_ae41650d",
+        "filename": "3rd_party/static/onap-ui/components/home/home.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1451
+      },
+      "writtenOn": "2019-03-28T17:30:03Z",
+      "side": 1,
+      "message": "I commented this out when doing some mock updates - uncommented. :)",
+      "parentUuid": "da01753e_6e4dbd72",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "bbe2302282443d152032d2949a868c63130ff192",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da01753e_73600a36",
         "filename": "3rd_party/static/onap-ui/shared/header/header.html",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "My understanding from Brandon / Heather is, all the LFN programs are going to be branded under the common OVP branding that already was established for the NFVI work.  Bradges (logos) will differentiate the different testing times (NVFI / VNF / etc.), but the headings will be based on OVP.",
       "parentUuid": "da01753e_73600a36",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "bbe2302282443d152032d2949a868c63130ff192",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_8e462122",
+        "filename": "3rd_party/static/onap-ui/shared/header/header.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1451
+      },
+      "writtenOn": "2019-03-28T17:30:03Z",
+      "side": 1,
+      "message": "Just to add to Lincoln\u0027s comment, which is spot on, the goal was to remove any headings with \"ONAP\" in the name, as I believe that was the placeholder till they finalized on \u0027OPNFV Verified Program (VNF)\u0027",
+      "parentUuid": "da01753e_137edeae",
       "range": {
         "startLine": 9,
         "startChar": 33,
