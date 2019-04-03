@@ -29,7 +29,7 @@ th {
 .dropdown-menu>li>a:focus,
 .dropdown-menu>li>a:hover {
   font-size: 15px;
-  color: #27CFC3;
+  color: #1080A7;
   text-decoration: none;
   background-color: #1C1C1C;
 }
@@ -41,8 +41,8 @@ th {
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {
   color: #fff;
-  background-color: #27CFC3;
-  border-color: #27CFC3;
+  background-color: #1080A7;
+  border-color: #1080A7;
 }
 
 
@@ -66,12 +66,12 @@ th {
 
 .badge-info {
   color: #fff;
-  background-color: #27CFC3;
-  border-color: #27CFC3;
+  background-color: #1080A7;
+  border-color: #1080A7;
 }
 
 .opnfv-blue {
-  color: #27CFC3;
+  color: #1080A7;
 }
 
 .field {
@@ -83,7 +83,7 @@ table .btn.medium {
 }
 
 .cvp-btn {
-  background-color: #27CFC3;
+  background-color: #1080A7;
   font-weight: 700;
   font-size: 12px;
 }
