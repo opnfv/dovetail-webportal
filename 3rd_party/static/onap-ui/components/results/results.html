@@ -1,7 +1,8 @@
 <div class="container-fluid common-main-container">
   <h3>{{ctrl.pageHeader}}</h3>
   <p>{{ctrl.pageParagraph}}</p>
-  <form class="form-inline" ng-show="ctrl.isUserResults">
+  <form class="form-inline" ng-show="ctrl.isUserResults"
+        ng-if="auth.isAuthenticated && auth.currentUser.role.indexOf('user') != -1">
     <h4>Upload Results
       <i class="glyphicon glyphicon-question-sign opnfv-blue"
          uib-tooltip="results file is logs.xxx.tar.gz under your dovetail installation path"></i>
