@@ -19,7 +19,12 @@
             ng-if="auth.isAuthenticated && auth.currentUser.role.indexOf('administrator') != -1">
           <a ui-sref="application">Applications</a>
         </li>
-        <li ng-class="{ active: header.isActive('/user_results')}" ng-if="auth.isAuthenticated">
+        <li ng-class="{ active: header.isActive('/community_results')}"
+            ng-if="auth.isAuthenticated && auth.canReview(auth.currentUser)">
+          <a ui-sref="communityResults">Incoming Reviews</a>
+        </li>
+        <li ng-class="{ active: header.isActive('/user_results')}"
+            ng-if="auth.isAuthenticated && auth.currentUser.role.indexOf('user') != -1">
           <a ui-sref="userResults">My Results</a>
         </li>
         <li ng-class="{ active: header.isActive('/profile')}" ng-if="auth.isAuthenticated">
