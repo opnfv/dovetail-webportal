@@ -1,8 +1,7 @@
 <div class="container-fluid common-main-container">
   <h3>{{ctrl.pageHeader}}</h3>
   <p>{{ctrl.pageParagraph}}</p>
-  <form class="form-inline" ng-show="ctrl.isUserResults"
-        ng-if="auth.isAuthenticated && auth.currentUser.role.indexOf('user') != -1">
+  <form class="form-inline" ng-show="ctrl.isUserResults">
     <h4>Upload Results
       <i class="glyphicon glyphicon-question-sign opnfv-blue"
          uib-tooltip="results file is logs.xxx.tar.gz under your dovetail installation path"></i>
@@ -82,7 +81,8 @@
                   <a ng-class="{'hide': result.status != 'review'}"
                      ng-click="ctrl.deleteApplication(result)">withdraw submit</a>
                 </li>
-                <li role="menuitem" ng-if="auth.currentUser.openid == result.owner && ctrl.isUserResults"
+                <li role="menuitem"
+                    ng-if="auth.currentUser.openid == result.owner && ctrl.isUserResults && auth.currentUser.role.indexOf('user') != -1"
                     class="menu-item menu-item-type-post_type menu-item-object-page">
                   <a ng-class="{'hide': result.status != 'private'}"
                      ng-click="ctrl.openApplicationModal(result)">submit to review</a>

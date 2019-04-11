@@ -257,20 +257,57 @@
                             "primary_business_email": ctrl.primary_business_email
                         };
 
-                        $http.post(testapiApiUrl + "/onap/cvp/applications", data).then(function(resp) {
-                            if (resp.data.code && resp.data.code != 0) {
-                                alert(resp.data.msg);
-                                return;
+                        if (ctrl.company_name == null ||
+                        ctrl.company_website == null ||
+                        ctrl.primary_contact_name == null ||
+                        ctrl.primary_phone_number == null ||
+                        ctrl.primary_business_email== null ||
+                        ctrl.xnf_version == null ||
+                        ctrl.xnf_name == null ||
+                        ctrl.xnf_description == null ||
+                        ctrl.xnfd_id == null) {
+
+                            alert('There are empty required fields in the application form');
+
+                        } else if (ctrl.lab_location == 'third') {
+                            if (ctrl.lab_name == null ||
+                            ctrl.lab_email == null ||
+                            ctrl.lab_address == null ||
+                            ctrl.lab_phone == null) {
+
+                            alert('There are empty required fields in the application form');
+
+                            } else {
+                                $http.post(testapiApiUrl + "/onap/cvp/applications", data).then(function(resp) {
+                                    if (resp.data.code && resp.data.code != 0) {
+                                        alert(resp.data.msg);
+                                        return;
+                                    }
+                                    toggleCheck(result, 'status', 'review');
+                                }, function(error) {
+                                    /* do nothing */
+                                });
                             }
-                            toggleCheck(result, 'status', 'review');
-                        }, function(error) {
-                            /* do nothing */
-                        });
+                        } else {
+                            $http.post(testapiApiUrl + "/onap/cvp/applications", data).then(function(resp) {
+                                if (resp.data.code && resp.data.code != 0) {
+                                    alert(resp.data.msg);
+                                    return;
+                                }
+                                toggleCheck(result, 'status', 'review');
+                            }, function(error) {
+                                /* do nothing */
+                            });
+                        }
                     }
                 }, function(error) {
                     /* do nothing */
                 });
                 logo_name = file.name;
+            }
+
+            if (typeof file === 'undefined') {
+                alert('There are empty required fields in the application form');
             }
             ngDialog.close();
         }

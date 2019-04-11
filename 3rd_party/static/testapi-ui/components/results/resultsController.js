@@ -269,20 +269,65 @@
                             "lab_phone": ctrl.lab_phone
                         };
 
-                        $http.post(testapiApiUrl + "/cvp/applications", data).then(function(resp) {
-                            if (resp.data.code && resp.data.code != 0) {
-                                alert(resp.data.msg);
-                                return;
+                        if(ctrl.organization_name == null ||
+                        ctrl.organization_web == null ||
+                        ctrl.product_name == null ||
+                        ctrl.product_spec == null ||
+                        ctrl.product_documentation == null ||
+                        ctrl.prim_name == null ||
+                        ctrl.prim_email == null ||
+                        ctrl.prim_address == null ||
+                        ctrl.prim_phone == null ||
+                        ctrl.description == null ||
+                        ctrl.sut_version == null ||
+                        ctrl.sut_label == null ||
+                        ctrl.sut_hw_version == null ||
+                        ctrl.ovp_category == null) {
+
+                            alert('There are empty required fields in the application form');
+
+                        } else if (ctrl.lab_location == 'third') {
+                            if (ctrl.lab_name == null ||
+                            ctrl.lab_email == null ||
+                            ctrl.lab_address == null ||
+                            ctrl.lab_phone == null) {
+                                 alert('There are empty required fields in the application form');
+                            } else {
+
+                            $http.post(testapiApiUrl + "/cvp/applications", data).then(function(resp) {
+                                if (resp.data.code && resp.data.code != 0) {
+                                    alert(resp.data.msg);
+                                    return;
+                                }
+                                toggleCheck(result, 'status', 'review');
+                            }, function(error) {
+                                /* do nothing */
+                            });
+
                             }
-                            toggleCheck(result, 'status', 'review');
-                        }, function(error) {
-                            /* do nothing */
-                        });
+
+                        } else {
+
+                            $http.post(testapiApiUrl + "/cvp/applications", data).then(function(resp) {
+                                if (resp.data.code && resp.data.code != 0) {
+                                    alert(resp.data.msg);
+                                    return;
+                                }
+                                toggleCheck(result, 'status', 'review');
+                            }, function(error) {
+                                /* do nothing */
+                            });
+
+                        }
                     }
                 }, function(error) {
                     /* do nothing */
                 });
                 logo_name = file.name;
+            }
+
+            if (typeof file === 'undefined') {
+                alert('There are empty required fields in the application form');
             }
             ngDialog.close();
         }
