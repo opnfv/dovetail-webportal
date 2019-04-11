@@ -1,6 +1,6 @@
 OPENID = 'openid'
 ROLE = 'role'
-DEFAULT_ROLE = 'user'
+DEFAULT_ROLE = ''
 
 # OpenID parameters
 OPENID_MODE = 'openid.mode'
