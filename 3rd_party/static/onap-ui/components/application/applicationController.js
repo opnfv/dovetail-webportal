@@ -65,7 +65,7 @@
             });
         }
 
-        ctrl.toggleApproveApp = function(id, approved) {
+        ctrl.toggleApproveApp = function(id, approved, owner) {
             if (approved === 'true') {
                 var text = 'Are you sure you want to approve this application?';
             } else {
@@ -80,6 +80,7 @@
             var data = {};
             data['item'] = 'approved';
             data['approved'] = approved;
+            data['owner'] = owner;
 
             $http.put(updateUrl, JSON.stringify(data), {
                 transformRequest: angular.identity,
@@ -95,7 +96,7 @@
         }
 
         function getApplication() {
-            $http.get(testapiApiUrl + "/onap/cvp/applications?page=" + ctrl.currentPage + "&signed&per_page=" + ctrl.itemsPerPage).then(function(response) {
+            $http.get(testapiApiUrl + "/onap/cvp/applications?page=" + ctrl.currentPage + "&signed&per_page=" + ctrl.itemsPerPage + "&applications").then(function(response) {
                 ctrl.applications = response.data.applications;
                 ctrl.totalItems = response.data.pagination.total_pages * ctrl.itemsPerPage;
                 ctrl.currentPage = response.data.pagination.current_page;

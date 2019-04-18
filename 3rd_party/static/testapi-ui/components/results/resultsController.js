@@ -579,6 +579,7 @@
             var content_url = testapiApiUrl + '/tests';
             var start = $filter('date')(ctrl.startDate, 'yyyy-MM-dd');
             var end = $filter('date')(ctrl.endDate, 'yyyy-MM-dd');
+            ctrl.PageName = null;
             content_url += '?page=' + ctrl.currentPage;
             content_url += '&per_page=' + ctrl.itemsPerPage;
             if (start) {
@@ -590,6 +591,7 @@
             }
             if (ctrl.isUserResults) {
                 content_url += '&signed';
+                ctrl.PageName = 'MyResults';
             } else {
                 content_url += '&status={"$ne":"private"}&review';
             }
@@ -600,6 +602,25 @@
                     ctrl.totalItems = ctrl.data.pagination.total_pages * ctrl.itemsPerPage;
                     ctrl.currentPage = ctrl.data.pagination.current_page;
                     ctrl.numPages = ctrl.data.pagination.total_pages;
+                    if (ctrl.PageName === 'MyResults') {
+                        for (var i=0; i<data.tests.length; i++) {
+                            if (data.tests[i].owner !== ctrl.currentUser) {
+                                var sharing = false;
+                                if (data.tests[i].shared !== null){
+                                    for (var j=0; j<data.tests[i].shared.length; j++) {
+                                        if (data.tests[i].shared[j] === ctrl.currentUser){
+                                            sharing = true;
+                                            }
+                                        }
+                                }
+                                if (sharing == false){
+                                    data.tests.splice(i,1);
+                                    i = i - 1;
+                                }
+                            }
+                        }
+                        ctrl.data = data;
+                    }
                 }).error(function (error) {
                     ctrl.data = null;
                     ctrl.totalItems = 0;

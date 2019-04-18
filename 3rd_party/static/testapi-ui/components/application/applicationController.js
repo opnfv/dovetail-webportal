@@ -32,32 +32,6 @@
 
         function init() {
             ctrl.applications = [];
-//            ctrl.organization_name = null;
-//            ctrl.organization_web = null;
-//            ctrl.product_name = null;
-//            ctrl.product_spec = null;
-//            ctrl.product_documentation = null;
-//            ctrl.product_categories = "soft&hard";
-//            ctrl.prim_name = null;
-//            ctrl.prim_email = null;
-//            ctrl.prim_address = null;
-//            ctrl.prim_phone = null;
-//            ctrl.description = null;
-//            ctrl.sut_version = null;
-//            ctrl.sut_hw_version = null;
-//            ctrl.ovp_version = "2018.01";
-//            ctrl.ovp_category = "Infrastructure";
-//            ctrl.company_logo = null;
-//            ctrl.approve_date = null;
-//            ctrl.approved = "false";
-//            ctrl.test_id = null;
-//            ctrl.lab_location = "internal";
-//            ctrl.lab_name = null;
-//            ctrl.lab_email = null;
-//            ctrl.lab_address = null;
-//            ctrl.lab_phone = null;
-//            ctrl.applications = [];
-//            ctrl.showApplications = [];
 
             ctrl.totalItems = null;
             ctrl.currentPage = 1;
@@ -69,54 +43,6 @@
 
             getApplication();
         }
-
-
-//        ctrl.submitForm = function() {
-//            var data = {
-//                "organization_name": ctrl.organization_name,
-//                "organization_web": ctrl.organization_web,
-//                "product_name": ctrl.product_name,
-//                "product_spec": ctrl.product_spec,
-//                "product_documentation": ctrl.product_documentation,
-//                "product_categories": ctrl.product_categories,
-//                "prim_name": ctrl.prim_name,
-//                "prim_email": ctrl.prim_email,
-//                "prim_address": ctrl.prim_address,
-//                "prim_phone": ctrl.prim_phone,
-//                "description": ctrl.description,
-//                "sut_version": ctrl.sut_version,
-//                "sut_hw_version": ctrl.sut_hw_version,
-//                "ovp_version": ctrl.ovp_version,
-//                "ovp_category": ctrl.ovp_category,
-//                "company_logo": ctrl.company_logo,
-//                "approve_date": ctrl.approve_date,
-//                "approved": ctrl.approved,
-//                "test_id": ctrl.test_id,
-//                "lab_location": ctrl.lab_location,
-//                "lab_email": ctrl.lab_email,
-//                "lab_address": ctrl.lab_address,
-//                "lab_phone": ctrl.lab_phone
-//            };
-//            $http.post(testapiApiUrl + "/cvp/applications", data).then(function(resp) {
-//                if (resp.data.code && resp.data.code != 0) {
-//                    alert(resp.data.msg);
-//                    return;
-//                }
-//                getApplication();
-//            }, function(error) {
-//            });
-//        }
-
-//        ctrl.openConfirmModal = function() {
-//            var resp = confirm("Are you sure to submit?");
-//            if (resp) {
-//                ctrl.submitForm();
-//            }
-//        }
-//
-//        ctrl.cancelSubmit = function() {
-//            ngDialog.close();
-//        }
 
         ctrl.updatePage = function() {
             getApplication();
@@ -137,7 +63,7 @@
             });
         }
 
-        ctrl.toggleApproveApp = function(id, approved) {
+        ctrl.toggleApproveApp = function(id, approved, owner) {
             if (approved === 'true') {
                 var text = 'Are you sure you want to approve this application?';
             } else {
@@ -152,6 +78,7 @@
             var data = {};
             data['item'] = 'approved';
             data['approved'] = approved;
+            data['owner'] = owner;
 
             $http.put(updateUrl, JSON.stringify(data), {
                 transformRequest: angular.identity,
@@ -166,26 +93,8 @@
             });
         }
 
-//        function uploadLogo() {
-//            var file = $scope.logoFile;
-//            var fd = new FormData();
-//            fd.append('file', file);
-//
-//            $http.post(testapiApiUrl + "/cvp/applications/uploadlogo", fd, {
-//                transformRequest: angular.identity,
-//                headers: {'Content-Type': undefined}
-//            }).then(function(resp) {
-//                if (resp.data.code && resp.data.code != 0) {
-//                    alert(resp.data.msg);
-//                    return;
-//                }
-//            }, function(error) {
-//            });
-//
-//        };
-
         function getApplication() {
-            $http.get(testapiApiUrl + "/cvp/applications?page=" + ctrl.currentPage + "&signed&per_page=" + ctrl.itemsPerPage).then(function(response) {
+            $http.get(testapiApiUrl + "/cvp/applications?page=" + ctrl.currentPage + "&signed&per_page=" + ctrl.itemsPerPage + "&applications").then(function(response) {
                 ctrl.applications = response.data.applications;
                 ctrl.totalItems = response.data.pagination.total_pages * ctrl.itemsPerPage;
                 ctrl.currentPage = response.data.pagination.current_page;
