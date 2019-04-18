@@ -72,7 +72,8 @@ class ReviewsCLHandler(GenericReviewHandler):
             raises.Forbidden(message.unauthorized())
         role = self.get_secure_cookie(auth_const.ROLE)
         if 'reviewer' not in role.split(','):
-            raises.Unauthorized(message.no_auth())
+            if role is not 'reviewer':
+                raises.Unauthorized(message.no_auth())
         test = yield dbapi.db_find_one(
             'tests', {'id': self.json_args['test_id']})
         if test['owner'] == self.json_args['reviewer_openid']:
@@ -104,7 +105,8 @@ class ReviewsCLHandler(GenericReviewHandler):
             raises.Forbidden(message.unauthorized())
         role = self.get_secure_cookie(auth_const.ROLE)
         if 'reviewer' not in role.split(','):
-            raises.Unauthorized(message.no_auth())
+            if role is not 'reviewer':
+                raises.Unauthorized(message.no_auth())
         test = yield dbapi.db_find_one(
             'tests', {'id': self.json_args['test_id']})
         if test['owner'] == self.json_args['reviewer_openid']:
