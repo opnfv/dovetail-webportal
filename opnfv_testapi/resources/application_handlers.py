@@ -236,19 +236,19 @@ class ApplicationsGURHandler(GenericApplicationHandler):
         data = json.loads(self.request.body)
         item = data.get('item')
         value = data.get(item)
+        owner = data.get('owner')
         logging.debug('%s:%s', item, value)
         try:
-            self.update(application_id, item, value)
+            self.update(application_id, item, value, owner)
         except Exception as e:
             logging.error('except:%s', e)
             return
 
     @gen.coroutine
-    def update(self, application_id, item, value):
+    def update(self, application_id, item, value, owner):
         self.json_args = {}
         self.json_args[item] = value
-        query = {'_id': objectid.ObjectId(application_id), 'owner':
-                 self.get_secure_cookie(auth_const.OPENID)}
+        query = {'_id': objectid.ObjectId(application_id), 'owner': owner}
         db_keys = ['_id', 'owner']
         if item == 'approved':
             if value == 'true':
