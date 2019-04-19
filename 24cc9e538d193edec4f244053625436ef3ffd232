@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "61e1d424_222d61d2",
+        "filename": "3rd_party/static/testapi-ui/components/application/application.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-04-19T08:34:43Z",
+      "side": 1,
+      "message": "I agree with your comment, but somehow If I remove this check I cannot see the applications either...I will check further this behavior",
+      "parentUuid": "89b2d69e_e1863006",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c17e258_ceb15b3a",
+        "filename": "3rd_party/static/testapi-ui/components/application/application.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-04-19T08:34:43Z",
+      "side": 1,
+      "message": "I tested and I got the application normally. What role do you have assign? Just \u0027administrator\u0027?",
+      "parentUuid": "57f06b78_e134ae84",
+      "range": {
+        "startLine": 63,
+        "startChar": 50,
+        "endLine": 63,
+        "endChar": 103
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd5d831a_127f3524",
         "filename": "3rd_party/static/testapi-ui/components/results/results.html",
         "patchSetId": 1
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "40326d0b_f2aebf19",
+        "filename": "3rd_party/static/testapi-ui/components/results/results.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-04-19T08:34:43Z",
+      "side": 1,
+      "message": "I agree with this...this check doesn\u0027t need. But, neither it changes the behavior. I will remove it anyway.",
+      "parentUuid": "fd5d831a_127f3524",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 47,
+        "endChar": 62
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f62f479_182d6803",
         "filename": "3rd_party/static/testapi-ui/components/results/results.html",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-04-19T06:59:16Z",
       "side": 1,
       "message": "This used to work well before without adding \u0027ng-if\u0027 here. So I am wondering if there are someting chaned within ctrl.data.tests? Maybe it\u0027s better to filter the data when getting from the DB rather than getting all data and filtering them when showing on te page.",
+      "range": {
+        "startLine": 48,
+        "startChar": 13,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eed7b7f3_61f9f00f",
+        "filename": "3rd_party/static/testapi-ui/components/results/results.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-04-19T08:34:43Z",
+      "side": 1,
+      "message": "The functions which request the results are common for cases:\n- \u0027no user\u0027\n- user\n- reviewer\nThis means that needs big effort to update the back-end part. Instead, it\u0027s easier just to filter the results before appeared them.\nThis is something not totally correct , but this behavior has been carried from first portal and during update of this portal with Stamatis, we decided that this update is too big just for the reviewers. Now, the same impact is used also for the \u0027no user\u0027 case. This means that the results should have different display depending on the 3 different rolse.",
+      "parentUuid": "7f62f479_182d6803",
       "range": {
         "startLine": 48,
         "startChar": 13,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "4c074b90_b1659b66",
+        "filename": "opnfv_testapi/resources/review_handlers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-04-19T08:34:43Z",
+      "side": 1,
+      "message": "You have to clear the cookies and try again. I had the same problem, during my testing.",
+      "parentUuid": "e5a0079d_71c1bf6c",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 20
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fefcec31_6eb8afcb",
         "filename": "opnfv_testapi/resources/review_handlers.py",
         "patchSetId": 1
@@ -151,6 +271,30 @@
       "writtenOn": "2019-04-19T06:59:16Z",
       "side": 1,
       "message": "Not quite understand about this? why should add this?",
+      "range": {
+        "startLine": 75,
+        "startChar": 13,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "516c00c3_ccde5cdd",
+        "filename": "opnfv_testapi/resources/review_handlers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-04-19T08:34:43Z",
+      "side": 1,
+      "message": "If you have just \u0027reviewer\u0027 in the role then the previous command is not true, since there is not\u0027,\u0027 in the string and the splitting is not completed. That\u0027s why I\u0027m checking also if the role is just \u0027reviewer\u0027.",
+      "parentUuid": "fefcec31_6eb8afcb",
       "range": {
         "startLine": 75,
         "startChar": 13,
