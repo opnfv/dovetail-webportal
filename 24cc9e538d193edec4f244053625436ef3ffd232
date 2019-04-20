@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3529b892_5f427048",
+        "filename": "3rd_party/static/testapi-ui/components/application/application.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-20T08:17:35Z",
+      "side": 1,
+      "message": "yes,just \u0027administrator\u0027",
+      "parentUuid": "8c17e258_ceb15b3a",
+      "range": {
+        "startLine": 63,
+        "startChar": 50,
+        "endLine": 63,
+        "endChar": 103
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd5d831a_127f3524",
         "filename": "3rd_party/static/testapi-ui/components/results/results.html",
         "patchSetId": 1
@@ -190,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "e71ca675_aab5b994",
+        "filename": "3rd_party/static/testapi-ui/components/results/results.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-20T08:17:35Z",
+      "side": 1,
+      "message": "As I get from the code, it used to show all results getting from APIs without filtering them before showing them. So I guess the API used to do some checks when getting the data.",
+      "parentUuid": "eed7b7f3_61f9f00f",
+      "range": {
+        "startLine": 48,
+        "startChar": 13,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61ea1820_68faa656",
         "filename": "3rd_party/static/testapi-ui/components/results/results.html",
         "patchSetId": 1
@@ -260,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "6a0d9745_30d696d6",
+        "filename": "opnfv_testapi/resources/review_handlers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-20T08:17:35Z",
+      "side": 1,
+      "message": "I will try again after clearing the cookies.",
+      "parentUuid": "4c074b90_b1659b66",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 20
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fefcec31_6eb8afcb",
         "filename": "opnfv_testapi/resources/review_handlers.py",
         "patchSetId": 1
@@ -295,6 +367,30 @@
       "side": 1,
       "message": "If you have just \u0027reviewer\u0027 in the role then the previous command is not true, since there is not\u0027,\u0027 in the string and the splitting is not completed. That\u0027s why I\u0027m checking also if the role is just \u0027reviewer\u0027.",
       "parentUuid": "fefcec31_6eb8afcb",
+      "range": {
+        "startLine": 75,
+        "startChar": 13,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "24cc9e538d193edec4f244053625436ef3ffd232",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96a7b289_89e898f7",
+        "filename": "opnfv_testapi/resources/review_handlers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-20T08:17:35Z",
+      "side": 1,
+      "message": "It should be ok for Python split function if there is no \u0027,\u0027 there. It will be transferred to a list with only one item. I have double checked it locally with python with both single role and multi role.\nThe important thing is that except the \u0027,\u0027, there couldn\u0027t be any spaces between 2 roles.",
+      "parentUuid": "516c00c3_ccde5cdd",
       "range": {
         "startLine": 75,
         "startChar": 13,
