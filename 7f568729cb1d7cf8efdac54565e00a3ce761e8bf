@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95148622_0b107949",
+        "filename": "3rd_party/static/onap-ui/components/results/resultsController.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-04-23T08:51:41Z",
+      "side": 1,
+      "message": "Yes, I missed this during the last update",
+      "parentUuid": "2245b22e_58b4ac88",
+      "range": {
+        "startLine": 578,
+        "startChar": 40,
+        "endLine": 578,
+        "endChar": 59
+      },
+      "revId": "7f568729cb1d7cf8efdac54565e00a3ce761e8bf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6bf21ea_d1a7a297",
         "filename": "3rd_party/static/testapi-ui/components/application/application.html",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-23T08:30:40Z",
       "side": 1,
       "message": "should also remove this?",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 45
+      },
+      "revId": "7f568729cb1d7cf8efdac54565e00a3ce761e8bf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b71742fa_8623ce0f",
+        "filename": "3rd_party/static/testapi-ui/components/application/application.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-04-23T08:51:41Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "c6bf21ea_d1a7a297",
       "range": {
         "startLine": 63,
         "startChar": 19,
