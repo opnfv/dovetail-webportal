@@ -148,7 +148,7 @@
                                 ctrl.data.mandatory[name].skip += 1;
                                 ctrl.statistics.mandatory.skip += 1;
                                 ctrl.statistics.skip += 1;
-                            }else if(ctrl.case_list_fail.indexOf(sub_case) > -1){
+                            }else {
                                 ctrl.data.mandatory[name].fail += 1;
                                 ctrl.statistics.mandatory.fail += 1;
                                 ctrl.statistics.fail += 1;
@@ -173,7 +173,7 @@
                                 ctrl.data.optional[name].skip += 1;
                                 ctrl.statistics.optional.skip += 1;
                                 ctrl.statistics.skip += 1;
-                            }else if(ctrl.case_list_fail.indexOf(sub_case) > -1){
+                            }else {
                                 ctrl.data.optional[name].fail += 1;
                                 ctrl.statistics.optional.fail += 1;
                                 ctrl.statistics.fail += 1;
@@ -262,7 +262,7 @@
                         case_list.push(result.case_name);
                     } else if(ele.benchmark.data.sla_skip == 1){
                         case_list_skip.push(result.case_name);
-                    } else if(ele.benchmark.data.sla_fail == 1){
+                    } else {
                         case_list_fail.push(result.case_name);
                     }
                 }
@@ -291,7 +291,7 @@
                     case_list.push(result.case_name);
                 } else if(result.criteria == 'SKIP'){
                     case_list_skip.push(result.case_name);
-                } else if(result.criteria == 'FAIL') {
+                } else {
                     case_list_fail.push(result.case_name);
                 }
             }
@@ -308,7 +308,7 @@
             else if(result.sub_testcase.length == 0 && result.result == "SKIP") {
                 case_list_skip.push(result.name);
             }
-            else if(result.sub_testcase.length == 0 && result.result == "FAIL") {
+            else if(result.sub_testcase.length == 0) {
                 case_list_fail.push(result.name);
             }
             else {
@@ -317,7 +317,7 @@
                         case_list.push(subtest.name);
                     } else if(subtest.result == "SKIP") {
                         case_list_skip.push(subtest.name);
-                    } else if(subtest.result == "FAIL") {
+                    } else {
                         case_list_fail.push(subtest.name);
                     }
                 });
