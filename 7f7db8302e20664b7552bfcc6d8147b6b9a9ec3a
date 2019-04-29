@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "381a831d_e6c6320e",
+        "filename": ".csslintrc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-29T08:30:18Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s right to add this kind of license.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "7f7db8302e20664b7552bfcc6d8147b6b9a9ec3a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15d97abe_31e64924",
+        "filename": "docker/nginx-proxy/custom_proxy_settings.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-29T08:30:18Z",
+      "side": 1,
+      "message": "Not sure if this is right.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "7f7db8302e20664b7552bfcc6d8147b6b9a9ec3a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd294cbf_11860753",
+        "filename": "docker/nginx/nginx.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-29T08:30:18Z",
+      "side": 1,
+      "message": "Not sure this is proper.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "7f7db8302e20664b7552bfcc6d8147b6b9a9ec3a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59b84571_1665ce02",
+        "filename": "docker/nginx/sites-available/default-onap",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-29T08:30:18Z",
+      "side": 1,
+      "message": "Not sure",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "7f7db8302e20664b7552bfcc6d8147b6b9a9ec3a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e353a614_47243728",
+        "filename": "docker/nginx/sites-available/default-opnfv",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-29T08:30:18Z",
+      "side": 1,
+      "message": "Not sure",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "7f7db8302e20664b7552bfcc6d8147b6b9a9ec3a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5021038a_92d51fde",
+        "filename": "docker/supervisor/conf.d/nginx.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5469
+      },
+      "writtenOn": "2019-04-29T08:30:18Z",
+      "side": 1,
+      "message": "Not sure",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "7f7db8302e20664b7552bfcc6d8147b6b9a9ec3a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
