@@ -79,6 +79,30 @@ class GenericApiHandler(web.RequestHandler):
                 date_range.update({'$gte': str(v)})
             elif k == 'to':
                 date_range.update({'$lt': str(v)})
+            elif k == 'applications':
+                role = self.get_secure_cookie(auth_const.ROLE)
+                logging.info('role:%s', role)
+                if role:
+                    if role.find("administrator") != -1:
+                        query['$or'] = [
+                            {
+                                "status": {
+                                    "$ne": "private"
+                                }
+                            }
+                        ]
+            elif k == 'review':
+                role = self.get_secure_cookie(auth_const.ROLE)
+                logging.info('role:%s', role)
+                if role:
+                    if role.find("reviewer") != -1:
+                        query['$or'] = [
+                            {
+                                "status": {
+                                    "$ne": "private"
+                                }
+                            }
+                        ]
             elif k == 'signed':
                 openid = self.get_secure_cookie(auth_const.OPENID)
                 user = yield dbapi.db_find_one("users", {'openid': openid})
@@ -98,9 +122,6 @@ class GenericApiHandler(web.RequestHandler):
                             }
                         }
                     ]
-
-                    if role.find("reviewer") != -1:
-                        query['$or'].append({"status": {"$ne": "private"}})
             elif k == 'status':
                 if v.startswith('{'):
                     query[k] = json.loads(v)

@@ -181,11 +181,7 @@
         var profile_url = testapiApiUrl + '/profile';
 
         function canReview(user) {
-            if (typeof user.role == undefined) {
-                return false;
-            } else if (user.role.indexOf('administrator') != -1) {
-                return true;
-            } else if (user.role.indexOf('reviewer') != -1) {
+            if (user.role.indexOf('reviewer') != -1) {
                 return true;
             } else {
                 return false;

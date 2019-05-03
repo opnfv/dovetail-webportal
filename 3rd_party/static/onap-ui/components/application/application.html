@@ -56,7 +56,8 @@
         </div>
       </script>
       <tbody style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-        <tr ng-if="results.status != 'review'" ng-repeat="app in ctrl.applications">
+        <tr ng-if="auth.currentUser.role.indexOf('administrator') != -1"
+            ng-repeat="app in ctrl.applications">
           <td>{{ app.creation_date | limitTo: 10 }}</td>
           <td>{{ app.owner }}</td>
           <td>{{ app.onap_version }}</td>
@@ -80,7 +81,7 @@
             <i ng-if="app.lab_location != 'internal'" class="glyphicon glyphicon-info-sign opnfv-blue"></i>
           </td>
           <td>
-            <a ng-click="ctrl.toggleApproveApp(app._id, 'true')" class="badge badge-info"
+            <a ng-click="ctrl.toggleApproveApp(app._id, 'true', app.owner)" class="badge badge-info"
                ng-if="app.approved == 'false'"
                data-toggle="tooltip" title="Approve Application">
               <i class="glyphicon glyphicon-ok" ></i>
