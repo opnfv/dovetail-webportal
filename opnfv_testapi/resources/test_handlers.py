@@ -321,15 +321,20 @@ class TestsGURHandler(GenericTestHandler):
     def check_auth(self, item, value):
         logging.debug('check_auth')
         user = self.get_secure_cookie(auth_const.OPENID)
+        query_old_apps = {}
         query = {}
         if item == "status":
             if value == "private" or value == "review":
                 logging.debug('check review')
-                query['user_id'] = user
+                query_old_apps['user_id'] = user
+                query['owner'] = user
+                data_old_apps = yield dbapi.db_find_one('applications',
+                                                        query_old_apps)
                 data = yield dbapi.db_find_one('applications', query)
-                if data:
-                    logging.debug('results are bound to an application')
-                    raise gen.Return((False, message.no_auth()))
+                if not data:
+                    if not data_old_apps:
+                        logging.debug('not found')
+                        raise gen.Return((False, message.no_auth()))
             if value == "verified":
                 logging.debug('check verify')
                 query['role'] = {"$regex": ".*administrator.*"}
