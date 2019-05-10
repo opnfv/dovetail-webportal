@@ -248,14 +248,6 @@ class TestsGURHandler(GenericTestHandler):
                 self.finish_request({'code': '403', 'msg': msg})
                 return
 
-        logging.debug("before _update")
-        self.json_args = {}
-        self.json_args[item] = value
-        ret, msg = yield self.check_auth(item, value)
-        if not ret:
-            self.finish_request({'code': '404', 'msg': msg})
-            return
-
         query = {'_id': objectid.ObjectId(_id)}
         db_keys = ['_id', ]
 
@@ -263,6 +255,18 @@ class TestsGURHandler(GenericTestHandler):
         if not test:
             msg = 'Record does not exist'
             self.finish_request({'code': 404, 'msg': msg})
+            return
+
+        ret, msg = yield self.check_testid(item, value, test)
+        if not ret:
+            self.finish_request({'code': '404', 'msg': msg})
+            return
+        logging.debug("before _update")
+        self.json_args = {}
+        self.json_args[item] = value
+        ret, msg = yield self.check_auth(item, value)
+        if not ret:
+            self.finish_request({'code': '404', 'msg': msg})
             return
 
         curr_user = self.get_secure_cookie(auth_const.OPENID)
@@ -323,13 +327,6 @@ class TestsGURHandler(GenericTestHandler):
         user = self.get_secure_cookie(auth_const.OPENID)
         query = {}
         if item == "status":
-            if value == "private" or value == "review":
-                logging.debug('check review')
-                query['user_id'] = user
-                data = yield dbapi.db_find_one('applications', query)
-                if data:
-                    logging.debug('results are bound to an application')
-                    raise gen.Return((False, message.no_auth()))
             if value == "verified":
                 logging.debug('check verify')
                 query['role'] = {"$regex": ".*administrator.*"}
@@ -338,4 +335,20 @@ class TestsGURHandler(GenericTestHandler):
                 if not data:
                     logging.debug('not found')
                     raise gen.Return((False, message.no_auth()))
+        raise gen.Return((True, {}))
+
+    @gen.coroutine
+    def check_testid(self, item, value, test=None):
+        logging.debug('check_testid')
+        logging.debug('Check that the test_id in the Application is correct')
+
+        if test is not None:
+            if item == "status":
+                if value == "private" or value == "review":
+                    query = {}
+                    query['test_id'] = test['id']
+                    data = yield dbapi.db_find_one('applications', query)
+                    if not data:
+                        logging.debug('not found')
+                        raise gen.Return((False, message.no_file_uploaded()))
         raise gen.Return((True, {}))
