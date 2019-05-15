@@ -22,6 +22,30 @@
       "revId": "1387de38af448dd38aa1c7aaacf0087303aa1be0",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "349c1384_79d078b6",
+        "filename": "opnfv_testapi/resources/test_handlers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-05-15T11:17:57Z",
+      "side": 1,
+      "message": "yes, exactly.\nThose checks take place during an update request toward of DB. So, If the current user is also the owner of the application, only in that case, the update could be completed.\nLet\u0027s wait Lincoln confirm that this is the requested behavior of this method...",
+      "parentUuid": "5bf1c22c_c29b7a38",
+      "range": {
+        "startLine": 334,
+        "startChar": 16,
+        "endLine": 335,
+        "endChar": 41
+      },
+      "revId": "1387de38af448dd38aa1c7aaacf0087303aa1be0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
