@@ -22,6 +22,30 @@
       "revId": "77f39d8088b5e4bf756c0e7972030dab02bf73a1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37ffd45e_63223562",
+        "filename": "opnfv_testapi/resources/test_handlers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-05-16T14:55:06Z",
+      "side": 1,
+      "message": "Let me explain my thoughts behind of my solution:\n1- Firstly, If there is not any test associated with an application, the query toward DB (L.254) will be failed.\n2- If the status is different than private or review, nothing will be done (according to the proposed solution)\n3- In case a status update will be requested via a PUT request, this request will carry the object id and the new status value.\n3a- If the value is \u0027verified\u0027, the check_auth method will be triggered and a check will take place about if the \u0027administrator\u0027 is part of the role of current user. Only in that case the update will be updated.\n3b- If the value is \u0027private\u0027 or \u0027review\u0027, the check_auth method is not going to be triggered. Instead, the check_testid method will be triggered, checking whether the specific test results have already associated with the proper application, before of any status update.\nNOTE: Of course, if there is any typo or error on the test_id during old application creation (like those examples that you presented in the meeting), the result will be \u0027an ERROR message\u0027, since the query toward DB uses the correct test_id and not this that has be used when the application was submitted.\nNOTE2: If you want, I could use the test_id which has been used in the application form for the query in the DB. In case you believe that this is the proper validation and if you want to return a \u0027True\u0027 verdict for such cases as well. \n\nWhat do you believe?\nPlease let me know if I have missed something as requirement for this solution? \nSince, my understanding is that the test_id of \u0027PUT\u0027 request and this which is included in the application should be matched. Is this correct?\n\nPS: According to the test of the portal, everything works fine using of this solution. Please provide me more details about that scenarios that you believe that are not working as we expected.",
+      "parentUuid": "3245bb3f_09aa804a",
+      "range": {
+        "startLine": 351,
+        "startChar": 20,
+        "endLine": 351,
+        "endChar": 32
+      },
+      "revId": "77f39d8088b5e4bf756c0e7972030dab02bf73a1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
