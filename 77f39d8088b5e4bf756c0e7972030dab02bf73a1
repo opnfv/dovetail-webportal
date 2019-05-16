@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3245bb3f_09aa804a",
+        "filename": "opnfv_testapi/resources/test_handlers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 3543
+      },
+      "writtenOn": "2019-05-16T13:06:45Z",
+      "side": 1,
+      "message": "I think this logic is \"backwards\".  If a application record is found, it means the test results are already associated with an application, and the user shouldn\u0027t be able to change the status.  The administrator (or the voting process) will need to be able to change the status of the test results status to \"verified\" when the review / application is completed / approved.",
+      "range": {
+        "startLine": 351,
+        "startChar": 20,
+        "endLine": 351,
+        "endChar": 32
+      },
+      "revId": "77f39d8088b5e4bf756c0e7972030dab02bf73a1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
