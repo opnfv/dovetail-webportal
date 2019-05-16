@@ -46,6 +46,30 @@
       "revId": "77f39d8088b5e4bf756c0e7972030dab02bf73a1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a48edde0_affdf673",
+        "filename": "opnfv_testapi/resources/test_handlers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 3543
+      },
+      "writtenOn": "2019-05-16T15:40:54Z",
+      "side": 1,
+      "message": "Yes, I get all of that, but in the code, if not data, there was no result form the query found, right?   So, the results aren\u0027t associated with any existing application.  So the user should be able to submit those results for review.  But, these code is returning false here, which than blocks the update in the calling function, returning a 404 message.",
+      "parentUuid": "37ffd45e_63223562",
+      "range": {
+        "startLine": 351,
+        "startChar": 20,
+        "endLine": 351,
+        "endChar": 32
+      },
+      "revId": "77f39d8088b5e4bf756c0e7972030dab02bf73a1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
