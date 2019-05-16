@@ -70,6 +70,30 @@
       "revId": "77f39d8088b5e4bf756c0e7972030dab02bf73a1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "373a7cf0_a6c2ba7c",
+        "filename": "opnfv_testapi/resources/test_handlers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 7167
+      },
+      "writtenOn": "2019-05-16T16:44:16Z",
+      "side": 1,
+      "message": "According to the sequence of the new portal and when a user tries to submit new results for review, portal makes three separate requests. Two POST requests (the first for the logo image and the second for the rest application in the DB) and one PUT request (in order to update the status from \u0027private\u0027 to \u0027review\u0027).\nThis means that if a user tries to submit new results, the query toward DB (PUT request) will find the application (data) already there.\n\nThis patch tries to avoid change status for an application which is associated with different(wrong) test id (this is my understanding after yesterday\u0027s meeting). So, only if the test_id in the application is the correct one, the PUT request (and the update of the status) will be completed successfully. That\u0027s why I asked you in my previous comment, if you want to check the test id which is stored in the test results or which is stored in the application (with any typo or wrong or partially correct etc).\n\nI don\u0027t remember how the old portal works and specially during the results subsumption and whether the application is already stored when this part of the code would be executed. If you believe that the old portal has a different behavior compared it with the new one, I\u0027ll load again the old portal and I\u0027ll check this patch and which is the respective behavior.",
+      "parentUuid": "a48edde0_affdf673",
+      "range": {
+        "startLine": 351,
+        "startChar": 20,
+        "endLine": 351,
+        "endChar": 32
+      },
+      "revId": "77f39d8088b5e4bf756c0e7972030dab02bf73a1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
