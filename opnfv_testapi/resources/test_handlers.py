@@ -23,6 +23,7 @@ from opnfv_testapi.tornado_swagger import swagger
 from opnfv_testapi.ui.auth import constants as auth_const
 from opnfv_testapi.db import api as dbapi
 
+DOVETAIL_RESULTS_PATH = '/home/testapi/logs/{}/results/results.json'
 DOVETAIL_LOG_PATH = '/home/testapi/logs/{}/results/dovetail.log'
 
 
@@ -147,26 +148,46 @@ class TestsGURHandler(GenericTestHandler):
         if not data:
             raises.NotFound(message.not_found(self.table, query))
 
-        validation = yield self._check_api_response_validation(data['id'])
-
-        data.update({'validation': validation})
+        # only do this when it's nfvi not vnf
+        if 'is_onap' not in data.keys() or data['is_onap'] != 'true':
+            validation = yield self._check_api_response_validation(data['id'])
+            data.update({'validation': validation})
 
         self.finish_request(self.format_data(data))
 
     @gen.coroutine
     def _check_api_response_validation(self, test_id):
+        results_path = DOVETAIL_RESULTS_PATH.format(test_id)
         log_path = DOVETAIL_LOG_PATH.format(test_id)
-        if not os.path.exists(log_path):
-            raises.Forbidden('dovetail.log not found, please check')
+        res = None
 
-        with open(log_path) as f:
-            log_content = f.read()
+        # For release after 2018.09
+        # Dovetail adds 'validation' directly into results.json
+        if os.path.exists(results_path):
+            with open(results_path) as f:
+                try:
+                    data = json.load(f)
+                    if data['validation'] == 'enabled':
+                        res = 'API response validation enabled'
+                    else:
+                        res = 'API response validation disabled'
+                except:
+                    pass
+        if res:
+            raise gen.Return(res)
 
-        warning_keyword = 'Strict API response validation DISABLED'
-        if warning_keyword in log_content:
-            raise gen.Return('API response validation disabled')
-        else:
-            raise gen.Return('API response validation enabled')
+        # For 2018.01 and 2018.09
+        # Need to check dovetail.log for this info
+        if os.path.exists(log_path):
+            with open(log_path) as f:
+                log_content = f.read()
+                warning_keyword = 'Strict API response validation DISABLED'
+                if warning_keyword in log_content:
+                    raise gen.Return('API response validation disabled')
+                else:
+                    raise gen.Return('API response validation enabled')
+
+        raises.Forbidden('neither results.json nor dovetail.log are found')
 
     @swagger.operation(nickname="deleteTestById")
     @gen.coroutine
