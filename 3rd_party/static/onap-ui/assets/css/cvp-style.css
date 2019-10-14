@@ -121,8 +121,8 @@ border-color: #1080A7;
 }
 
 .btn-success-cust:focus, .btn-success-cust:hover {
-border-color: #27CCC0;
-background-color: #27CCC0;
+border-color: #1080A7;
+background-color: #1080A7;
 }
 
 input:invalid {
