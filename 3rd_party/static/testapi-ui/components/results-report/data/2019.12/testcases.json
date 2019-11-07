@@ -1,0 +1,691 @@
+{
+    "mandatory": {
+        "bottlenecks.stress.ping": {
+            "cases": [
+                "bottlenecks.stress.ping"
+            ],
+            "total": 1
+        },
+        "functest.security.patrole": {
+            "cases": [
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_objects_rbac.ImageNamespacesObjectsRbacTest.test_create_metadef_object_in_namespace",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_objects_rbac.ImageNamespacesObjectsRbacTest.test_list_metadef_objects_in_namespace",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_objects_rbac.ImageNamespacesObjectsRbacTest.test_show_metadef_object_in_namespace",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_objects_rbac.ImageNamespacesObjectsRbacTest.test_update_metadef_object_in_namespace",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_property_rbac.NamespacesPropertyRbacTest.test_add_md_properties",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_property_rbac.NamespacesPropertyRbacTest.test_get_md_properties",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_property_rbac.NamespacesPropertyRbacTest.test_get_md_property",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_property_rbac.NamespacesPropertyRbacTest.test_modify_md_properties",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_rbac.ImageNamespacesRbacTest.test_create_metadef_namespace",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_rbac.ImageNamespacesRbacTest.test_modify_metadef_namespace",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_tags_rbac.NamespaceTagsRbacTest.test_create_namespace_tag",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_tags_rbac.NamespaceTagsRbacTest.test_create_namespace_tags",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_tags_rbac.NamespaceTagsRbacTest.test_list_namespace_tags",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_tags_rbac.NamespaceTagsRbacTest.test_show_namespace_tag",
+                "patrole_tempest_plugin.tests.api.image.test_image_namespace_tags_rbac.NamespaceTagsRbacTest.test_update_namespace_tag",
+                "patrole_tempest_plugin.tests.api.image.test_image_resource_types_rbac.ImageResourceTypesRbacTest.test_add_metadef_resource_type",
+                "patrole_tempest_plugin.tests.api.image.test_image_resource_types_rbac.ImageResourceTypesRbacTest.test_get_metadef_resource_type",
+                "patrole_tempest_plugin.tests.api.image.test_image_resource_types_rbac.ImageResourceTypesRbacTest.test_list_metadef_resource_types",
+                "patrole_tempest_plugin.tests.api.image.test_images_member_rbac.ImagesMemberRbacTest.test_add_image_member",
+                "patrole_tempest_plugin.tests.api.image.test_images_member_rbac.ImagesMemberRbacTest.test_delete_image_member",
+                "patrole_tempest_plugin.tests.api.image.test_images_member_rbac.ImagesMemberRbacTest.test_list_image_members",
+                "patrole_tempest_plugin.tests.api.image.test_images_member_rbac.ImagesMemberRbacTest.test_show_image_member",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_create_image",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_create_image_tag",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_deactivate_image",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_delete_image",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_delete_image_tag",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_download_image",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_list_images",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_publicize_image",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_reactivate_image",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_show_image",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_update_image",
+                "patrole_tempest_plugin.tests.api.image.test_images_rbac.BasicOperationsImagesRbacTest.test_upload_image",
+                "patrole_tempest_plugin.tests.api.network.test_agents_rbac.AgentsRbacTest.test_show_agent",
+                "patrole_tempest_plugin.tests.api.network.test_agents_rbac.AgentsRbacTest.test_update_agent",
+                "patrole_tempest_plugin.tests.api.network.test_agents_rbac.DHCPAgentSchedulersRbacTest.test_add_dhcp_agent_to_network",
+                "patrole_tempest_plugin.tests.api.network.test_agents_rbac.DHCPAgentSchedulersRbacTest.test_delete_network_from_dhcp_agent",
+                "patrole_tempest_plugin.tests.api.network.test_agents_rbac.DHCPAgentSchedulersRbacTest.test_list_networks_hosted_by_one_dhcp_agent",
+                "patrole_tempest_plugin.tests.api.network.test_flavors_rbac.FlavorsPluginRbacTest.test_create_flavor",
+                "patrole_tempest_plugin.tests.api.network.test_flavors_rbac.FlavorsPluginRbacTest.test_delete_flavor",
+                "patrole_tempest_plugin.tests.api.network.test_flavors_rbac.FlavorsPluginRbacTest.test_list_flavors",
+                "patrole_tempest_plugin.tests.api.network.test_flavors_rbac.FlavorsPluginRbacTest.test_show_flavor",
+                "patrole_tempest_plugin.tests.api.network.test_flavors_rbac.FlavorsPluginRbacTest.test_update_flavor",
+                "patrole_tempest_plugin.tests.api.network.test_floating_ips_rbac.FloatingIpsRbacTest.test_create_floating_ip",
+                "patrole_tempest_plugin.tests.api.network.test_floating_ips_rbac.FloatingIpsRbacTest.test_create_floating_ip_floatingip_address",
+                "patrole_tempest_plugin.tests.api.network.test_floating_ips_rbac.FloatingIpsRbacTest.test_delete_floating_ip",
+                "patrole_tempest_plugin.tests.api.network.test_floating_ips_rbac.FloatingIpsRbacTest.test_show_floating_ip",
+                "patrole_tempest_plugin.tests.api.network.test_floating_ips_rbac.FloatingIpsRbacTest.test_update_floating_ip",
+                "patrole_tempest_plugin.tests.api.network.test_network_segments_rbac.NetworkSegmentsRbacTest.test_create_network_segments",
+                "patrole_tempest_plugin.tests.api.network.test_network_segments_rbac.NetworkSegmentsRbacTest.test_show_network_segments",
+                "patrole_tempest_plugin.tests.api.network.test_network_segments_rbac.NetworkSegmentsRbacTest.test_update_network_segments",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_is_default",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_router_external",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_shared",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_delete_network",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_list_dhcp_agents_on_hosting_network",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_show_network",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_show_network_provider_network_type",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_show_network_provider_physical_network",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_show_network_provider_segmentation_id",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_show_network_router_external",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_update_network",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_update_network_provider_physical_network",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_update_network_provider_segmentation_id",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_update_network_router_external",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_update_network_shared",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_create_port",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_create_port_allowed_address_pairs",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_create_port_binding_host_id",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_create_port_binding_profile",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_create_port_device_owner",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_create_port_fixed_ips_ip_address",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_create_port_mac_address",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_create_port_security_enabled",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_delete_port",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_show_port",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_show_port_binding_host_id",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_show_port_binding_profile",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_show_port_binding_vif_details",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_show_port_binding_vif_type",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_update_port",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_update_port_allowed_address_pairs",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_update_port_binding_host_id",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_update_port_binding_profile",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_update_port_device_owner",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_update_port_fixed_ips_ip_address",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_update_port_mac_address",
+                "patrole_tempest_plugin.tests.api.network.test_ports_rbac.PortsRbacTest.test_update_port_security_enabled",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_add_router_interface",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_create_router",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_create_router_enable_snat",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_create_router_external_fixed_ips",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_delete_router",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_remove_router_interface",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_show_high_availability_router",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_show_router",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_update_router",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_update_router_enable_snat",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_update_router_external_fixed_ips",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_update_router_external_gateway_info",
+                "patrole_tempest_plugin.tests.api.network.test_routers_rbac.RouterRbacTest.test_update_router_external_gateway_info_network_id",
+                "patrole_tempest_plugin.tests.api.network.test_security_groups_rbac.SecGroupRbacTest.test_create_security_group",
+                "patrole_tempest_plugin.tests.api.network.test_security_groups_rbac.SecGroupRbacTest.test_create_security_group_rule",
+                "patrole_tempest_plugin.tests.api.network.test_security_groups_rbac.SecGroupRbacTest.test_delete_security_group",
+                "patrole_tempest_plugin.tests.api.network.test_security_groups_rbac.SecGroupRbacTest.test_delete_security_group_rule",
+                "patrole_tempest_plugin.tests.api.network.test_security_groups_rbac.SecGroupRbacTest.test_list_security_group_rules",
+                "patrole_tempest_plugin.tests.api.network.test_security_groups_rbac.SecGroupRbacTest.test_list_security_groups",
+                "patrole_tempest_plugin.tests.api.network.test_security_groups_rbac.SecGroupRbacTest.test_show_security_group_rule",
+                "patrole_tempest_plugin.tests.api.network.test_security_groups_rbac.SecGroupRbacTest.test_show_security_group",
+                "patrole_tempest_plugin.tests.api.network.test_security_groups_rbac.SecGroupRbacTest.test_update_security_group",
+                "patrole_tempest_plugin.tests.api.network.test_service_providers_rbac.ServiceProvidersRbacTest.test_list_service_providers",
+                "patrole_tempest_plugin.tests.api.network.test_subnetpools_rbac.SubnetPoolsRbacTest.test_create_subnetpool",
+                "patrole_tempest_plugin.tests.api.network.test_subnetpools_rbac.SubnetPoolsRbacTest.test_create_subnetpool_shared",
+                "patrole_tempest_plugin.tests.api.network.test_subnetpools_rbac.SubnetPoolsRbacTest.test_delete_subnetpool",
+                "patrole_tempest_plugin.tests.api.network.test_subnetpools_rbac.SubnetPoolsRbacTest.test_show_subnetpool",
+                "patrole_tempest_plugin.tests.api.network.test_subnetpools_rbac.SubnetPoolsRbacTest.test_update_subnetpool",
+                "patrole_tempest_plugin.tests.api.network.test_subnetpools_rbac.SubnetPoolsRbacTest.test_update_subnetpool_is_default",
+                "patrole_tempest_plugin.tests.api.network.test_subnets_rbac.SubnetsRbacTest.test_create_subnet",
+                "patrole_tempest_plugin.tests.api.network.test_subnets_rbac.SubnetsRbacTest.test_delete_subnet",
+                "patrole_tempest_plugin.tests.api.network.test_subnets_rbac.SubnetsRbacTest.test_list_subnets",
+                "patrole_tempest_plugin.tests.api.network.test_subnets_rbac.SubnetsRbacTest.test_show_subnet",
+                "patrole_tempest_plugin.tests.api.network.test_subnets_rbac.SubnetsRbacTest.test_update_subnet"
+            ],
+            "total": 124
+        },
+        "functest.tempest.compute": {
+            "cases": [
+                "tempest.api.compute.flavors.test_flavors.FlavorsV2TestJSON.test_get_flavor[id-1f12046b-753d-40d2-abb6-d8eb8b30cb2f,smoke]",
+                "tempest.api.compute.flavors.test_flavors.FlavorsV2TestJSON.test_list_flavors[id-e36c0eaa-dff5-4082-ad1f-3f9a80aa3f59,smoke]",
+                "tempest.api.compute.security_groups.test_security_group_rules.SecurityGroupRulesTestJSON.test_security_group_rules_create[id-850795d7-d4d3-4e55-b527-a774c0123d3a,smoke]",
+                "tempest.api.compute.security_groups.test_security_group_rules.SecurityGroupRulesTestJSON.test_security_group_rules_list[id-a6154130-5a55-4850-8be4-5e9e796dbf17,smoke]",
+                "tempest.api.compute.security_groups.test_security_groups.SecurityGroupsTestJSON.test_security_groups_create_list_delete[id-eb2b087d-633d-4d0d-a7bd-9e6ba35b32de,smoke]",
+                "tempest.api.compute.servers.test_attach_interfaces.AttachInterfacesUnderV243Test.test_add_remove_fixed_ip[id-c7e0e60b-ee45-43d0-abeb-8596fd42a2f9,network,smoke]",
+                "tempest.api.compute.servers.test_server_addresses.ServerAddressesTestJSON.test_list_server_addresses[id-6eb718c0-02d9-4d5e-acd1-4e0c269cef39,network,smoke]",
+                "tempest.api.compute.servers.test_server_addresses.ServerAddressesTestJSON.test_list_server_addresses_by_network[id-87bbc374-5538-4f64-b673-2b0e4443cc30,network,smoke]",
+                "tempest.api.compute.test_versions.TestVersions.test_get_version_details[id-b953a29e-929c-4a8e-81be-ec3a7e03cb76,smoke]",
+                "tempest.api.compute.servers.test_create_server.ServersTestBootFromVolume.test_verify_server_details[id-5de47127-9977-400a-936f-abcfbec1218f,smoke]",
+                "tempest.api.compute.servers.test_create_server.ServersTestBootFromVolume.test_list_servers[id-9a438d88-10c6-4bcd-8b5b-5b6e25e1346f,smoke]",
+                "tempest.scenario.test_server_basic_ops.TestServerBasicOps.test_server_basic_ops[compute,id-7fff3fb3-91d8-4fd0-bd7d-0204f1f180ba,network,smoke]"
+            ],
+            "total": 12
+        },
+        "functest.tempest.identity_v3": {
+            "cases": [
+                "tempest.api.identity.admin.v3.test_credentials.CredentialsTestJSON.test_credentials_create_get_update_delete[id-7cd59bf9-bda4-4c72-9467-d21cab278355,smoke]",
+                "tempest.api.identity.admin.v3.test_domains.DomainsTestJSON.test_create_update_delete_domain[id-f2f5b44a-82e8-4dad-8084-0661ea3b18cf,smoke]",
+                "tempest.api.identity.admin.v3.test_endpoints.EndPointsTestJSON.test_update_endpoint[id-37e8f15e-ee7c-4657-a1e7-f6b61e375eff,smoke]",
+                "tempest.api.identity.admin.v3.test_groups.GroupsV3TestJSON.test_group_users_add_list_delete[id-1598521a-2f36-4606-8df9-30772bd51339,smoke]",
+                "tempest.api.identity.admin.v3.test_policies.PoliciesTestJSON.test_create_update_delete_policy[id-e544703a-2f03-4cf2-9b0f-350782fdb0d3,smoke]",
+                "tempest.api.identity.admin.v3.test_regions.RegionsTestJSON.test_create_region_with_specific_id[id-2c12c5b5-efcf-4aa5-90c5-bff1ab0cdbe2,smoke]",
+                "tempest.api.identity.admin.v3.test_roles.RolesV3TestJSON.test_role_create_update_show_list[id-18afc6c0-46cf-4911-824e-9989cc056c3a,smoke]",
+                "tempest.api.identity.admin.v3.test_services.ServicesTestJSON.test_create_update_get_service[id-5193aad5-bcb7-411d-85b0-b3b61b96ef06,smoke]",
+                "tempest.api.identity.admin.v3.test_trusts.TrustsV3TestJSON.test_get_trusts_all[id-4773ebd5-ecbf-4255-b8d8-b63e6f72b65d,smoke]",
+                "tempest.api.identity.v3.test_api_discovery.TestApiDiscovery.test_list_api_versions[id-721f480f-35b6-46c7-846e-047e6acea0dc,smoke]",
+                "tempest.api.identity.v3.test_domains.DefaultDomainTestJSON.test_default_domain_exists[id-17a5de24-e6a0-4e4a-a9ee-d85b6e5612b5,smoke]"
+            ],
+            "total": 11
+        },
+        "functest.tempest.image": {
+            "cases": [
+                "tempest.api.image.v2.test_images.BasicOperationsImagesTest.test_register_upload_get_image_file[id-139b765e-7f3d-4b3d-8b37-3ca3876ee318,smoke]",
+                "tempest.api.image.v2.test_versions.VersionsTest.test_list_versions[id-659ea30a-a17c-4317-832c-0f68ed23c31d,smoke]"
+            ],
+            "total": 2
+        },
+        "functest.tempest.ipv6_api": {
+            "cases": [
+                "tempest.api.network.test_networks.BulkNetworkOpsIpV6Test.test_bulk_create_delete_network[id-d4f9024d-1e28-4fc1-a6b1-25dbc6fa11e2,smoke]",
+                "tempest.api.network.test_networks.BulkNetworkOpsIpV6Test.test_bulk_create_delete_port[id-48037ff2-e889-4c3b-b86a-8e3f34d2d060,smoke]",
+                "tempest.api.network.test_networks.BulkNetworkOpsIpV6Test.test_bulk_create_delete_subnet[id-8936533b-c0aa-4f29-8e53-6cc873aec489,smoke]",
+                "tempest.api.network.test_networks.NetworksIpV6Test.test_create_update_delete_network_subnet[id-0e269138-0da6-4efc-a46d-578161e7b221,smoke]",
+                "tempest.api.network.test_networks.NetworksIpV6Test.test_external_network_visibility[id-af774677-42a9-4e4b-bb58-16fe6a5bc1ec,smoke]",
+                "tempest.api.network.test_networks.NetworksIpV6Test.test_list_networks[id-f7ffdeda-e200-4a7a-bcbe-05716e86bf43,smoke]",
+                "tempest.api.network.test_networks.NetworksIpV6Test.test_list_subnets[id-db68ba48-f4ea-49e9-81d1-e367f6d0b20a,smoke]",
+                "tempest.api.network.test_networks.NetworksIpV6Test.test_show_network[id-2bf13842-c93f-4a69-83ed-717d2ec3b44e,smoke]",
+                "tempest.api.network.test_networks.NetworksIpV6Test.test_show_subnet[id-bd635d81-6030-4dd1-b3b9-31ba0cfdf6cc,smoke]",
+                "tempest.api.network.test_ports.PortsIpV6TestJSON.test_create_port_in_allowed_allocation_pools[id-0435f278-40ae-48cb-a404-b8a087bc09b1,smoke]",
+                "tempest.api.network.test_ports.PortsIpV6TestJSON.test_create_port_with_no_securitygroups[id-4179dcb9-1382-4ced-84fe-1b91c54f5735,smoke]",
+                "tempest.api.network.test_ports.PortsIpV6TestJSON.test_create_update_delete_port[id-c72c1c0c-2193-4aca-aaa4-b1442640f51c,smoke]",
+                "tempest.api.network.test_ports.PortsIpV6TestJSON.test_list_ports[id-cf95b358-3e92-4a29-a148-52445e1ac50e,smoke]",
+                "tempest.api.network.test_ports.PortsIpV6TestJSON.test_show_port[id-c9a685bd-e83f-499c-939f-9f7863ca259f,smoke]",
+                "tempest.api.network.test_routers.RoutersIpV6Test.test_add_multiple_router_interfaces[id-802c73c9-c937-4cef-824b-2191e24a6aab,smoke]",
+                "tempest.api.network.test_routers.RoutersIpV6Test.test_add_remove_router_interface_with_port_id[id-2b7d2f37-6748-4d78-92e5-1d590234f0d5,smoke]",
+                "tempest.api.network.test_routers.RoutersIpV6Test.test_add_remove_router_interface_with_subnet_id[id-b42e6e39-2e37-49cc-a6f4-8467e940900a,smoke]",
+                "tempest.api.network.test_routers.RoutersIpV6Test.test_create_show_list_update_delete_router[id-f64403e2-8483-4b34-8ccd-b09a87bcc68c,smoke]",
+                "tempest.api.network.test_security_groups.SecGroupIPv6Test.test_create_list_update_show_delete_security_group[id-bfd128e5-3c92-44b6-9d66-7fe29d22c802,smoke]",
+                "tempest.api.network.test_security_groups.SecGroupIPv6Test.test_create_show_delete_security_group_rule[id-cfb99e0e-7410-4a3d-8a0c-959a63ee77e9,smoke]",
+                "tempest.api.network.test_security_groups.SecGroupIPv6Test.test_list_security_groups[id-e30abd17-fef9-4739-8617-dc26da88e686,smoke]"
+            ],
+            "total": 21
+        },
+        "functest.tempest.network_api": {
+            "cases": [
+                "tempest.api.network.test_extensions.ExtensionsTestJSON.test_list_show_extensions[id-ef28c7e6-e646-4979-9d67-deb207bc5564,smoke]",
+                "tempest.api.network.test_floating_ips.FloatingIPTestJSON.test_create_floating_ip_specifying_a_fixed_ip_address[id-36de4bd0-f09c-43e3-a8e1-1decc1ffd3a5,smoke]",
+                "tempest.api.network.test_floating_ips.FloatingIPTestJSON.test_create_list_show_update_delete_floating_ip[id-62595970-ab1c-4b7f-8fcc-fddfe55e8718,smoke]",
+                "tempest.api.network.test_networks.BulkNetworkOpsTest.test_bulk_create_delete_network[id-d4f9024d-1e28-4fc1-a6b1-25dbc6fa11e2,smoke]",
+                "tempest.api.network.test_networks.BulkNetworkOpsTest.test_bulk_create_delete_port[id-48037ff2-e889-4c3b-b86a-8e3f34d2d060,smoke]",
+                "tempest.api.network.test_networks.BulkNetworkOpsTest.test_bulk_create_delete_subnet[id-8936533b-c0aa-4f29-8e53-6cc873aec489,smoke]",
+                "tempest.api.network.test_networks.NetworksTest.test_external_network_visibility[id-af774677-42a9-4e4b-bb58-16fe6a5bc1ec,smoke]",
+                "tempest.api.network.test_ports.PortsTestJSON.test_create_port_with_no_securitygroups[id-4179dcb9-1382-4ced-84fe-1b91c54f5735,smoke]",
+                "tempest.api.network.test_routers.RoutersTest.test_add_multiple_router_interfaces[id-802c73c9-c937-4cef-824b-2191e24a6aab,smoke]",
+                "tempest.api.network.test_routers.RoutersTest.test_add_remove_router_interface_with_port_id[id-2b7d2f37-6748-4d78-92e5-1d590234f0d5,smoke]",
+                "tempest.api.network.test_routers.RoutersTest.test_add_remove_router_interface_with_subnet_id[id-b42e6e39-2e37-49cc-a6f4-8467e940900a,smoke]",
+                "tempest.api.network.test_routers.RoutersTest.test_create_show_list_update_delete_router[id-f64403e2-8483-4b34-8ccd-b09a87bcc68c,smoke]",
+                "tempest.api.network.test_subnetpools_extensions.SubnetPoolsTestJSON.test_create_list_show_update_delete_subnetpools[id-62595970-ab1c-4b7f-8fcc-fddfe55e9811,smoke]",
+                "tempest.api.network.test_versions.NetworksApiDiscovery.test_api_version_resources[id-cac8a836-c2e0-4304-b556-cd299c7281d1,smoke]"
+            ],
+            "total": 14
+        },
+        "functest.tempest.neutron_trunk_ports": {
+            "cases": [
+                "neutron_tempest_plugin.api.test_trunk.TrunkTestJSON.test_add_subports",
+                "neutron_tempest_plugin.api.test_trunk.TrunkTestJSON.test_create_show_delete_trunk",
+                "neutron_tempest_plugin.api.test_trunk.TrunkTestJSON.test_create_trunk_empty_subports_list",
+                "neutron_tempest_plugin.api.test_trunk.TrunkTestJSON.test_create_trunk_subports_not_specified",
+                "neutron_tempest_plugin.api.test_trunk.TrunkTestJSON.test_delete_trunk_with_subport_is_allowed",
+                "neutron_tempest_plugin.api.test_trunk.TrunkTestJSON.test_get_subports",
+                "neutron_tempest_plugin.api.test_trunk.TrunkTestJSON.test_list_trunks",
+                "neutron_tempest_plugin.api.test_trunk.TrunkTestJSON.test_remove_subport",
+                "neutron_tempest_plugin.api.test_trunk.TrunksSearchCriteriaTest.test_list_no_pagination_limit_0",
+                "neutron_tempest_plugin.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination",
+                "neutron_tempest_plugin.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination_page_reverse_asc",
+                "neutron_tempest_plugin.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination_page_reverse_desc",
+                "neutron_tempest_plugin.api.test_trunk.TrunksSearchCriteriaTest.test_list_pagination_with_marker",
+                "neutron_tempest_plugin.api.test_trunk.TrunksSearchCriteriaTest.test_list_sorts_asc",
+                "neutron_tempest_plugin.api.test_trunk.TrunksSearchCriteriaTest.test_list_sorts_desc",
+                "neutron_tempest_plugin.api.test_trunk_details.TestTrunkDetailsJSON.test_port_resource_empty_trunk_details",
+                "neutron_tempest_plugin.api.test_trunk_details.TestTrunkDetailsJSON.test_port_resource_trunk_details_no_subports",
+                "neutron_tempest_plugin.api.test_trunk_details.TestTrunkDetailsJSON.test_port_resource_trunk_details_with_subport",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_add_subport_duplicate_segmentation_details",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_add_subport_passing_dict",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_add_subport_port_id_disabled_trunk",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_add_subport_port_id_uses_parent_port_id",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_create_subport_missing_segmentation_id",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_create_subport_nonexistent_port_id",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_create_subport_nonexistent_trunk",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_create_trunk_duplicate_subport_segmentation_ids",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_create_trunk_nonexistent_port_id",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_create_trunk_nonexistent_subport_port_id",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_create_trunk_with_subport_missing_port_id",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_create_trunk_with_subport_missing_segmentation_id",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_create_trunk_with_subport_missing_segmentation_type",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_delete_port_in_use_by_subport",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_delete_port_in_use_by_trunk",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_delete_trunk_disabled_trunk",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_remove_subport_not_found",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_remove_subport_passing_dict",
+                "neutron_tempest_plugin.api.test_trunk_negative.TrunkTestJSON.test_remove_subport_port_id_disabled_trunk",
+                "neutron_tempest_plugin.scenario.test_trunk.TrunkTest.test_trunk_subport_lifecycle"
+            ],
+            "total": 38
+        },
+        "functest.tempest.osinterop": {
+            "cases": [
+                "tempest.api.network.test_security_groups.SecGroupTest.test_create_security_group_rule_with_icmp_type_code",
+                "tempest.api.network.test_networks.NetworksTest.test_update_subnet_gw_dns_host_routes_dhcp",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_volume_delete_nonexistent_volume_id",
+                "tempest.api.image.v2.test_images_negative.ImagesNegativeTest.test_get_delete_deleted_image",
+                "tempest.api.volume.test_volumes_get.VolumesGetTest.test_volume_create_get_update_delete_from_image",
+                "tempest.api.volume.test_volumes_get.VolumesGetTest.test_volume_create_get_update_delete",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_list_no_params",
+                "tempest.api.network.test_security_groups.SecGroupTest.test_create_security_group_rule_with_remote_ip_prefix",
+                "tempest.api.identity.v3.test_tokens.TokensV3Test.test_create_token",
+                "tempest.api.compute.servers.test_server_metadata.ServerMetadataTestJSON.test_delete_server_metadata_item",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_get_non_existent_server",
+                "tempest.api.compute.servers.test_create_server.ServersTestJSON.test_host_name_is_same_as_server_name",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_filter_by_active_status",
+                "tempest.api.compute.servers.test_servers.ServersTestJSON.test_create_with_existing_server_name",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_details_by_status",
+                "tempest.api.network.test_networks.NetworksTest.test_list_subnets",
+                "tempest.api.compute.servers.test_servers.ServersTestJSON.test_update_server_name",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_invalid_ip_v6_address",
+                "tempest.api.compute.volumes.test_attach_volume.AttachVolumeTestJSON.test_list_get_volume_attachments",
+                "tempest.api.network.test_networks.NetworksTest.test_show_network",
+                "tempest.api.network.test_security_groups.SecGroupTest.test_create_show_delete_security_group_rule",
+                "tempest.api.network.test_networks.NetworksTest.test_create_delete_subnet_with_gw_and_allocation_pools",
+                "tempest.api.image.v2.test_images_negative.ImagesNegativeTest.test_get_image_null_id",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_update_server_set_empty_name",
+                "tempest.api.compute.servers.test_create_server.ServersTestManualDisk.test_host_name_is_same_as_server_name",
+                "tempest.api.network.test_ports.PortsTestJSON.test_show_port",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_filter_by_image",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_delete_server_pass_id_exceeding_length_limit",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_filter_by_limit",
+                "tempest.api.compute.servers.test_servers.ServersTestJSON.test_update_access_server_address",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_stop_non_existent_server",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_get_images_schema",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_with_details",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_reboot_non_existent_server",
+                "tempest.api.image.v2.test_images_negative.ImagesNegativeTest.test_delete_image_null_id",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_create_security_group_rule_with_non_existent_security_group",
+                "tempest.api.network.test_ports.PortsTestJSON.test_show_port_fields",
+                "tempest.api.compute.servers.test_servers.ServersTestJSON.test_create_specify_keypair",
+                "tempest.api.compute.test_versions.TestVersions.test_list_api_versions",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_with_param_metadata",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_list_volumes_with_invalid_status",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_update_volume_with_empty_volume_id",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_by_name",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_list_images_param_disk_format",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_filtered_by_name_wildcard",
+                "tempest.api.network.test_networks.NetworksTest.test_create_delete_subnet_all_attributes",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_list_images_param_status",
+                "tempest.api.compute.servers.test_server_metadata.ServerMetadataTestJSON.test_get_server_metadata_item",
+                "tempest.api.volume.test_volumes_snapshots_list.VolumesSnapshotListTestJSON.test_snapshots_list_with_params",
+                "tempest.api.network.test_security_groups.SecGroupTest.test_create_list_update_show_delete_security_group",
+                "tempest.api.compute.test_quotas.QuotasTestJSON.test_get_quotas",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_detailed_filter_by_image",
+                "tempest.api.compute.volumes.test_attach_volume.AttachVolumeTestJSON.test_attach_detach_volume",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_by_limits_pass_string",
+                "tempest.api.compute.servers.test_create_server.ServersTestManualDisk.test_verify_server_details",
+                "tempest.api.image.v2.test_images_negative.ImagesNegativeTest.test_delete_non_existing_image",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_delete_invalid_volume_id",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_create_duplicate_security_group_rule_fails",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_by_status",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_details_with_multiple_params",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_rebuild_non_existent_server",
+                "tempest.api.compute.servers.test_instance_actions.InstanceActionsTestJSON.test_list_instance_actions",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_filter_by_server_name",
+                "tempest.api.compute.servers.test_create_server.ServersTestJSON.test_list_servers_with_detail",
+                "tempest.api.network.test_networks.NetworksTest.test_create_update_delete_network_subnet",
+                "tempest.api.volume.test_volume_metadata.VolumesMetadataTest.test_update_show_volume_metadata_item",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_filter_by_flavor",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_nonexistent_source_volid",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_by_non_existing_flavor",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_with_a_deleted_server",
+                "tempest.api.network.test_networks.NetworksTest.test_delete_network_with_subnet",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_list_volumes_detail_with_nonexistent_name",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_get_image_schema",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_update_volume_with_nonexistent_volume_id",
+                "tempest.api.identity.v3.test_api_discovery.TestApiDiscovery.test_api_version_resources",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_list_volumes_with_nonexistent_name",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_list_images_param_limit",
+                "tempest.api.network.test_networks.NetworksTest.test_create_delete_subnet_with_gw",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_invalid_size",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list",
+                "tempest.api.identity.v3.test_api_discovery.TestApiDiscovery.test_api_version_statuses",
+                "tempest.api.compute.servers.test_availability_zone.AZV2TestJSON.test_get_availability_zone_list_with_non_admin_user",
+                "tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_lock_unlock_server",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_delete_volume_without_passing_volume_id",
+                "tempest.api.network.test_security_groups.SecGroupTest.test_list_security_groups",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_show_non_existent_security_group",
+                "tempest.api.network.test_security_groups.SecGroupTest.test_create_security_group_rule_with_additional_args",
+                "tempest.api.network.test_networks.NetworksTest.test_create_delete_subnet_with_dhcp_enabled",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_create_security_group_rule_with_non_existent_remote_groupid",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_create_security_group_rule_with_bad_remote_ip_prefix",
+                "tempest.api.network.test_ports.PortsTestJSON.test_list_ports_fields",
+                "tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_stop_start_server",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_details_pagination",
+                "tempest.api.compute.servers.test_create_server.ServersTestJSON.test_verify_server_details",
+                "tempest.api.compute.servers.test_delete_server.DeleteServersTestJSON.test_delete_active_server",
+                "tempest.api.network.test_networks.NetworksTest.test_list_networks_fields",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_create_with_invalid_network_uuid",
+                "tempest.api.image.v2.test_images_tags_negative.ImagesTagsNegativeTest.test_update_tags_for_non_existing_image",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_with_detail_param_metadata",
+                "tempest.api.network.test_networks.NetworksTest.test_show_subnet_fields",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_detailed_filter_by_server_status",
+                "tempest.api.compute.servers.test_instance_actions.InstanceActionsTestJSON.test_get_instance_action",
+                "tempest.api.network.test_security_groups.SecGroupTest.test_create_security_group_rule_with_remote_group_id",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_get_volume_without_passing_volume_id",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_by_changes_since_invalid_date",
+                "tempest.api.compute.servers.test_server_metadata.ServerMetadataTestJSON.test_list_server_metadata",
+                "tempest.api.volume.test_volumes_snapshots_negative.VolumesSnapshotNegativeTestJSON.test_create_snapshot_with_nonexistent_volume_id",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_list_images_param_container_format",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_param_display_name_and_status",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_list_images_param_min_max_size",
+                "tempest.api.compute.test_quotas.QuotasTestJSON.test_get_default_quotas",
+                "tempest.api.image.v2.test_images_tags_negative.ImagesTagsNegativeTest.test_delete_non_existing_tag",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_details_by_availability_zone",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_detail_server_is_deleted",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_nonexistent_snapshot_id",
+                "tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_volume_bootable",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_update_volume_with_invalid_volume_id",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_list_images_param_size",
+                "tempest.api.network.test_networks.NetworksTest.test_show_network_fields",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_by_non_existing_server_name",
+                "tempest.api.volume.test_availability_zone.AvailabilityZoneTestJSON.test_get_availability_zone_list",
+                "tempest.api.volume.test_volumes_snapshots_list.VolumesSnapshotListTestJSON.test_snapshots_list_details_with_params",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_without_passing_size",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_list_volumes_detail_with_invalid_status",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_by_limits_pass_negative_value",
+                "tempest.api.image.v2.test_images_negative.ImagesNegativeTest.test_get_non_existent_image",
+                "tempest.api.compute.images.test_images_oneserver.ImagesOneServerTestJSON.test_create_image_specify_multibyte_character_image_name",
+                "tempest.api.compute.servers.test_server_metadata.ServerMetadataTestJSON.test_set_server_metadata",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_nonexistent_volume_type",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_rebuild_deleted_server",
+                "tempest.api.image.v2.test_images.ListUserImagesTest.test_list_images_param_visibility",
+                "tempest.api.compute.flavors.test_flavors.FlavorsV2TestJSON.test_list_flavors_with_detail",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_update_server_name_length_exceeds_256",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_size_zero",
+                "tempest.api.compute.servers.test_create_server.ServersTestManualDisk.test_list_servers",
+                "tempest.api.network.test_ports.PortsTestJSON.test_list_ports",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_pagination",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_show_non_existent_security_group_rule",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_by_non_existing_image",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_create_additional_default_security_group_fails",
+                "tempest.api.network.test_networks.NetworksTest.test_list_networks",
+                "tempest.api.volume.test_volume_metadata.VolumesMetadataTest.test_crud_volume_metadata",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_delete_server_pass_negative_id",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_by_limits_greater_than_actual_count",
+                "tempest.api.volume.test_snapshot_metadata.SnapshotMetadataTestJSON.test_update_show_snapshot_metadata_item",
+                "tempest.api.volume.test_snapshot_metadata.SnapshotMetadataTestJSON.test_crud_snapshot_metadata",
+                "tempest.api.compute.servers.test_create_server.ServersTestJSON.test_verify_created_server_vcpus",
+                "tempest.api.network.test_subnetpools_extensions.SubnetPoolsTestJSON.test_create_list_show_update_delete_subnetpools",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_by_availability_zone",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_by_changes_since_future_date",
+                "tempest.api.compute.servers.test_create_server.ServersTestJSON.test_list_servers",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_create_security_group_rule_with_bad_protocol",
+                "tempest.api.network.test_networks.NetworksTest.test_list_subnets_fields",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_server_name_blank",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_create_with_invalid_flavor",
+                "tempest.api.network.test_networks.NetworksTest.test_create_delete_subnet_with_host_routes_and_dns_nameservers",
+                "tempest.api.compute.servers.test_create_server.ServersTestManualDisk.test_verify_created_server_vcpus",
+                "tempest.api.compute.servers.test_server_metadata.ServerMetadataTestJSON.test_update_server_metadata",
+                "tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_reboot_server_hard",
+                "tempest.api.network.test_networks.NetworksTest.test_create_delete_subnet_without_gateway",
+                "tempest.api.volume.test_volumes_snapshots.VolumesSnapshotTestJSON.test_volume_from_snapshot",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_volume_get_nonexistent_volume_id",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_update_name_of_non_existent_server",
+                "tempest.api.identity.v3.test_api_discovery.TestApiDiscovery.test_api_media_types",
+                "tempest.api.image.v2.test_images.BasicOperationsImagesTest.test_delete_image",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_create_security_group_rule_with_bad_ethertype",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_details_by_name",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_delete_non_existent_security_group",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_create_server_metadata_exceeds_length_limit",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_create_server_name_length_exceeds_256",
+                "tempest.api.network.test_ports.PortsTestJSON.test_create_port_in_allowed_allocation_pools",
+                "tempest.api.network.test_security_groups.SecGroupTest.test_create_security_group_rule_with_protocol_integer_value",
+                "tempest.api.compute.servers.test_servers.ServersTestJSON.test_create_server_with_admin_password",
+                "tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_volume_readonly_update",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_create_with_invalid_image",
+                "tempest.api.compute.flavors.test_flavors.FlavorsV2TestJSON.test_list_flavors",
+                "tempest.api.volume.test_volumes_snapshots.VolumesSnapshotTestJSON.test_snapshot_create_get_list_update_delete",
+                "tempest.api.volume.test_volumes_snapshots_negative.VolumesSnapshotNegativeTestJSON.test_create_snapshot_without_passing_volume_id",
+                "tempest.api.compute.servers.test_list_servers_negative.ListServersNegativeTestJSON.test_list_servers_status_non_existing",
+                "tempest.api.network.test_security_groups_negative.NegativeSecGroupTest.test_create_security_group_rule_with_invalid_ports",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_get_invalid_volume_id",
+                "tempest.api.network.test_ports.PortsTestJSON.test_create_update_delete_port",
+                "tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_size_negative",
+                "tempest.api.compute.servers.test_create_server.ServersTestManualDisk.test_list_servers_with_detail",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_detailed_limit_results",
+                "tempest.api.network.test_networks.NetworksTest.test_create_delete_subnet_with_allocation_pools",
+                "tempest.api.compute.servers.test_server_metadata.ServerMetadataTestJSON.test_set_server_metadata_item",
+                "tempest.api.network.test_networks.NetworksTest.test_show_subnet",
+                "tempest.api.image.v2.test_images.BasicOperationsImagesTest.test_update_image",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_detailed_filter_by_server_name",
+                "tempest.api.compute.servers.test_list_server_filters.ListServerFiltersTestJSON.test_list_servers_detailed_filter_by_flavor",
+                "tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_rebuild_server",
+                "tempest.api.compute.images.test_images_oneserver.ImagesOneServerTestJSON.test_create_delete_image",
+                "tempest.api.image.v2.test_images_tags.ImagesTagsTest.test_update_delete_tags_for_image",
+                "tempest.api.volume.test_volumes_get.VolumesGetTest.test_volume_create_get_update_delete_as_clone",
+                "tempest.api.volume.test_extensions.ExtensionsTestJSON.test_list_extensions",
+                "tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_create_numeric_server_name",
+                "tempest.api.network.test_ports.PortsTestJSON.test_create_bulk_port",
+                "tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_with_detail_param_display_name_and_status",
+                "tempest.api.network.test_networks.NetworksTest.test_external_network_visibility",
+                "tempest.api.network.test_ports.PortsTestJSON.test_port_list_filter_by_router_id",
+                "tempest.api.network.test_routers_negative.RoutersNegativeTest.test_add_router_interfaces_on_overlapping_subnets_returns_400",
+                "tempest.api.network.test_routers_negative.RoutersNegativeTest.test_delete_non_existent_router_returns_404",
+                "tempest.api.network.test_routers_negative.RoutersNegativeTest.test_router_add_gateway_invalid_network_returns_404",
+                "tempest.api.network.test_routers_negative.RoutersNegativeTest.test_router_add_gateway_net_not_external_returns_400",
+                "tempest.api.network.test_routers_negative.RoutersNegativeTest.test_router_remove_interface_in_use_returns_409",
+                "tempest.api.network.test_routers_negative.RoutersNegativeTest.test_show_non_existent_router_returns_404",
+                "tempest.api.network.test_routers_negative.RoutersNegativeTest.test_update_non_existent_router_returns_404",
+                "tempest.api.network.test_routers.RoutersTest.test_add_multiple_router_interfaces",
+                "tempest.api.network.test_routers.RoutersTest.test_add_remove_router_interface_with_port_id",
+                "tempest.api.network.test_routers.RoutersTest.test_add_remove_router_interface_with_subnet_id",
+                "tempest.api.network.test_routers.RoutersTest.test_create_show_list_update_delete_router",
+                "tempest.api.network.test_routers.RoutersTest.test_update_delete_extra_route",
+                "tempest.api.network.test_routers.RoutersTest.test_update_router_admin_state",
+                "tempest.api.network.test_versions.NetworksApiDiscovery.test_api_version_resources",
+                "tempest.api.volume.test_versions.VersionsTest.test_list_versions",
+                "tempest.api.compute.keypairs.test_keypairs_v22.KeyPairsV22TestJSON.test_keypairsv22_create_list_show_with_type",
+                "tempest.api.identity.v3.test_catalog.IdentityCatalogTest.test_catalog_standardization",
+                "tempest.api.identity.v3.test_tokens.TokensV3Test.test_validate_token"
+            ],
+            "total": 219
+        },
+        "functest.tempest.volume": {
+            "cases": [
+                "tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_attach_detach_volume_to_instance[compute,id-fff42874-7db5-4487-a8e1-ddda5fb5288d,smoke]",
+                "tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_volume_boot_pattern[compute,id-557cd2c2-4eb8-4dce-98be-f86765ff311b,image,slow,volume]"
+            ],
+            "total": 2
+        },
+        "functest.vping.ssh": {
+            "cases": [
+                "functest.vping.ssh"
+            ],
+            "total": 1
+        },
+        "functest.vping.userdata": {
+            "cases": [
+                "functest.vping.userdata"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.cinder_api": {
+            "cases": [
+                "yardstick.ha.cinder_api"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.cpu_load": {
+            "cases": [
+                "yardstick.ha.cpu_load"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.database": {
+            "cases": [
+                "yardstick.ha.database"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.disk_load": {
+            "cases": [
+                "yardstick.ha.disk_load"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.glance_api": {
+            "cases": [
+                "yardstick.ha.glance_api"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.haproxy": {
+            "cases": [
+                "yardstick.ha.haproxy"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.keystone": {
+            "cases": [
+                "yardstick.ha.keystone"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.neutron_server": {
+            "cases": [
+                "yardstick.ha.neutron_server"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.nova_api": {
+            "cases": [
+                "yardstick.ha.nova_api"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.rabbitmq": {
+            "cases": [
+                "yardstick.ha.rabbitmq"
+            ],
+            "total": 1
+        }
+    },
+    "optional": {
+        "functest.security.patrole_vxlan_dependent": {
+            "cases": [
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_provider_network_type[id-3c42f7b8-b80c-44ef-8fa4-69ec4b1836bc]",
+                "patrole_tempest_plugin.tests.api.network.test_networks_rbac.NetworksRbacTest.test_create_network_provider_segmentation_id[id-b9decb7b-68ef-4504-b99b-41edbf7d2af5]"
+            ],
+            "total": 2
+        },
+        "functest.tempest.bgpvpn": {
+            "cases": [
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_associate_disassociate_network",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_associate_disassociate_router",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_associate_invalid_network",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_attach_associated_subnet_to_associated_router",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_create_bgpvpn",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_create_bgpvpn_as_non_admin_fail",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_create_bgpvpn_with_invalid_routetargets",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_delete_bgpvpn",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_delete_bgpvpn_as_non_admin_fail",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_disassociate_invalid_network",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_list_bgpvpn",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_list_bgpvpn_as_non_owner_fail",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_list_netassoc_as_non_owner_fail",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_list_show_network_association",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_list_show_router_association",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_show_bgpvpn",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_show_bgpvpn_as_non_owner_fail",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_show_netassoc_as_non_owner_fail",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_update_bgpvpn_invalid_routetargets",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_update_route_target",
+                "networking_bgpvpn_tempest.tests.api.test_bgpvpn.BgpvpnTest.test_update_route_target_non_admin_fail"
+            ],
+            "total": 21
+        },
+        "functest.tempest.ipv6_scenario": {
+            "cases": [
+                "tempest.scenario.test_network_v6.TestGettingAddress.test_dhcp6_stateless_from_os[compute,id-d7e1f858-187c-45a6-89c9-bdafde619a9f,network,slow]",
+                "tempest.scenario.test_network_v6.TestGettingAddress.test_dualnet_dhcp6_stateless_from_os[compute,id-76f26acd-9688-42b4-bc3e-cd134c4cb09e,network,slow]",
+                "tempest.scenario.test_network_v6.TestGettingAddress.test_multi_prefix_dhcpv6_stateless[compute,id-7ab23f41-833b-4a16-a7c9-5b42fe6d4123,network,slow]",
+                "tempest.scenario.test_network_v6.TestGettingAddress.test_dualnet_multi_prefix_dhcpv6_stateless[compute,id-cf1c4425-766b-45b8-be35-e2959728eb00,network,slow]",
+                "tempest.scenario.test_network_v6.TestGettingAddress.test_slaac_from_os[compute,id-2c92df61-29f0-4eaa-bee3-7c65bef62a43,network,slow]",
+                "tempest.scenario.test_network_v6.TestGettingAddress.test_dualnet_slaac_from_os[compute,id-b6399d76-4438-4658-bcf5-0d6c8584fde2,network,slow]",
+                "tempest.scenario.test_network_v6.TestGettingAddress.test_multi_prefix_slaac[compute,id-dec222b1-180c-4098-b8c5-cc1b8342d611,network,slow]",
+                "tempest.scenario.test_network_v6.TestGettingAddress.test_dualnet_multi_prefix_slaac[compute,id-9178ad42-10e4-47e9-8987-e02b170cc5cd,network,slow]"
+            ],
+            "total": 8
+        },
+        "functest.tempest.multi_node_scheduling": {
+            "cases": [
+                "tempest.scenario.test_server_multinode.TestServerMultinode.test_schedule_to_all_nodes[compute,id-9cecbe35-b9d4-48da-a37e-7ce70aa43d30,network,smoke]",
+                "tempest.api.compute.servers.test_server_group.ServerGroupTestJSON.test_create_delete_multiple_server_groups_with_same_name_policy[id-154dc5a4-a2fe-44b5-b99e-f15806a4a113]",
+                "tempest.api.compute.servers.test_server_group.ServerGroupTestJSON.test_create_delete_server_group_with_affinity_policy[id-5dc57eda-35b7-4af7-9e5f-3c2be3d2d68b]",
+                "tempest.api.compute.servers.test_server_group.ServerGroupTestJSON.test_create_delete_server_group_with_anti_affinity_policy[id-3645a102-372f-4140-afad-13698d850d23]",
+                "tempest.api.compute.servers.test_server_group.ServerGroupTestJSON.test_list_server_groups[id-d4874179-27b4-4d7d-80e4-6c560cdfe321]",
+                "tempest.api.compute.servers.test_server_group.ServerGroupTestJSON.test_show_server_group[id-b3545034-dd78-48f0-bdc2-a4adfa6d0ead]"
+            ],
+            "total": 6
+        },
+        "functest.tempest.network_scenario": {
+            "cases": [
+                "tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_hotplug_nic[compute,id-c5adff73-e961-41f1-b4a9-343614f18cfa,network]",
+                "tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops[compute,id-f323b3ba-82f8-4db7-8ea6-6a895869ec49,network,smoke]",
+                "tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_subnet_details[compute,id-d8bb918e-e2df-48b2-97cd-b73c95450980,network,slow]",
+                "tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_update_instance_port_admin_state[compute,id-f5dfcc22-45fd-409f-954c-5bd500d7890b,network,slow]",
+                "tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_update_router_admin_state[compute,id-04b9fe4e-85e8-4aea-b937-ea93885ac59f,network,slow]"
+            ],
+            "total": 5
+        },
+        "functest.tempest.network_security": {
+            "cases": [
+                "tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_port_security_macspoofing_port[compute,id-7c0bb1a2-d053-49a4-98f9-ca1a1d849f63,network,slow]",
+                "tempest.scenario.test_security_groups_basic_ops.TestSecurityGroupsBasicOps.test_cross_tenant_traffic[compute,id-e79f879e-debb-440c-a7e4-efeda05b6848,network]",
+                "tempest.scenario.test_security_groups_basic_ops.TestSecurityGroupsBasicOps.test_in_tenant_traffic[compute,id-63163892-bbf6-4249-aa12-d5ea1f8f421b,network]",
+                "tempest.scenario.test_security_groups_basic_ops.TestSecurityGroupsBasicOps.test_multiple_security_groups[compute,id-d2f77418-fcc4-439d-b935-72eca704e293,network,slow]",
+                "tempest.scenario.test_security_groups_basic_ops.TestSecurityGroupsBasicOps.test_port_security_disable_security_group[compute,id-7c811dcc-263b-49a3-92d2-1b4d8405f50c,network,slow]",
+                "tempest.scenario.test_security_groups_basic_ops.TestSecurityGroupsBasicOps.test_port_update_new_security_group[compute,id-f4d556d7-1526-42ad-bafb-6bebf48568f6,network,slow]"
+            ],
+            "total": 6
+        },
+        "functest.tempest.vm_lifecycle": {
+            "cases": [
+                "tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,id-bdbb5441-9204-419d-a225-b4fdbfb1a1a8,image,network,volume]",
+                "tempest.scenario.test_network_advanced_server_ops.TestNetworkAdvancedServerOps.test_server_connectivity_cold_migration[compute,id-a4858f6c-401e-4155-9a49-d5cd053d1a2f,network,slow]",
+                "tempest.scenario.test_network_advanced_server_ops.TestNetworkAdvancedServerOps.test_server_connectivity_pause_unpause[compute,id-2b2642db-6568-4b35-b812-eceed3fa20ce,network,slow]",
+                "tempest.scenario.test_network_advanced_server_ops.TestNetworkAdvancedServerOps.test_server_connectivity_reboot[compute,id-7b6860c2-afa3-4846-9522-adeb38dfbe08,network,slow]",
+                "tempest.scenario.test_network_advanced_server_ops.TestNetworkAdvancedServerOps.test_server_connectivity_rebuild[compute,id-88a529c2-1daa-4c85-9aec-d541ba3eb699,network,slow]",
+                "tempest.scenario.test_network_advanced_server_ops.TestNetworkAdvancedServerOps.test_server_connectivity_resize[compute,id-719eb59d-2f42-4b66-b8b1-bb1254473967,network,slow]",
+                "tempest.scenario.test_network_advanced_server_ops.TestNetworkAdvancedServerOps.test_server_connectivity_stop_start[compute,id-61f1aa9a-1573-410e-9054-afa557cab021,network,slow]",
+                "tempest.scenario.test_network_advanced_server_ops.TestNetworkAdvancedServerOps.test_server_connectivity_suspend_resume[compute,id-5cdf9499-541d-4923-804e-b9a60620a7f0,network,slow]",
+                "tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_resize_volume_backed_server_confirm[id-e6c28180-7454-4b59-b188-0257af08a63b,volume]",
+                "tempest.scenario.test_server_advanced_ops.TestServerAdvancedOps.test_server_sequence_suspend_resume[compute,id-949da7d5-72c8-4808-8802-e3d70df98e2c,slow]",
+                "tempest.scenario.test_shelve_instance.TestShelveInstance.test_shelve_instance[compute,id-1164e700-0af0-4a4c-8792-35909a88743c,image,network,slow]",
+                "tempest.scenario.test_shelve_instance.TestShelveInstance.test_shelve_volume_backed_instance[compute,id-c1b6318c-b9da-490b-9c67-9339b627271f,image,network,slow,volume]"
+            ],
+            "total": 12
+        },
+        "functest.vnf.vepc": {
+            "cases": [
+                "functest.vnf.vepc"
+            ],
+            "total": 1
+        },
+        "functest.vnf.vims": {
+            "cases": [
+                "functest.vnf.vims"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.controller_restart": {
+            "cases": [
+                "yardstick.ha.controller_restart"
+            ],
+            "total": 1
+        },
+        "yardstick.ha.neutron_l3_agent": {
+            "cases": [
+                "yardstick.ha.neutron_l3_agent"
+            ],
+            "total": 1
+        }
+    }
+}
