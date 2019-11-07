@@ -247,11 +247,11 @@
                            extend_skip(sub_case_list_skip);
                            extend_fail(sub_case_list_fail);
                        }
-                       else if(ctrl.version == '2018.09') {
+                       else {
                            // OVP 2018.09 and later results store all results in a single json structure:
                            // Looping over all test cases of this individual test run
                            angular.forEach(result_resp.data.testcases_list, function(testcase, index){
-                               var sub_case_list_total = get_sub_case_list_2018_09(testcase);
+                               var sub_case_list_total = get_sub_case_list(testcase);
                                var sub_case_list = sub_case_list_total[0];
                                var sub_case_list_skip = sub_case_list_total[1];
                                var sub_case_list_fail = sub_case_list_total[2];
@@ -327,7 +327,7 @@
             return [case_list, case_list_skip, case_list_fail];
         }
 
-        function get_sub_case_list_2018_09(result) {
+        function get_sub_case_list(result) {
             var case_list = [];
             var case_list_skip = [];
             var case_list_fail = [];
