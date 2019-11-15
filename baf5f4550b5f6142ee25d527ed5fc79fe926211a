@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+1: Mika Rautakumpu <mika.rautakumpu@nokia.com>
+Code-Review+2: Dan Xu <xudan16@huawei.com>
+Submitted-by: Dan Xu <xudan16@huawei.com>
+Submitted-at: Fri, 15 Nov 2019 06:30:45 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/c/dovetail-webportal/+/68800
+Project: dovetail-webportal
+Branch: refs/heads/master
