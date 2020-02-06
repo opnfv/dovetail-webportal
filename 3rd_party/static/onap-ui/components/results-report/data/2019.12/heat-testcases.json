@@ -1,0 +1,26 @@
+{
+    "mandatory": {
+        "onap-vvp.validate.heat": {
+            "cases": [
+                "onap-vvp.validate.heat"
+            ],
+            "total": 1
+        },
+        "onap-vvp.lifecycle_validate.heat": {
+            "cases": [
+                "model-and-distribute",
+                "instantiation"
+            ],
+            "total": 2
+        },
+        "stack_validation": {
+            "cases": [
+                "stack_validation"
+            ],
+            "total": 1
+        }
+    },
+    "optional": {
+
+    }
+}
