@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81310122_5f0fe5c9",
+        "filename": "3rd_party/static/onap-ui/components/results-report/data/2019.12/tosca-testcases.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3543
+      },
+      "writtenOn": "2020-02-06T18:56:26Z",
+      "side": 1,
+      "message": "We are missing the definitions for the 2019.12 TOSCA tests. We need these ASAP! We can push the portal live without them, but it will \"not\" require the validation cases for the TOSCA tests.",
+      "range": {
+        "startLine": 5,
+        "startChar": 16,
+        "endLine": 5,
+        "endChar": 40
+      },
+      "revId": "ecbcb02068bc220439225b6294d30947eaf25d7d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
