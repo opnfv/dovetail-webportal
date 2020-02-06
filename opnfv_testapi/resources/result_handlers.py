@@ -12,6 +12,8 @@ from datetime import timedelta
 import json
 import tarfile
 import io
+import re
+import uuid
 
 from tornado import gen
 from tornado import web
@@ -266,20 +268,26 @@ class ResultsUploadHandler(ResultsCLHandler):
             self.finish_request({'code': 403, 'msg': msg})
             return
         try:
-            results = tar_in.extractfile('results/results.json').read()
+            # Deal with results that are in the 'root' of the tar
+            # file, instead of in results/
+            missing_results_dir = ''
+            tar_files = tar_in.getnames()
+            if 'results/results.json' not in tar_files:
+                missing_results_dir = '/results'
+                results = tar_in.extractfile('results.json').read()
+            else:
+                results = tar_in.extractfile('results/results.json').read()
         except KeyError:
             msg = 'Uploaded results must contain at least one passing test.'
             self.finish_request({'code': 403, 'msg': msg})
             return
-        results = results.split('\n')
+        # results = results.split('\n')
         result_ids = []
         version = ''
         vnf_type = None
         vnf_checksum = None
-        for result in results:
-            if result == '':
-                continue
-            self.json_args = json.loads(result).copy()
+        try:
+            self.json_args = json.loads(results).copy()
             openid = self.get_secure_cookie(auth_const.OPENID)
             if openid:
                 self.json_args['owner'] = openid
@@ -297,8 +305,24 @@ class ResultsUploadHandler(ResultsCLHandler):
             build_tag = self.json_args['build_tag']
             _id = yield self._inner_create()
             result_ids.append(str(_id))
-        test_id = build_tag[13:49]
-        log_path = '/home/testapi/logs/%s' % (test_id)
+        except ValueError:
+            msg = 'Uploaded results don''t appear to contain a '\
+                  'valid results.json file!'
+            self.finish_request({'code': 403, 'msg': msg})
+            return
+        # Build a test id from the build_tag, where this field takes a couple
+        # of different formats between Dovetail NFVI testing and VNF testing.
+        # If a valid UUID isn't part of the build_tag, we will generate one
+        # here.
+        test_id_match = re.search('[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-'
+                                  '[0-9A-F]{4}-[0-9A-F]{12}', build_tag)
+        if not test_id_match:
+            print('test_id doesn''t look to be a valid UUID, generating a '
+                  'new one...')
+            test_id = str(uuid.uuid4())
+        else:
+            test_id = test_id_match.group(1)
+        log_path = '/home/testapi/logs/%s%s' % (test_id, missing_results_dir)
         tar_in.extractall(log_path)
         log_filename = "/home/testapi/logs/log_%s.tar.gz" % (test_id)
         with open(log_filename, "wb") as tar_out:

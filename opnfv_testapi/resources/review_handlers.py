@@ -72,7 +72,10 @@ class ReviewsCLHandler(GenericReviewHandler):
             raises.Forbidden(message.unauthorized())
         role = self.get_secure_cookie(auth_const.ROLE)
         if 'reviewer' not in role.split(','):
-            raises.Unauthorized(message.no_auth())
+            self.finish_request({'code': 403,
+                                 'msg': 'You do not have the reviewer '
+                                 'permision / role!'})
+            return
         test = yield dbapi.db_find_one(
             'tests', {'id': self.json_args['test_id']})
         if test['owner'] == self.json_args['reviewer_openid']:
