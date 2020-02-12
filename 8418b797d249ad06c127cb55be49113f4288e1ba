@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdecca67_31d448ca",
+        "filename": "3rd_party/static/onap-ui/components/results-report/data/2019.12/tosca-testcases.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2020-02-12T04:44:02Z",
+      "side": 1,
+      "message": "could you please add compliance test cases from https://github.com/onap/vnfsdk-refrepo/blob/master/vnfmarket-be/deployment/vtp2ovp/sample-resutls/vnf-compalince.json \n\nThank you.",
+      "revId": "8418b797d249ad06c127cb55be49113f4288e1ba",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": true
+    }
+  ]
+}
