@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c59b098b_1c1c17c3",
+        "filename": "3rd_party/static/testapi-ui/components/home/home.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 385
+      },
+      "writtenOn": "2020-08-26T12:18:17Z",
+      "side": 1,
+      "message": "Badge. Work is now focused",
+      "range": {
+        "startLine": 218,
+        "startChar": 37,
+        "endLine": 218,
+        "endChar": 65
+      },
+      "revId": "0e725361c89cf0609d3a22285ac2b5a520dff280",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": true
+    }
+  ]
+}
