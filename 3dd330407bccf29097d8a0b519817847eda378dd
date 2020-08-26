@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Verified+1: Georg Kunz <georg.kunz@est.tech>
+Code-Review+2: Georg Kunz <georg.kunz@est.tech>
+Submitted-by: Lincoln Lavoie <lylavoie@iol.unh.edu>
+Submitted-at: Wed, 26 Aug 2020 16:20:11 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/c/dovetail-webportal/+/70886
+Project: dovetail-webportal
+Branch: refs/heads/master
