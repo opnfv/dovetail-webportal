@@ -6,7 +6,7 @@
 opnfv-testapi
 =============
 
-Test Results Collector of OPNFV Test Projects
+OPNFV Qualification Testing (OVP Portal).
 
 Start Server
 ==============
