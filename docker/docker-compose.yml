@@ -30,7 +30,7 @@ services:
             - mongodb
             - lfnapi
         ports:
-            - "8000:8000"
+            - "8080:8000"
     webonap:
         image: opnfv/dovetail-webportal-web-onap:latest
         container_name: web-onap
@@ -44,7 +44,7 @@ services:
             - mongodb
             - lfnapi
         ports:
-            - "8001:8000"
+            - "8081:8000"
     lfnapi:
         image: opnfv/dovetail-webportal-api:latest
         container_name: lfn-api
@@ -54,7 +54,7 @@ services:
             - lfn-testapi-logs:/home/testapi/logs
             - lfn-company-logos:/home/testapi/media/companies
         ports:
-            - "8010:8010"
+            - "8082:8010"
     nginx:
         image: jwilder/nginx-proxy
         container_name: lfn-nginx
