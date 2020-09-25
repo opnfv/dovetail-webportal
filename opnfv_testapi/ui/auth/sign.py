@@ -320,3 +320,9 @@ class LoginHandler(base.BaseHandler):
         mc.set("token", token)
         self.set_header("token", token)
         self.finish_request(response)
+
+class LogoutHandler(base.BaseHandler):
+    def post(self):
+        input_token = self.request.headers._dict['Token']
+        resp = {'Message': 'You have been logged out successfully.'}
+        self.finish_request(resp)
