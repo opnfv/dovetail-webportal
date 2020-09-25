@@ -330,5 +330,6 @@ class LogoutHandler(base.BaseHandler):
         input_token = self.request.headers._dict['Token']
         if not input_token or not input_token == token :
             raises.Unauthorized(message.invalid_token())
+        mc.set("token", '')
         resp = {'Message': 'You have been logged out successfully.'}
         self.finish_request(resp)
