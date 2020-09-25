@@ -294,15 +294,14 @@ class SignoutHandler(base.BaseHandler):
 
 class LoginHandler(base.BaseHandler):
     def post(self):
-        data  = json.loads(self.request.body)
+        data = json.loads(self.request.body)
         name = data.get('name')
-        password =data.get('pass')
+        password = data.get('pass')
         form_id = 'user_login'
         if not name:
             raises.Unauthorized(message.req_username())
         elif not password:
             raises.Unauthorized(message.req_password())
-
         params = {
             "name": name,
             "pass": password,
