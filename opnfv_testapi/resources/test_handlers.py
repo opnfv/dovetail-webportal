@@ -9,6 +9,7 @@
 import logging
 import os
 import json
+import memcache
 
 from tornado import web
 from tornado import gen
@@ -360,3 +361,101 @@ class TestsGURHandler(GenericTestHandler):
                     logging.debug('not found')
                     raise gen.Return((False, message.no_auth()))
         raise gen.Return((True, {}))
+#updated new test appi
+class TestsUploadDataHandler(GenericTestHandler):
+    @swagger.operation(nickname="queryTests")
+    @web.asynchronous
+    @gen.coroutine
+    def get(self):
+        """
+            @description: Retrieve result(s) for a test project
+                          on a specific pod.
+            @notes: Retrieve result(s) for a test project on a specific pod.
+                Available filters for this request are :
+                 - id  : Test id
+                 - period : x last days, incompatible with from/to
+                 - from : starting time in 2016-01-01 or 2016-01-01 00:01:23
+                 - to : ending time in 2016-01-01 or 2016-01-01 00:01:23
+                 - signed : get logined user result
+
+                GET /results/project=functest&case=vPing&version=Arno-R1 \
+                &pod=pod_name&period=15&signed
+            @return 200: all test results consist with query,
+                         empty list if no result is found
+            @rtype: L{Tests}
+        """
+        def descend_limit():
+            descend = self.get_query_argument('descend', 'true')
+            return -1 if descend.lower() == 'true' else 1
+
+        def last_limit():
+            return self.get_int('last', self.get_query_argument('last', 0))
+
+        def page_limit():
+            return self.get_int('page', self.get_query_argument('page', 0))
+
+        limitations = {
+            'sort': {'_id': descend_limit()},
+            'last': last_limit(),
+            'page': page_limit(),
+            'per_page': CONF.api_results_per_page
+        }
+
+        curr_user = self.get_secure_cookie(auth_const.OPENID)
+        if curr_user is None:
+            raises.Unauthorized(message.no_auth())
+
+        review = self.request.query_arguments.pop('review', None)
+        query = yield self.set_query()
+        if review:
+            yield self._list(query=query, res_op=self.check_review,
+                             **limitations)
+        else:
+            yield self._list(query=query, **limitations)
+        logging.debug('list end')
+
+    @gen.coroutine
+    def check_review(self, data, *args):
+        current_user = self.get_secure_cookie(auth_const.OPENID)
+        for test in data:
+            query = {'reviewer_openid': current_user, 'test_id': test['id']}
+            ret = yield dbapi.db_find_one('reviews', query)
+            if ret:
+                test['voted'] = 'true'
+            else:
+                test['voted'] = 'false'
+
+        raise gen.Return({self.table: data})
+
+    @swagger.operation(nickname="createTest")
+    @web.asynchronous
+    def post(self):
+        """
+            @description: create a test
+            @param body: test to be created
+            @type body: L{TestCreateRequest}
+            @in body: body
+            @rtype: L{CreateResponse}
+            @return 200: test is created.
+            @raise 404: pod/project/testcase not exist
+            @raise 400: body/pod_name/project_name/case_name not provided
+        """
+        openid = self.request.headers._dict['Openid']
+        if openid:
+            self.json_args['owner'] = openid
+
+        self._post()
+
+    @gen.coroutine
+    def _post(self):
+        miss_fields = []
+        carriers = []
+        query = {'owner': self.json_args['owner'], 'id': self.json_args['id']}
+        ret, msg = yield self._check_if_exists(table="tests", query=query)
+        if ret:
+            self.finish_request({'code': '403', 'msg': msg})
+            return
+
+        if self.is_onap:
+            self.json_args['is_onap'] = 'true'
+        self._create(miss_fields=miss_fields, carriers=carriers)

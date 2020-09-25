@@ -76,4 +76,6 @@ onap_mappings = [
     (r'/api/v1/onap/reviews', review_handlers.ReviewsCLHandler),
     (r'/api/v1/onap/results/upload/data', result_handlers.ResultsFileUploadHandler,
      dict(is_onap=True)),
+    (r'/api/v1/onap/tests/upload/data', test_handlers.TestsUploadDataHandler,
+     dict(is_onap=True)),
 ]
