@@ -23,6 +23,8 @@ from opnfv_testapi.ui.auth import constants as const
 
 import logging
 import oauth2 as oauth
+import requests
+import json
 
 root = logging.getLogger()
 root.setLevel(logging.DEBUG)
@@ -286,3 +288,21 @@ class SignoutHandler(base.BaseHandler):
 
         url = client.get_logout_url('http://{0}'.format(self.request.host))
         self.redirect(url)
+
+class LoginHandler(base.BaseHandler):
+    def post(self):
+        data  = json.loads(self.request.body)
+        name = data.get('name')
+        password =data.get('pass')
+        form_id = 'user_login'
+
+        params = {
+            "name": name,
+            "pass": password,
+            "form_id": form_id,
+        }
+        headers = {'Content-Type':'application/x-www-form-urlencoded'}
+        response = requests.post('https://identity.linuxfoundation.org', data=params, headers=headers)
+        response_text = response.content
+        resp = {'status': 'success'}
+        self.finish_request(resp)
