@@ -74,4 +74,6 @@ onap_mappings = [
     (r'/api/v1/onap/cvp/applications',
         application_handlers.ApplicationsCLHandler, dict(is_onap=True)),
     (r'/api/v1/onap/reviews', review_handlers.ReviewsCLHandler),
+    (r'/api/v1/onap/results/upload/data', result_handlers.ResultsFileUploadHandler,
+     dict(is_onap=True)),
 ]
