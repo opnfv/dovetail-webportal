@@ -296,15 +296,15 @@ class SignoutHandler(base.BaseHandler):
 class LoginHandler(base.BaseHandler):
     def post(self):
         data = json.loads(self.request.body)
-        name = data.get('name')
+        userName = data.get('name')
         password = data.get('pass')
         form_id = 'user_login'
-        if not name:
+        if not userName:
             raises.Unauthorized(message.req_username())
         elif not password:
             raises.Unauthorized(message.req_password())
         params = {
-            "name": name,
+            "name": userName,
             "pass": password,
             "form_id": form_id,
         }
@@ -314,7 +314,7 @@ class LoginHandler(base.BaseHandler):
         response_text = response.content
         if "unrecognized username or password" in response_text:
             raises.Unauthorized(message.invalid_credentials())
-        # generate random token
+        #generate random token and store in memcache
         token = base.get_token()
         resp = {'status': 'success'}
         mc = memcache.Client(['127.0.0.1:11211'], debug=0)
