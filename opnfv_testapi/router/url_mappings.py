@@ -56,7 +56,8 @@ mappings = [
     (r'/api/v1/auth/signin_return_cas', sign.SigninReturnCasHandler),
     (r'/api/v1/auth/signout', sign.SignoutHandler),
     (r'/api/v1/profile', user.ProfileHandler),
-    (r'/api/v1/reviews', review_handlers.ReviewsCLHandler)
+    (r'/api/v1/reviews', review_handlers.ReviewsCLHandler),
+    ('/api/v1/login', sign.LoginHandler)
 
 ]
 
