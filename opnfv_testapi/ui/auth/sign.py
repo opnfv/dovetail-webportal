@@ -312,5 +312,7 @@ class LoginHandler(base.BaseHandler):
         response = requests.post('https://identity.linuxfoundation.org',
                 data=params, headers=headers)
         response_text = response.content
+        if "unrecognized username or password" in response_text:
+            raises.Unauthorized(message.invalid_credentials())
         resp = {'status': 'success'}
         self.finish_request(resp)
