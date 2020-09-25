@@ -325,10 +325,10 @@ class LoginHandler(base.BaseHandler):
 
 class LogoutHandler(base.BaseHandler):
     def post(self):
+        input_token = self.request.headers._dict['Token']
         mc = memcache.Client(['127.0.0.1:11211'], debug=0)
         token = mc.get("token")
-        input_token = self.request.headers._dict['Token']
-        if not input_token or not input_token == token :
+        if not token or not input_token == token :
             raises.Unauthorized(message.invalid_token())
         mc.set("token", '')
         resp = {'Message': 'You have been logged out successfully.'}
