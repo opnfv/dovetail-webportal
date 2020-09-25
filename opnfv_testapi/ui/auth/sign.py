@@ -312,5 +312,8 @@ class LoginHandler(base.BaseHandler):
         response_text = response.content
         if "unrecognized username or password" in response_text:
             raises.Unauthorized(message.invalid_credentials())
+        # generate random token
+        token = base.get_token()
+        self.set_secure_cookie("token", token)
         resp = {'status': 'success'}
         self.finish_request(resp)
