@@ -303,7 +303,6 @@ class LoginHandler(base.BaseHandler):
             raises.Unauthorized(message.req_username())
         elif not password:
             raises.Unauthorized(message.req_password())
-
         params = {
             "name": name,
             "pass": password,
