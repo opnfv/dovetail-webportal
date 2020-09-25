@@ -20,6 +20,8 @@ from opnfv_testapi.common.config import CONF
 from opnfv_testapi.db import api as dbapi
 from opnfv_testapi.ui.auth import base
 from opnfv_testapi.ui.auth import constants as const
+from opnfv_testapi.common import raises
+from opnfv_testapi.common import message
 
 import logging
 import oauth2 as oauth
@@ -295,6 +297,10 @@ class LoginHandler(base.BaseHandler):
         name = data.get('name')
         password =data.get('pass')
         form_id = 'user_login'
+        if not name:
+            raises.Unauthorized(message.req_username())
+        elif not password:
+            raises.Unauthorized(message.req_password())
 
         params = {
             "name": name,
