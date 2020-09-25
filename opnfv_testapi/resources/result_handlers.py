@@ -14,6 +14,7 @@ import tarfile
 import io
 import re
 import uuid
+import memcache
 
 from tornado import gen
 from tornado import web
@@ -380,3 +381,94 @@ class ResultsGURHandler(GenericResultHandler):
         query = {'_id': objectid.ObjectId(result_id)}
         db_keys = []
         self._update(query=query, db_keys=db_keys)
+
+#Api for results upload
+class ResultsFileUploadHandler(ResultsCLHandler):
+    @swagger.operation(nickname="uploadTestResult")
+    @web.asynchronous
+    @gen.coroutine
+    def post(self):
+        """
+            @description: upload and create a test result
+            @param body: result to be created
+            @type body: L{ResultCreateRequest}
+            @in body: body
+            @rtype: L{CreateResponse}
+            @return 200: result is created.
+            @raise 404: pod/project/testcase not exist
+            @raise 400: body/pod_name/project_name/case_name not provided
+        """
+        file_array = self.request.files.get('file', None)
+        fileinfo = file_array[0]
+        try:
+            tar_in = tarfile.open(fileobj=io.BytesIO(fileinfo['body']),
+                                  mode="r:gz")
+        except tarfile.ReadError:
+            msg = 'Please upload a valid gzip file.'
+            self.finish_request({'code': 403, 'msg': msg})
+            return
+        try:
+            # Deal with results that are in the 'root' of the tar
+            # file, instead of in results/
+            missing_results_dir = ''
+            tar_files = tar_in.getnames()
+            if 'results/results.json' not in tar_files:
+                missing_results_dir = '/results'
+                results = tar_in.extractfile('results.json').read()
+            else:
+                results = tar_in.extractfile('results/results.json').read()
+        except KeyError:
+            msg = 'Uploaded results must contain at least one passing test.'
+            self.finish_request({'code': 403, 'msg': msg})
+            return
+        # results = results.split('\n')
+        result_ids = []
+        version = ''
+        vnf_type = None
+        vnf_checksum = None
+        try:
+            self.json_args = json.loads(results).copy()
+            openid = self.get_secure_cookie(auth_const.OPENID)
+            if openid:
+                self.json_args['owner'] = openid
+            if self.is_onap:
+                self.json_args['is_onap'] = 'true'
+                vnf_type = self.json_args['vnf_type']
+                vnf_checksum = self.json_args['vnf_checksum']
+            # the result files used in the first release of OVP did not
+            # specify an OVP version
+            if (self.json_args['version'] == 'master'
+                    or self.json_args['version'] == 'unknown'):
+                version = '2018.01'
+            else:
+                version = self.json_args['version']
+            build_tag = self.json_args['build_tag']
+            _id = yield self._inner_create()
+            result_ids.append(str(_id))
+        except ValueError:
+            msg = 'Uploaded results don''t appear to contain a '\
+                  'valid results.json file!'
+            self.finish_request({'code': 403, 'msg': msg})
+            return
+        # Build a test id from the build_tag, where this field takes a couple
+        # of different formats between Dovetail NFVI testing and VNF testing.
+        # If a valid UUID isn't part of the build_tag, we will generate one
+        # here.
+        test_id_match = re.search('[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-'
+                                  '[0-9A-F]{4}-[0-9A-F]{12}', build_tag)
+        if not test_id_match:
+            print('test_id doesn''t look to be a valid UUID, generating a '
+                  'new one...')
+            test_id = str(uuid.uuid4())
+        else:
+            test_id = test_id_match.group(1)
+        log_path = '/home/testapi/logs/%s%s' % (test_id, missing_results_dir)
+        tar_in.extractall(log_path)
+        log_filename = "/home/testapi/logs/log_%s.tar.gz" % (test_id)
+        with open(log_filename, "wb") as tar_out:
+            tar_out.write(fileinfo['body'])
+        resp = {'id': test_id, 'results': result_ids, 'version': version}
+        if vnf_type:
+            resp['vnf_type'] = vnf_type
+            resp['vnf_checksum'] = vnf_checksum
+        self.finish_request(resp)
