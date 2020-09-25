@@ -446,7 +446,7 @@ class TestsUploadDataHandler(GenericTestHandler):
         if openid:
             self.json_args['owner'] = openid
         input_token = self.request.headers._dict['Token']
-        if not input_token or not input_token == token:
+        if not token or not input_token == token:
             raises.Unauthorized(message.invalid_token())
 
         self._post()
