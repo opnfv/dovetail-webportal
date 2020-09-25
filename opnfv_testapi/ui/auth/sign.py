@@ -319,7 +319,7 @@ class LoginHandler(base.BaseHandler):
         mc = memcache.Client(['127.0.0.1:11211'], debug=0)
         mc.set("token", token)
         self.set_header("token", token)
-        self.finish_request(response)
+        self.finish_request(resp)
 
 class LogoutHandler(base.BaseHandler):
     def post(self):
