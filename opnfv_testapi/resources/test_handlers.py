@@ -440,7 +440,8 @@ class TestsUploadDataHandler(GenericTestHandler):
             @raise 404: pod/project/testcase not exist
             @raise 400: body/pod_name/project_name/case_name not provided
         """
-        token = self.get_secure_cookie("token")
+        mc = memcache.Client(['127.0.0.1:11211'], debug=0)
+        token = mc.get("token")
         openid = self.request.headers._dict['Openid']
         if openid:
             self.json_args['owner'] = openid
