@@ -398,9 +398,10 @@ class ResultsFileUploadHandler(ResultsCLHandler):
             @raise 404: pod/project/testcase not exist
             @raise 400: body/pod_name/project_name/case_name not provided
         """
-        token = self.get_secure_cookie("token")
+        mc = memcache.Client(['127.0.0.1:11211'], debug=0)
+        token = mc.get("token")
         input_token = self.request.headers._dict['Token']
-        if not input_token or not input_token == token:
+        if not token or not input_token == token:
              raises.Unauthorized(message.invalid_token())
         file_array = self.request.files.get('file', None)
         if file_array is None:
