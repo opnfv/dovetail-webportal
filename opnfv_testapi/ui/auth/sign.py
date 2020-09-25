@@ -27,6 +27,7 @@ import logging
 import oauth2 as oauth
 import requests
 import json
+import memcache
 
 root = logging.getLogger()
 root.setLevel(logging.DEBUG)
@@ -316,6 +317,8 @@ class LoginHandler(base.BaseHandler):
             raises.Unauthorized(message.invalid_credentials())
         # generate random token
         token = base.get_token()
-        self.set_secure_cookie("token", token)
         resp = {'status': 'success'}
-        self.finish_request(resp)
+        mc = memcache.Client(['127.0.0.1:11211'], debug=0)
+        mc.set("token", token)
+        self.set_header("token", token)
+        self.finish_request(response)
