@@ -325,6 +325,9 @@ class LoginHandler(base.BaseHandler):
 
 class LogoutHandler(base.BaseHandler):
     def post(self):
+        token=self.get_secure_cookie('token')
         input_token = self.request.headers._dict['Token']
+        if not input_token or not input_token == token :
+            raises.Unauthorized(message.invalid_token())
         resp = {'Message': 'You have been logged out successfully.'}
         self.finish_request(resp)
