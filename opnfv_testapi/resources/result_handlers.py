@@ -403,6 +403,10 @@ class ResultsFileUploadHandler(ResultsCLHandler):
         if not input_token or not input_token == token:
              raises.Unauthorized(message.invalid_token())
         file_array = self.request.files.get('file', None)
+        if file_array is None:
+            msg = 'Please upload a file.'
+            self.finish_request({'code': 403, 'msg': msg})
+            return
         fileinfo = file_array[0]
         try:
             tar_in = tarfile.open(fileobj=io.BytesIO(fileinfo['body']),
