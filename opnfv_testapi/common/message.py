@@ -57,6 +57,10 @@ def must_int(name):
 def no_auth():
     return 'No permission to operate. Please ask Administrator for details.'
 
+def invalid_credentials():
+    return 'Invalid UserName or Password'
+
+
 def req_username():
     return 'UserName is Required'
 
