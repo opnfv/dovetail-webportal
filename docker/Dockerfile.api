@@ -48,8 +48,9 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
 
+RUN python -m pip install -U pip
 RUN pip install -U setuptools
-
+RUN pip install -U pyopenssl
 RUN git init $HOME/testapi && \
     (cd $HOME/testapi && \
         git fetch --tags https://gerrit.opnfv.org/gerrit/dovetail-webportal $BRANCH && \
@@ -58,8 +59,14 @@ RUN git init $HOME/testapi && \
     mkdir -p $HOME/testapi/media/companies
 
 WORKDIR $HOME/testapi
-
+RUN pip install --ignore-installed six
+RUN pip install --ignore-installed urllib3
+RUN pip install --ignore-installed chardet
+RUN pip install --ignore-installed requests
 RUN pip install -r requirements.txt
+# Install Memcached
+RUN apt-get update
+RUN apt-get -y install memcached libmemcached-tools
 RUN bash install.sh
 
 RUN sed -i '152,152s/)/,\ verify=False)/g' /usr/local/lib/python2.7/dist-packages/cas.py
