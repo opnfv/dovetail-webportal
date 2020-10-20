@@ -382,7 +382,7 @@ class ResultsGURHandler(GenericResultHandler):
         db_keys = []
         self._update(query=query, db_keys=db_keys)
 
-#Api for results upload
+
 class ResultsFileUploadHandler(ResultsCLHandler):
     @swagger.operation(nickname="uploadTestResult")
     @web.asynchronous
@@ -402,7 +402,7 @@ class ResultsFileUploadHandler(ResultsCLHandler):
         token = mc.get("token")
         input_token = self.request.headers._dict['Token']
         if not token or not input_token == token:
-             raises.Unauthorized(message.invalid_token())
+            raises.Unauthorized(message.invalid_token())
         file_array = self.request.files.get('file', None)
         if file_array is None:
             msg = 'Please upload a file.'

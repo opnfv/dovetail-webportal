@@ -309,12 +309,15 @@ class LoginHandler(base.BaseHandler):
             "form_id": form_id,
         }
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        response = requests.post('https://identity.linuxfoundation.org',
-                data=params, headers=headers)
+        response = requests.post(
+            'https://identity.linuxfoundation.org',
+            data=params,
+            headers=headers
+        )
         response_text = response.content
         if "unrecognized username or password" in response_text:
             raises.Unauthorized(message.invalid_credentials())
-        #generate random token and store in memcache
+        # generate random token and store in memcache
         token = base.get_token()
         resp = {'status': 'success'}
         mc = memcache.Client(['127.0.0.1:11211'], debug=0)
@@ -322,12 +325,13 @@ class LoginHandler(base.BaseHandler):
         self.set_header("token", token)
         self.finish_request(resp)
 
+
 class LogoutHandler(base.BaseHandler):
     def post(self):
         input_token = self.request.headers._dict['Token']
         mc = memcache.Client(['127.0.0.1:11211'], debug=0)
         token = mc.get("token")
-        if not token or not input_token == token :
+        if not token or not input_token == token:
             raises.Unauthorized(message.invalid_token())
         mc.set("token", '')
         resp = {'Message': 'You have been logged out successfully.'}
