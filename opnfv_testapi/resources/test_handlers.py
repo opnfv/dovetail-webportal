@@ -361,7 +361,8 @@ class TestsGURHandler(GenericTestHandler):
                     logging.debug('not found')
                     raise gen.Return((False, message.no_auth()))
         raise gen.Return((True, {}))
-#updated new test appi
+
+
 class TestsUploadDataHandler(GenericTestHandler):
     @swagger.operation(nickname="queryTests")
     @web.asynchronous
