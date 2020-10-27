@@ -21,7 +21,7 @@ oauth2==1.9.0.post1
 jira==1.0.15
 tlslite==0.4.9
 pyjwt>=1.5.2
-cryptography==2.2.2
+cryptography==3.2
 python-cas==1.2.0
 futures==3.2.0
 python-slugify==2.0.1
