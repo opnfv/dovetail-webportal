@@ -1,0 +1,96 @@
+# Dovetail Webportal CI
+#
+# Runs tox and documentation builds on verify and merge and run docker
+# builds on merges and tags.
+---
+include:
+  - project: anuket/releng
+    file: '/gitlab-templates/RTD.gitlab-ci.yml'
+  - project: anuket/releng
+    file: '/gitlab-templates/Docker.gitlab-ci.yml'
+  - project: anuket/releng
+    file: '/gitlab-templates/GoogleStorage.gitlab-ci.yml'
+
+variables:
+  DOCKER_REGISTRY: docker.io
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+.unit-test-defaults: &unit-test-defaults
+  stage: test
+  image: python:2.7
+  before_script:
+    - pip install tox
+  cache:
+    paths:
+      - .cache/pip
+      - venv/
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+py27:
+  <<: *unit-test-defaults
+  script:
+    tox -e py27
+  artifacts:
+    reports:
+      cobertura: coverage.xml
+      junit: report.xml
+
+pep8:
+  <<: *unit-test-defaults
+  script:
+    tox -e pep8
+
+weblint:
+  <<: *unit-test-defaults
+  script:
+    tox -e weblint
+
+# Docker Builds
+docker-build-webportal-api:
+  extends: .docker-build-and-push
+  variables:
+    DOCKER_IMAGE: "$DOCKER_ORGANIZATION/dovetail-webportal-api"
+    DOCKER_BUILDCONTEXT: "docker"
+    DOCKER_FILEPATH: "docker/Dockerfile.api"
+
+docker-build-webportal-web:
+  extends: .docker-build-and-push
+  variables:
+    DOCKER_IMAGE: "$DOCKER_ORGANIZATION/dovetail-webportal-web"
+    DOCKER_BUILDCONTEXT: "docker"
+    DOCKER_FILEPATH: "docker/Dockerfile.web"
+
+docker-build-webportal-onap:
+  extends: .docker-build-and-push
+  variables:
+    DOCKER_IMAGE: "$DOCKER_ORGANIZATION/dovetail-webportal-onap"
+    DOCKER_BUILDCONTEXT: "docker"
+    DOCKER_FILEPATH: "docker/Dockerfile.web"
+  script:
+    # NOTE: Overriding default script to pass buildargs
+    # Warm the cache by fetching the latest image. There's no guarantee
+    # the image will already exist on the runner.
+    - docker pull "$DOCKER_IMAGE:${CI_COMMIT_REF_SLUG}" || true
+    - >
+        docker build
+        --pull
+        --build-arg "CONTAINER=onap"
+        --build-arg "GUI=onap-ui"
+        --cache-from "$DOCKER_IMAGE:${CI_COMMIT_REF_SLUG}"
+        --file "$DOCKER_FILEPATH"
+        --tag "$DOCKER_IMAGE:${CI_COMMIT_REF_SLUG}"
+        $DOCKER_BUILDCONTEXT
+    - |
+      if [[ "$CI_COMMIT_BRANCH" == "$DOCKER_LATEST_BRANCH" && "$DOCKER_LATEST_TAG" == "true" ]]; then
+        docker tag "$DOCKER_IMAGE:${CI_COMMIT_REF_SLUG}" "$DOCKER_IMAGE"
+      fi
+    - |
+      # Push docker images if DOCKER_PUSH is set
+      if [[ "$DOCKER_PUSH" == "true" ]]; then
+        docker push "$DOCKER_IMAGE:${CI_COMMIT_REF_SLUG}"
+        # Push ':latest' if LATEST_TAG is true
+        if [[ "$CI_COMMIT_BRANCH" == "$DOCKER_LATEST_BRANCH" && "$DOCKER_LATEST_TAG" == "true" ]]; then
+          docker push "$DOCKER_IMAGE"
+        fi
+      fi
